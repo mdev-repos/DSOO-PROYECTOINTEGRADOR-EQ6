@@ -1,0 +1,13 @@
+# Binarios y objetos
+bin/
+obj/
+
+# Configuración de VS
+.vs/
+*.user
+*.suo
+
+# Archivos de compilación
+*.exe
+*.dll
+*.pdb
