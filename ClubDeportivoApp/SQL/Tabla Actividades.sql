@@ -1,6 +1,6 @@
 USE clubdeportivo;
 
-DROP TABLE IF EXISTS actividades;
+DROP TABLE IF EXISTS Actividades;
 CREATE TABLE Actividades(
 	CodActividad VARCHAR(50),
     CodNoSocio VARCHAR(50),
