@@ -40,6 +40,7 @@ namespace ClubDeportivoApp.Datos
             }
             catch(Exception ex)
             {
+                MessageBox.Show("Error al guardar cliente:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 salida = ex.Message;
             }
             finally

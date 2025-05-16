@@ -22,7 +22,7 @@ namespace ClubDeportivoApp
 
         private void btnInscribir_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtFechaNac.Text == "" ||
+            if (txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || dtpFechaNac.Value == DateTime.Now ||
                 txtDireccion.Text == "" || txtEmail.Text == "")
             {
                 MessageBox.Show("Se deben completar todos los datos", "AVISO DEL SISTEMA",
@@ -35,13 +35,14 @@ namespace ClubDeportivoApp
                 cliente.Nombre = txtNombre.Text;
                 cliente.Apellido = txtApellido.Text;
                 cliente.Dni = Convert.ToInt32(txtDni.Text);
-                cliente.FechaNac = Convert.ToDateTime(txtFechaNac.Text);
+                cliente.FechaNac = dtpFechaNac.Value;
                 cliente.Direccion = txtDireccion.Text;
                 cliente.Telefono = txtTelefono.Text;
                 cliente.Email = txtEmail.Text;
                 cliente.FichaMedica = estado;
                 Datos.Clientes clientes = new Datos.Clientes();
                 respuesta = clientes.Nuevo_Cliente(cliente);
+                MessageBox.Show("Cliente" + cliente.Apellido);
                 bool esNumero = int.TryParse(respuesta, out int codigo);
                 if (esNumero)
                 {
@@ -66,8 +67,13 @@ namespace ClubDeportivoApp
 
         private void rbtnFichaMedica_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             estado = rbtnFichaMedica.Checked;
+        }
+
+        private void dtpFechaNac_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

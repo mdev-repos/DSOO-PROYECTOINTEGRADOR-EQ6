@@ -45,8 +45,8 @@
             btnLimpiar = new Button();
             btnVolver = new Button();
             lblFechaNac = new Label();
-            txtFechaNac = new TextBox();
             rbtnFichaMedica = new RadioButton();
+            dtpFechaNac = new DateTimePicker();
             SuspendLayout();
             // 
             // lblNombre
@@ -63,7 +63,7 @@
             // 
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblApellido.Location = new Point(368, 47);
+            lblApellido.Location = new Point(408, 48);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(61, 20);
             lblApellido.TabIndex = 1;
@@ -73,7 +73,7 @@
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmail.Location = new Point(368, 216);
+            lblEmail.Location = new Point(424, 216);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(45, 20);
             lblEmail.TabIndex = 2;
@@ -128,7 +128,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(435, 216);
+            txtEmail.Location = new Point(513, 216);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(168, 23);
             txtEmail.TabIndex = 8;
@@ -156,7 +156,7 @@
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(435, 44);
+            txtApellido.Location = new Point(513, 44);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(168, 23);
             txtApellido.TabIndex = 12;
@@ -199,13 +199,6 @@
             lblFechaNac.TabIndex = 17;
             lblFechaNac.Text = "Fecha de Nacimiento";
             // 
-            // txtFechaNac
-            // 
-            txtFechaNac.Location = new Point(435, 100);
-            txtFechaNac.Name = "txtFechaNac";
-            txtFechaNac.Size = new Size(168, 23);
-            txtFechaNac.TabIndex = 18;
-            // 
             // rbtnFichaMedica
             // 
             rbtnFichaMedica.AutoSize = true;
@@ -217,13 +210,21 @@
             rbtnFichaMedica.UseVisualStyleBackColor = true;
             rbtnFichaMedica.CheckedChanged += rbtnFichaMedica_CheckedChanged;
             // 
+            // dtpFechaNac
+            // 
+            dtpFechaNac.Location = new Point(513, 99);
+            dtpFechaNac.Name = "dtpFechaNac";
+            dtpFechaNac.Size = new Size(200, 23);
+            dtpFechaNac.TabIndex = 20;
+            dtpFechaNac.ValueChanged += dtpFechaNac_ValueChanged;
+            // 
             // Inscripcion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dtpFechaNac);
             Controls.Add(rbtnFichaMedica);
-            Controls.Add(txtFechaNac);
             Controls.Add(lblFechaNac);
             Controls.Add(btnVolver);
             Controls.Add(btnLimpiar);
@@ -268,7 +269,7 @@
         private Button btnLimpiar;
         private Button btnVolver;
         private Label lblFechaNac;
-        private TextBox txtFechaNac;
         private RadioButton rbtnFichaMedica;
+        private DateTimePicker dtpFechaNac;
     }
 }
