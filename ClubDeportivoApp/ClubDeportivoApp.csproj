@@ -27,12 +27,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <EditorConfigFiles Remove="C:\Users\Mirian\source\trab\ClubDeportivoApp\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="C:\Users\Mirian\source\trab\ClubDeportivoApp\.editorconfig" />
-  </ItemGroup>
-
 </Project>
