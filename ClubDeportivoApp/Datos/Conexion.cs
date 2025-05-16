@@ -25,7 +25,8 @@ namespace ClubDeportivoApp.Datos
             this.servidor = "localhost";
             this.puerto = "3306";
             this.usuario = "root";
-            this.clave = "";
+            this.clave = File.ReadAllText("dbPassword.config").Trim();
+            
         }
 
         // proceso de interacción
