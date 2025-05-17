@@ -91,9 +91,23 @@ namespace ClubDeportivoApp
 
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
+        private void btnVolver_Click(object sender, EventArgs e)
         {
-
+            if(MessageBox.Show("¿Está seguro que desea salir?", "AVISO DEL SISTEMA",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if(Application.OpenForms.OfType<Opciones>().Any())
+                {
+                    Application.OpenForms.OfType<Opciones>().First().Show();
+                }
+                else
+                {
+                    Opciones opciones = new Opciones();
+                    opciones.Show();
+                }
+                this.Close();
+            }
+            
         }
     }
 }

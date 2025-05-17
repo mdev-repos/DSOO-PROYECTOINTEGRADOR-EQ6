@@ -203,6 +203,7 @@
             btnVolver.TabIndex = 3;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // lblFechaNac
             // 
