@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClubDeportivoApp.Entidades
 {
-    public class E_Socio
+    public class E_Socio : E_Cliente
     {
         public string CodSocio { get; set; }
         public Boolean Carnet { get; set;  }
