@@ -10,3 +10,36 @@ create table Socio(
 	constraint pk_Socio primary key (CodSocio),
 	constraint fk_Clientes_Socio foreign key (Dni) references Clientes(Dni)
 );
+
+DROP PROCEDURE IF EXISTS ListarSociosMorosos;
+DELIMITER //
+CREATE PROCEDURE ListarSociosMorosos()
+BEGIN
+    /*
+    Devuelve los socios morosos con información de sus cuotas vencidas
+    */
+    
+    SELECT 
+        s.CodSocio,
+        c.nombre,
+        c.apellido,
+        c.dni,
+        cm.CodCuota,
+        cm.NroCuota,
+        cm.Vencimiento,
+        cm.ValorMensual,
+        cm.TipoDePago
+    FROM 
+        Socio s
+    JOIN 
+        clientes c ON s.Dni = c.dni
+    JOIN 
+        CuotaMensual cm ON s.CodSocio = cm.CodSocio
+    WHERE 
+        cm.Pagada = FALSE
+        AND cm.Vencimiento <= CURDATE()
+        AND s.Moroso = TRUE
+    ORDER BY 
+        cm.Vencimiento DESC;
+END //
+DELIMITER ;

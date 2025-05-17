@@ -56,5 +56,57 @@ namespace ClubDeportivoApp.Datos
             }
             return salida;
         }
+
+        public List<DTO_SocioMoroso> ListarSociosMorosos()
+        {
+            var lista = new List<DTO_SocioMoroso>();
+            MySqlConnection conexion = null;
+
+            try
+            {
+                conexion = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("ListarSociosMorosos", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                conexion.Open();
+                MySqlDataReader reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    var socioMoroso = new DTO_SocioMoroso
+                    {
+                        CodSocio = reader.IsDBNull("CodSocio") ? string.Empty : reader.GetString("CodSocio"),
+                        Nombre = reader.IsDBNull("nombre") ? string.Empty : reader.GetString("nombre"),
+                        Apellido = reader.IsDBNull("apellido") ? string.Empty : reader.GetString("apellido"),
+                        Dni = reader.IsDBNull("dni") ? 0 : reader.GetInt32("dni"),
+                        CuotaVencida = new E_CuotaMensual
+                        {
+                            CodCuota = reader.IsDBNull("CodCuota") ? string.Empty : reader.GetString("CodCuota"),
+                            NroCuota = reader.IsDBNull("NroCuota") ? 0 : reader.GetInt32("NroCuota"),
+                            Vencimiento = reader.IsDBNull("Vencimiento") ? DateTime.MinValue : reader.GetDateTime("Vencimiento"),
+                            ValorMensual = reader.IsDBNull("ValorMensual") ? 0 : reader.GetFloat("ValorMensual"),
+                            TipoDePago = reader.IsDBNull("TipoDePago") ? string.Empty : reader.GetString("TipoDePago")
+                        }
+                    };
+
+                    lista.Add(socioMoroso);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al listar socios morosos:\n" + ex.Message, "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return lista;
+        }
+
     }
 }

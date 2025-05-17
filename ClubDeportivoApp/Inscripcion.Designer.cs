@@ -190,7 +190,6 @@
             btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnVolver
             // 
