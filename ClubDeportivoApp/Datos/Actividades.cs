@@ -14,20 +14,20 @@ namespace ClubDeportivoApp.Datos
             try
             {
                 mySqlConnection = Conexion.getInstancia().CrearConexion();
-                MySqlCommand comando = new MySqlCommand("NuevoCliente", mySqlConnection);
+                MySqlCommand comando = new MySqlCommand("NuevaActividad", mySqlConnection);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("Cod_Actividad", MySqlDbType.VarChar).Value = actividad.CodActividad;
+                comando.Parameters.Add("CodActividad", MySqlDbType.VarChar).Value = actividad.CodActividad;
                 comando.Parameters.Add("Nombre", MySqlDbType.VarChar).Value = actividad.Nombre;
                 comando.Parameters.Add("Valor", MySqlDbType.Float).Value = actividad.Valor;
                 comando.Parameters.Add("Horario", MySqlDbType.VarChar).Value = actividad.Horario;
-                MySqlParameter ParCodigo = new MySqlParameter();
-                ParCodigo.ParameterName = "rta";
-                ParCodigo.MySqlDbType = MySqlDbType.Int32;
-                ParCodigo.Direction = ParameterDirection.Output;
-                comando.Parameters.Add(ParCodigo);
+                MySqlParameter parCodigo = new MySqlParameter();
+                parCodigo.ParameterName = "rta";
+                parCodigo.MySqlDbType = MySqlDbType.Int32;
+                parCodigo.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(parCodigo);
                 mySqlConnection.Open();
                 comando.ExecuteNonQuery();
-                salida = Convert.ToString(ParCodigo.Value);
+                salida = Convert.ToString(parCodigo.Value);
             }
             catch (Exception ex)
             {
