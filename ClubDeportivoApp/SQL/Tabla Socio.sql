@@ -1,11 +1,12 @@
-﻿use clubdeportivo;
+﻿USE clubdeportivo;
 
+drop table if exists Socio;
 create table Socio(
 	CodSocio varchar(50),
-	DNI int,
-	Carnet boolean,
+	Dni int,
+	Carnet bit,
 	FechaInscripcion varchar(20),
-	Moroso boolean,
+	Moroso bit,
 	constraint pk_Socio primary key (CodSocio),
-	constraint fk_Cliente foreign key (DNI) references Cliente(DNI)
+	constraint fk_Clientes_Socio foreign key (Dni) references Clientes(Dni)
 );
