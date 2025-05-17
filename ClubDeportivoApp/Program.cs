@@ -11,9 +11,9 @@ namespace ClubDeportivoApp
             ApplicationConfiguration.Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Opciones());
+            //Application.Run(new Opciones());
 
-            /**
+           
             using (Login loginForm = new Login())
             {
                 if (loginForm.ShowDialog() == DialogResult.OK && loginForm.Autenticado)
@@ -26,7 +26,7 @@ namespace ClubDeportivoApp
                     Application.Exit();
                 }
             }
-            **/
+            
         }
     }
 }
