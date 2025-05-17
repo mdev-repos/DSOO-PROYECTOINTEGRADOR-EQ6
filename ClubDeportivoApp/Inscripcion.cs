@@ -75,5 +75,20 @@ namespace ClubDeportivoApp
         {
 
         }
+
+        private void cmbTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtSocio_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtNoSocio_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

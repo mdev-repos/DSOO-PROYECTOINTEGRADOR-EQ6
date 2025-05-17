@@ -47,13 +47,18 @@
             lblFechaNac = new Label();
             rbtnFichaMedica = new RadioButton();
             dtpFechaNac = new DateTimePicker();
+            lblDatosPersonales = new Label();
+            gboxTipoCliente = new GroupBox();
+            rbtSocio = new RadioButton();
+            rbtNoSocio = new RadioButton();
+            gboxTipoCliente.SuspendLayout();
             SuspendLayout();
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNombre.Location = new Point(93, 47);
+            lblNombre.Location = new Point(86, 178);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(58, 20);
             lblNombre.TabIndex = 0;
@@ -63,7 +68,7 @@
             // 
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblApellido.Location = new Point(408, 48);
+            lblApellido.Location = new Point(370, 175);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(61, 20);
             lblApellido.TabIndex = 1;
@@ -73,7 +78,7 @@
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmail.Location = new Point(424, 216);
+            lblEmail.Location = new Point(370, 320);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(45, 20);
             lblEmail.TabIndex = 2;
@@ -83,7 +88,7 @@
             // 
             lblDireccion.AutoSize = true;
             lblDireccion.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDireccion.Location = new Point(93, 152);
+            lblDireccion.Location = new Point(86, 287);
             lblDireccion.Name = "lblDireccion";
             lblDireccion.Size = new Size(68, 20);
             lblDireccion.TabIndex = 3;
@@ -93,7 +98,7 @@
             // 
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(93, 99);
+            lblDni.Location = new Point(86, 211);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(30, 20);
             lblDni.TabIndex = 4;
@@ -103,7 +108,7 @@
             // 
             lblFichaMedica.AutoSize = true;
             lblFichaMedica.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFichaMedica.Location = new Point(93, 277);
+            lblFichaMedica.Location = new Point(86, 354);
             lblFichaMedica.Name = "lblFichaMedica";
             lblFichaMedica.Size = new Size(91, 20);
             lblFichaMedica.TabIndex = 5;
@@ -113,7 +118,7 @@
             // 
             lblTelefono.AutoSize = true;
             lblTelefono.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTelefono.Location = new Point(93, 215);
+            lblTelefono.Location = new Point(86, 320);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(63, 20);
             lblTelefono.TabIndex = 6;
@@ -121,79 +126,88 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(186, 48);
+            txtNombre.Location = new Point(167, 175);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(168, 23);
             txtNombre.TabIndex = 7;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(513, 216);
+            txtEmail.Location = new Point(448, 317);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(168, 23);
             txtEmail.TabIndex = 8;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(186, 216);
+            txtTelefono.Location = new Point(167, 317);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(168, 23);
             txtTelefono.TabIndex = 9;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(186, 149);
+            txtDireccion.Location = new Point(167, 284);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(168, 23);
             txtDireccion.TabIndex = 10;
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(186, 96);
+            txtDni.Location = new Point(167, 208);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(168, 23);
             txtDni.TabIndex = 11;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(513, 44);
+            txtApellido.Location = new Point(448, 172);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(168, 23);
             txtApellido.TabIndex = 12;
             // 
             // btnInscribir
             // 
-            btnInscribir.Location = new Point(319, 330);
+            btnInscribir.BackColor = Color.DarkGreen;
+            btnInscribir.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInscribir.ForeColor = Color.Linen;
+            btnInscribir.Location = new Point(313, 403);
             btnInscribir.Name = "btnInscribir";
-            btnInscribir.Size = new Size(75, 23);
-            btnInscribir.TabIndex = 14;
+            btnInscribir.Size = new Size(89, 35);
+            btnInscribir.TabIndex = 3;
             btnInscribir.Text = "INSCRIBIR";
-            btnInscribir.UseVisualStyleBackColor = true;
+            btnInscribir.UseVisualStyleBackColor = false;
             btnInscribir.Click += btnInscribir_Click;
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(528, 330);
+            btnLimpiar.BackColor = Color.Red;
+            btnLimpiar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLimpiar.ForeColor = Color.Linen;
+            btnLimpiar.Location = new Point(527, 403);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(75, 23);
-            btnLimpiar.TabIndex = 15;
+            btnLimpiar.Size = new Size(89, 35);
+            btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "LIMPIAR";
-            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.UseVisualStyleBackColor = false;
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(93, 330);
+            btnVolver.BackColor = Color.MidnightBlue;
+            btnVolver.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnVolver.ForeColor = Color.Linen;
+            btnVolver.Location = new Point(86, 403);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(75, 23);
-            btnVolver.TabIndex = 16;
+            btnVolver.Size = new Size(89, 35);
+            btnVolver.TabIndex = 3;
             btnVolver.Text = "VOLVER";
-            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.UseVisualStyleBackColor = false;
             // 
             // lblFechaNac
             // 
             lblFechaNac.AutoSize = true;
             lblFechaNac.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFechaNac.Location = new Point(368, 99);
+            lblFechaNac.Location = new Point(86, 245);
             lblFechaNac.Name = "lblFechaNac";
             lblFechaNac.Size = new Size(139, 20);
             lblFechaNac.TabIndex = 17;
@@ -202,7 +216,8 @@
             // rbtnFichaMedica
             // 
             rbtnFichaMedica.AutoSize = true;
-            rbtnFichaMedica.Location = new Point(190, 282);
+            rbtnFichaMedica.ForeColor = Color.DarkGreen;
+            rbtnFichaMedica.Location = new Point(201, 361);
             rbtnFichaMedica.Name = "rbtnFichaMedica";
             rbtnFichaMedica.Size = new Size(14, 13);
             rbtnFichaMedica.TabIndex = 19;
@@ -212,17 +227,65 @@
             // 
             // dtpFechaNac
             // 
-            dtpFechaNac.Location = new Point(513, 99);
+            dtpFechaNac.Location = new Point(243, 245);
             dtpFechaNac.Name = "dtpFechaNac";
             dtpFechaNac.Size = new Size(200, 23);
             dtpFechaNac.TabIndex = 20;
             dtpFechaNac.ValueChanged += dtpFechaNac_ValueChanged;
+            // 
+            // lblDatosPersonales
+            // 
+            lblDatosPersonales.AutoSize = true;
+            lblDatosPersonales.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDatosPersonales.Location = new Point(86, 141);
+            lblDatosPersonales.Name = "lblDatosPersonales";
+            lblDatosPersonales.Size = new Size(114, 17);
+            lblDatosPersonales.TabIndex = 23;
+            lblDatosPersonales.Text = "Datos Personales";
+            // 
+            // gboxTipoCliente
+            // 
+            gboxTipoCliente.Controls.Add(rbtNoSocio);
+            gboxTipoCliente.Controls.Add(rbtSocio);
+            gboxTipoCliente.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gboxTipoCliente.Location = new Point(86, 43);
+            gboxTipoCliente.Name = "gboxTipoCliente";
+            gboxTipoCliente.Size = new Size(530, 77);
+            gboxTipoCliente.TabIndex = 24;
+            gboxTipoCliente.TabStop = false;
+            gboxTipoCliente.Text = "Tipo de Cliente";
+            // 
+            // rbtSocio
+            // 
+            rbtSocio.AutoSize = true;
+            rbtSocio.Location = new Point(104, 34);
+            rbtSocio.Name = "rbtSocio";
+            rbtSocio.Size = new Size(59, 21);
+            rbtSocio.TabIndex = 0;
+            rbtSocio.TabStop = true;
+            rbtSocio.Text = "Socio";
+            rbtSocio.UseVisualStyleBackColor = true;
+            rbtSocio.CheckedChanged += rbtSocio_CheckedChanged;
+            // 
+            // rbtNoSocio
+            // 
+            rbtNoSocio.AutoSize = true;
+            rbtNoSocio.Location = new Point(274, 34);
+            rbtNoSocio.Name = "rbtNoSocio";
+            rbtNoSocio.Size = new Size(81, 21);
+            rbtNoSocio.TabIndex = 1;
+            rbtNoSocio.TabStop = true;
+            rbtNoSocio.Text = "No Socio";
+            rbtNoSocio.UseVisualStyleBackColor = true;
+            rbtNoSocio.CheckedChanged += rbtNoSocio_CheckedChanged;
             // 
             // Inscripcion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(gboxTipoCliente);
+            Controls.Add(lblDatosPersonales);
             Controls.Add(dtpFechaNac);
             Controls.Add(rbtnFichaMedica);
             Controls.Add(lblFechaNac);
@@ -243,8 +306,10 @@
             Controls.Add(lblApellido);
             Controls.Add(lblNombre);
             Name = "Inscripcion";
-            Text = "Inscripcion";
+            Text = "Inscripción";
             Load += Inscripcion_Load;
+            gboxTipoCliente.ResumeLayout(false);
+            gboxTipoCliente.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -271,5 +336,10 @@
         private Label lblFechaNac;
         private RadioButton rbtnFichaMedica;
         private DateTimePicker dtpFechaNac;
+        private Label lblTipoCliente;
+        private Label lblDatosPersonales;
+        private GroupBox gboxTipoCliente;
+        private RadioButton rbtNoSocio;
+        private RadioButton rbtSocio;
     }
 }
