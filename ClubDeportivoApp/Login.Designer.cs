@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivoApp
 {
-    partial class txtLogin
+    partial class Login
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(txtLogin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             txtUsuario = new TextBox();
             txtContraseña = new TextBox();
-            pictureBox1 = new PictureBox();
+            imgBoxLog = new PictureBox();
             btnIngresar = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgBoxLog).BeginInit();
             SuspendLayout();
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(251, 83);
+            txtUsuario.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            txtUsuario.Location = new Point(356, 79);
+            txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(234, 23);
+            txtUsuario.Size = new Size(340, 31);
             txtUsuario.TabIndex = 0;
             txtUsuario.Text = "USUARIO";
             txtUsuario.Enter += txtUsuario_Enter;
@@ -48,46 +50,61 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(251, 143);
+            txtContraseña.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            txtContraseña.Location = new Point(356, 144);
+            txtContraseña.Margin = new Padding(3, 4, 3, 4);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(234, 23);
+            txtContraseña.Size = new Size(340, 31);
             txtContraseña.TabIndex = 1;
             txtContraseña.Text = "CONTRASEÑA";
             txtContraseña.Enter += txtContraseña_Enter;
             txtContraseña.Leave += txtContraseña_Leave;
             // 
-            // pictureBox1
+            // imgBoxLog
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(85, 83);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(118, 122);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            imgBoxLog.Image = (Image)resources.GetObject("imgBoxLog.Image");
+            imgBoxLog.Location = new Point(76, 54);
+            imgBoxLog.Margin = new Padding(3, 4, 3, 4);
+            imgBoxLog.Name = "imgBoxLog";
+            imgBoxLog.Size = new Size(230, 241);
+            imgBoxLog.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgBoxLog.TabIndex = 2;
+            imgBoxLog.TabStop = false;
             // 
             // btnIngresar
             // 
-            btnIngresar.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIngresar.Location = new Point(322, 211);
+            btnIngresar.BackColor = Color.DarkGreen;
+            btnIngresar.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            btnIngresar.ForeColor = Color.Linen;
+            btnIngresar.Location = new Point(457, 220);
+            btnIngresar.Margin = new Padding(3, 4, 3, 4);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(103, 23);
+            btnIngresar.Size = new Size(130, 50);
             btnIngresar.TabIndex = 3;
             btnIngresar.Text = "INGRESAR";
-            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += btnIngresar_Click;
             // 
-            // txtLogin
+            // Login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.Linen;
+            ClientSize = new Size(782, 353);
             Controls.Add(btnIngresar);
-            Controls.Add(pictureBox1);
+            Controls.Add(imgBoxLog);
             Controls.Add(txtContraseña);
             Controls.Add(txtUsuario);
-            Name = "txtLogin";
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
+            MaximumSize = new Size(800, 400);
+            MinimumSize = new Size(800, 400);
+            Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += Login_Load;
+            ((System.ComponentModel.ISupportInitialize)imgBoxLog).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -96,7 +113,7 @@
 
         private TextBox txtUsuario;
         private TextBox txtContraseña;
-        private PictureBox pictureBox1;
+        private PictureBox imgBoxLog;
         private Button btnIngresar;
     }
 }
