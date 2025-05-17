@@ -9,22 +9,20 @@ using System.Data;
 
 namespace ClubDeportivoApp.Datos
 {
-    internal class CuotaMensual
+    internal class CuotaDiaria
     {
-        public string NuevaCuotaMensual(E_CuotaMensual cuota)
+        public string NuevaCuotaDiaria(E_CuotaDiaria cuota)
         {
             string? salida;
             MySqlConnection mySqlConnection = new MySqlConnection();
             try
             {
                 mySqlConnection = Conexion.getInstancia().CrearConexion();
-                MySqlCommand comando = new MySqlCommand("NuevaCuota", mySqlConnection);
+                MySqlCommand comando = new MySqlCommand("NuevaCuotaDiaria", mySqlConnection);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("CodCuota", MySqlDbType.VarChar).Value = cuota.CodCuota;
-                comando.Parameters.Add("NroCuota", MySqlDbType.Int32).Value = cuota.NroCuota;
-                comando.Parameters.Add("Vencimiento", MySqlDbType.DateTime).Value = cuota.Vencimiento;
-                comando.Parameters.Add("ValorMensual", MySqlDbType.Float).Value = cuota.ValorMensual;
-                comando.Parameters.Add("TipoDePago", MySqlDbType.VarChar).Value = cuota.TipoDePago;
+                comando.Parameters.Add("CodCuotaDiaria", MySqlDbType.VarChar).Value = cuota.CodCuotaDiaria;
+                comando.Parameters.Add("ValorFinal", MySqlDbType.Float).Value = cuota.ValorFinal;
+                comando.Parameters.Add("TipoDePago", MySqlDbType.String).Value = cuota.TipoDePago;
                 MySqlParameter ParCodigo = new MySqlParameter();
                 ParCodigo.ParameterName = "rta";
                 ParCodigo.MySqlDbType = MySqlDbType.Int32;
