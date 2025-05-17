@@ -1,9 +1,9 @@
 
 namespace ClubDeportivoApp
 {
-    public partial class txtLogin : Form
+    public partial class Login : Form
     {
-        public txtLogin()
+        public Login()
         {
             InitializeComponent();
         }
@@ -35,11 +35,35 @@ namespace ClubDeportivoApp
 
         private void txtContraseña_Leave(object sender, EventArgs e)
         {
-            if(txtContraseña.Text == "")
+            if (txtContraseña.Text == "")
             {
                 txtContraseña.Text = "CONTRASEÑA";
                 txtContraseña.UseSystemPasswordChar = false;
             }
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+
+            // logica de lectura en BBDD
+
+            //if true
+                //Limpia datos ingresados
+            txtUsuario.Text = "";
+            txtContraseña.Text = "";
+
+                //Abre form principal
+            Form opcionesWdw = new Opciones();
+            opcionesWdw.ShowDialog();
+
+            //if false
+                //Mostrar modal de Usuario y/o Contrasena incorrecta
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = new Size(800, 400);
         }
     }
 } 
