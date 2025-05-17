@@ -37,5 +37,17 @@ namespace ClubDeportivoApp
             Form inscripcionWdw = new Inscripcion();
             inscripcionWdw.ShowDialog();
         }
+
+        private void CobrarBtn_Click(object sender, EventArgs e)
+        {
+            Form pagarWdw = new Pagar();
+            pagarWdw.ShowDialog();
+        }
+
+        private void ListarBtn_Click(object sender, EventArgs e)
+        {
+            Form listadoWdw = new Listado();
+            listadoWdw.ShowDialog();
+        }
     }
 }

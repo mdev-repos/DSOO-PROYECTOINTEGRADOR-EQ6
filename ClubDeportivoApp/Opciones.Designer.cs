@@ -39,6 +39,7 @@
             CobrarBtn = new Button();
             InscripcionBtn = new Button();
             imgBoxOpc = new PictureBox();
+            lblTituloOpc = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -48,6 +49,7 @@
             // 
             // pictureBox4
             // 
+            pictureBox4.Anchor = AnchorStyles.None;
             pictureBox4.BackColor = Color.FromArgb(120, 10, 90);
             pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
@@ -61,6 +63,7 @@
             // 
             // pictureBox3
             // 
+            pictureBox3.Anchor = AnchorStyles.None;
             pictureBox3.BackColor = Color.DarkGreen;
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
@@ -74,6 +77,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.None;
             pictureBox2.BackColor = Color.DarkGreen;
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
@@ -87,6 +91,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.BackColor = Color.DarkGreen;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -100,6 +105,7 @@
             // 
             // SalirBtn
             // 
+            SalirBtn.Anchor = AnchorStyles.None;
             SalirBtn.BackColor = Color.FromArgb(120, 10, 90);
             SalirBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SalirBtn.ForeColor = Color.Linen;
@@ -113,6 +119,7 @@
             // 
             // ListarBtn
             // 
+            ListarBtn.Anchor = AnchorStyles.None;
             ListarBtn.BackColor = Color.DarkGreen;
             ListarBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ListarBtn.ForeColor = Color.Linen;
@@ -122,9 +129,11 @@
             ListarBtn.TabIndex = 22;
             ListarBtn.Text = "Listar Deudores";
             ListarBtn.UseVisualStyleBackColor = false;
+            ListarBtn.Click += ListarBtn_Click;
             // 
             // CobrarBtn
             // 
+            CobrarBtn.Anchor = AnchorStyles.None;
             CobrarBtn.BackColor = Color.DarkGreen;
             CobrarBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CobrarBtn.ForeColor = Color.Linen;
@@ -134,9 +143,11 @@
             CobrarBtn.TabIndex = 21;
             CobrarBtn.Text = "Cobrar Cuota";
             CobrarBtn.UseVisualStyleBackColor = false;
+            CobrarBtn.Click += CobrarBtn_Click;
             // 
             // InscripcionBtn
             // 
+            InscripcionBtn.Anchor = AnchorStyles.None;
             InscripcionBtn.BackColor = Color.DarkGreen;
             InscripcionBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             InscripcionBtn.ForeColor = Color.Linen;
@@ -150,6 +161,7 @@
             // 
             // imgBoxOpc
             // 
+            imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = SystemColors.AppWorkspace;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
             imgBoxOpc.Location = new Point(92, 81);
@@ -159,12 +171,25 @@
             imgBoxOpc.TabIndex = 19;
             imgBoxOpc.TabStop = false;
             // 
+            // lblTituloOpc
+            // 
+            lblTituloOpc.Anchor = AnchorStyles.None;
+            lblTituloOpc.AutoSize = true;
+            lblTituloOpc.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTituloOpc.ForeColor = Color.FromArgb(120, 10, 90);
+            lblTituloOpc.Location = new Point(353, 26);
+            lblTituloOpc.Name = "lblTituloOpc";
+            lblTituloOpc.Size = new Size(238, 31);
+            lblTituloOpc.TabIndex = 28;
+            lblTituloOpc.Text = "PANEL DE OPCIONES";
+            // 
             // Opciones
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
             ClientSize = new Size(982, 653);
+            Controls.Add(lblTituloOpc);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
@@ -175,17 +200,17 @@
             Controls.Add(InscripcionBtn);
             Controls.Add(imgBoxOpc);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(1000, 700);
             MinimumSize = new Size(1000, 700);
             Name = "Opciones";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Sistema Gestor Sports Club";
+            Text = "Sistema Gestor | Sports Club";
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgBoxOpc).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -199,5 +224,6 @@
         private Button CobrarBtn;
         private Button InscripcionBtn;
         private PictureBox imgBoxOpc;
+        private Label lblTituloOpc;
     }
 }

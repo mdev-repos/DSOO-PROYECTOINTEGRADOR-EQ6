@@ -8,10 +8,22 @@ namespace ClubDeportivoApp
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Login());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            using (Login loginForm = new Login())
+            {
+                if (loginForm.ShowDialog() == DialogResult.OK && loginForm.Autenticado)
+                {
+                    // Aquí puedes pasar la información del usuario al formulario principal si es necesario
+                    Application.Run(new Opciones());
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }
