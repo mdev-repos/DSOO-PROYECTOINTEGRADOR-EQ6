@@ -49,8 +49,8 @@
             dtpFechaNac = new DateTimePicker();
             lblDatosPersonales = new Label();
             gboxTipoCliente = new GroupBox();
-            rbtSocio = new RadioButton();
             rbtNoSocio = new RadioButton();
+            rbtSocio = new RadioButton();
             gboxTipoCliente.SuspendLayout();
             SuspendLayout();
             // 
@@ -202,6 +202,7 @@
             btnVolver.TabIndex = 3;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // lblFechaNac
             // 
@@ -255,18 +256,6 @@
             gboxTipoCliente.TabStop = false;
             gboxTipoCliente.Text = "Tipo de Cliente";
             // 
-            // rbtSocio
-            // 
-            rbtSocio.AutoSize = true;
-            rbtSocio.Location = new Point(104, 34);
-            rbtSocio.Name = "rbtSocio";
-            rbtSocio.Size = new Size(59, 21);
-            rbtSocio.TabIndex = 0;
-            rbtSocio.TabStop = true;
-            rbtSocio.Text = "Socio";
-            rbtSocio.UseVisualStyleBackColor = true;
-            rbtSocio.CheckedChanged += rbtSocio_CheckedChanged;
-            // 
             // rbtNoSocio
             // 
             rbtNoSocio.AutoSize = true;
@@ -278,6 +267,18 @@
             rbtNoSocio.Text = "No Socio";
             rbtNoSocio.UseVisualStyleBackColor = true;
             rbtNoSocio.CheckedChanged += rbtNoSocio_CheckedChanged;
+            // 
+            // rbtSocio
+            // 
+            rbtSocio.AutoSize = true;
+            rbtSocio.Location = new Point(104, 34);
+            rbtSocio.Name = "rbtSocio";
+            rbtSocio.Size = new Size(59, 21);
+            rbtSocio.TabIndex = 0;
+            rbtSocio.TabStop = true;
+            rbtSocio.Text = "Socio";
+            rbtSocio.UseVisualStyleBackColor = true;
+            rbtSocio.CheckedChanged += rbtSocio_CheckedChanged;
             // 
             // Inscripcion
             // 
