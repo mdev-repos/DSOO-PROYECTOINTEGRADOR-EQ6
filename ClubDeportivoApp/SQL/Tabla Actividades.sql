@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS Actividades;
 CREATE TABLE Actividades(
 	CodActividad VARCHAR(50),
     CodNoSocio VARCHAR(50),
-    CodCuotaDiaria VARCHAR(50),
 	Nombre varchar(150),
 	Valor float,
 	Horario varchar(150),
