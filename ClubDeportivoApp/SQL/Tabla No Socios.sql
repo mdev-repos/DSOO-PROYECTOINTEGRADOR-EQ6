@@ -1,8 +1,8 @@
 USE clubdeportivo;
 
-DROP TABLE IF EXISTS NoSocios;
-CREATE TABLE NoSocios(
+DROP TABLE IF EXISTS NoSocio;
+CREATE TABLE NoSocio(
 	CodNoSocio VARCHAR(50),
     Dni int,
-    constraint pk_NoSocios primary key (CodNoSocio),
-    constraint fk_Clientes foreign key (Dni) references Clientes(Dni));
+    constraint pk_NoSocio primary key (CodNoSocio),
+    constraint fk_NoSocioClientes foreign key (Dni) references Clientes(Dni));
