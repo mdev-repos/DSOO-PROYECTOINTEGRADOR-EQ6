@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Opciones));
-            colorDialog1 = new ColorDialog();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -53,11 +52,10 @@
             pictureBox4.BackColor = Color.FromArgb(120, 10, 90);
             pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(534, 382);
-            pictureBox4.Margin = new Padding(3, 2, 3, 2);
+            pictureBox4.Location = new Point(599, 583);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Padding = new Padding(4, 4, 4, 4);
-            pictureBox4.Size = new Size(77, 66);
+            pictureBox4.Padding = new Padding(5, 5, 5, 5);
+            pictureBox4.Size = new Size(88, 88);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 27;
             pictureBox4.TabStop = false;
@@ -68,11 +66,10 @@
             pictureBox3.BackColor = Color.DarkGreen;
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(534, 280);
-            pictureBox3.Margin = new Padding(3, 2, 3, 2);
+            pictureBox3.Location = new Point(599, 447);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Padding = new Padding(4, 4, 4, 4);
-            pictureBox3.Size = new Size(77, 66);
+            pictureBox3.Padding = new Padding(5, 5, 5, 5);
+            pictureBox3.Size = new Size(88, 88);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 26;
             pictureBox3.TabStop = false;
@@ -83,11 +80,10 @@
             pictureBox2.BackColor = Color.DarkGreen;
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(534, 171);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Location = new Point(599, 302);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Padding = new Padding(4, 4, 4, 4);
-            pictureBox2.Size = new Size(77, 66);
+            pictureBox2.Padding = new Padding(5, 5, 5, 5);
+            pictureBox2.Size = new Size(88, 88);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
@@ -98,11 +94,10 @@
             pictureBox1.BackColor = Color.DarkGreen;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(534, 61);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(599, 155);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Padding = new Padding(4, 4, 4, 4);
-            pictureBox1.Size = new Size(77, 66);
+            pictureBox1.Padding = new Padding(5, 5, 5, 5);
+            pictureBox1.Size = new Size(88, 88);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 24;
             pictureBox1.TabStop = false;
@@ -113,10 +108,9 @@
             SalirBtn.BackColor = Color.FromArgb(120, 10, 90);
             SalirBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SalirBtn.ForeColor = Color.Linen;
-            SalirBtn.Location = new Point(627, 382);
-            SalirBtn.Margin = new Padding(3, 2, 3, 2);
+            SalirBtn.Location = new Point(706, 583);
             SalirBtn.Name = "SalirBtn";
-            SalirBtn.Size = new Size(163, 66);
+            SalirBtn.Size = new Size(186, 88);
             SalirBtn.TabIndex = 23;
             SalirBtn.Text = "Salir";
             SalirBtn.UseVisualStyleBackColor = false;
@@ -128,10 +122,9 @@
             ListarBtn.BackColor = Color.DarkGreen;
             ListarBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ListarBtn.ForeColor = Color.Linen;
-            ListarBtn.Location = new Point(627, 280);
-            ListarBtn.Margin = new Padding(3, 2, 3, 2);
+            ListarBtn.Location = new Point(706, 447);
             ListarBtn.Name = "ListarBtn";
-            ListarBtn.Size = new Size(163, 66);
+            ListarBtn.Size = new Size(186, 88);
             ListarBtn.TabIndex = 22;
             ListarBtn.Text = "Listar Deudores";
             ListarBtn.UseVisualStyleBackColor = false;
@@ -143,10 +136,9 @@
             CobrarBtn.BackColor = Color.DarkGreen;
             CobrarBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CobrarBtn.ForeColor = Color.Linen;
-            CobrarBtn.Location = new Point(627, 171);
-            CobrarBtn.Margin = new Padding(3, 2, 3, 2);
+            CobrarBtn.Location = new Point(706, 302);
             CobrarBtn.Name = "CobrarBtn";
-            CobrarBtn.Size = new Size(163, 66);
+            CobrarBtn.Size = new Size(186, 88);
             CobrarBtn.TabIndex = 21;
             CobrarBtn.Text = "Cobrar Cuota";
             CobrarBtn.UseVisualStyleBackColor = false;
@@ -158,10 +150,9 @@
             InscripcionBtn.BackColor = Color.DarkGreen;
             InscripcionBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             InscripcionBtn.ForeColor = Color.Linen;
-            InscripcionBtn.Location = new Point(627, 61);
-            InscripcionBtn.Margin = new Padding(3, 2, 3, 2);
+            InscripcionBtn.Location = new Point(706, 155);
             InscripcionBtn.Name = "InscripcionBtn";
-            InscripcionBtn.Size = new Size(163, 66);
+            InscripcionBtn.Size = new Size(186, 88);
             InscripcionBtn.TabIndex = 20;
             InscripcionBtn.Text = "Nuevo Cliente";
             InscripcionBtn.UseVisualStyleBackColor = false;
@@ -172,10 +163,9 @@
             imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = SystemColors.AppWorkspace;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
-            imgBoxOpc.Location = new Point(80, 61);
-            imgBoxOpc.Margin = new Padding(3, 2, 3, 2);
+            imgBoxOpc.Location = new Point(80, 155);
             imgBoxOpc.Name = "imgBoxOpc";
-            imgBoxOpc.Size = new Size(428, 388);
+            imgBoxOpc.Size = new Size(489, 517);
             imgBoxOpc.SizeMode = PictureBoxSizeMode.StretchImage;
             imgBoxOpc.TabIndex = 19;
             imgBoxOpc.TabStop = false;
@@ -186,7 +176,7 @@
             lblTituloOpc.AutoSize = true;
             lblTituloOpc.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloOpc.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTituloOpc.Location = new Point(353, 26);
+            lblTituloOpc.Location = new Point(349, 65);
             lblTituloOpc.Name = "lblTituloOpc";
             lblTituloOpc.Size = new Size(238, 31);
             lblTituloOpc.TabIndex = 28;
@@ -194,10 +184,10 @@
             // 
             // Opciones
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(982, 653);
+            ClientSize = new Size(982, 753);
             Controls.Add(lblTituloOpc);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
@@ -209,10 +199,12 @@
             Controls.Add(InscripcionBtn);
             Controls.Add(imgBoxOpc);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 700);
+            Margin = new Padding(3, 4, 3, 4);
+            MinimumSize = new Size(1000, 800);
             Name = "Opciones";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -223,7 +215,6 @@
         }
 
         #endregion
-        private ColorDialog colorDialog1;
         private PictureBox pictureBox4;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;

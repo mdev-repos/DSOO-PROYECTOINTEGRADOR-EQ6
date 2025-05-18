@@ -36,60 +36,62 @@ namespace ClubDeportivoApp
             dgvMorosos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             dgvMorosos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(120, 10, 90);
             dgvMorosos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvMorosos.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvMorosos.EnableHeadersVisualStyles = false;
             dgvMorosos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             dgvMorosos.AllowUserToResizeRows = false;
+            dgvMorosos.RowHeadersVisible = false;
 
-            // Configuración de columnas manualmente
+            // Configuración de columnas manualmente (solo las 5 solicitadas)
             var columns = new[]
             {
                 new DataGridViewTextBoxColumn {
                     Name = "CodSocio",
                     HeaderText = "CÓDIGO",
                     DataPropertyName = "CodSocio",
-                    Width = 100
+                    Width = 120,
+                    DefaultCellStyle = new DataGridViewCellStyle {
+                        Alignment = DataGridViewContentAlignment.MiddleCenter,
+                        BackColor = Color.Linen,
+                        ForeColor = Color.Black
+                    }
                 },
                 new DataGridViewTextBoxColumn {
                     Name = "Apellido",
                     HeaderText = "APELLIDO",
                     DataPropertyName = "Apellido",
-                    Width = 150
+                    Width = 180,
+                    DefaultCellStyle = new DataGridViewCellStyle {
+                        Alignment = DataGridViewContentAlignment.MiddleLeft
+                    }
                 },
                 new DataGridViewTextBoxColumn {
                     Name = "Nombre",
                     HeaderText = "NOMBRE",
                     DataPropertyName = "Nombre",
-                    Width = 150
+                    Width = 180,
+                    DefaultCellStyle = new DataGridViewCellStyle {
+                        Alignment = DataGridViewContentAlignment.MiddleLeft
+                    }
                 },
                 new DataGridViewTextBoxColumn {
                     Name = "Dni",
                     HeaderText = "DNI",
                     DataPropertyName = "Dni",
-                    Width = 100
-                },
-                new DataGridViewTextBoxColumn {
-                    Name = "NroCuota",
-                    HeaderText = "CUOTA N°",
-                    DataPropertyName = "NroCuota",
-                    Width = 80
-                },
-                new DataGridViewTextBoxColumn {
-                    Name = "Valor",
-                    HeaderText = "VALOR",
-                    DataPropertyName = "Valor",
-                    Width = 100
+                    Width = 120,
+                    DefaultCellStyle = new DataGridViewCellStyle {
+                        Alignment = DataGridViewContentAlignment.MiddleCenter
+                    }
                 },
                 new DataGridViewTextBoxColumn {
                     Name = "Vencimiento",
                     HeaderText = "VENCIMIENTO",
                     DataPropertyName = "Vencimiento",
-                    Width = 120
-                },
-                new DataGridViewTextBoxColumn {
-                    Name = "DiasVencidos",
-                    HeaderText = "DÍAS VENCIDOS",
-                    DataPropertyName = "DiasVencidos",
-                    Width = 120
+                    Width = 150,
+                    DefaultCellStyle = new DataGridViewCellStyle {
+                        Alignment = DataGridViewContentAlignment.MiddleCenter,
+                        Format = "dd/MM/yyyy"
+                    }
                 }
             };
 
@@ -97,6 +99,9 @@ namespace ClubDeportivoApp
 
             // Configurar scroll
             dgvMorosos.ScrollBars = ScrollBars.Vertical;
+
+            // Alternar colores de filas para mejor legibilidad
+            dgvMorosos.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
         }
 
         private void CargarMorosos()
@@ -111,28 +116,30 @@ namespace ClubDeportivoApp
                     m.Apellido,
                     m.Nombre,
                     m.Dni,
-                    NroCuota = m.CuotaVencida.NroCuota,
-                    Valor = m.CuotaVencida.ValorMensual.ToString("C2"),
-                    Vencimiento = m.CuotaVencida.Vencimiento.ToString("dd/MM/yyyy"),
-                    DiasVencidos = (DateTime.Today - m.CuotaVencida.Vencimiento).Days
+                    Vencimiento = m.Vencimiento.ToString("dd/MM/yyyy")
                 }).ToList();
 
                 dgvMorosos.DataSource = datosParaMostrar;
 
-                // Resaltar filas según días vencidos
+                // Resaltar filas según vencimiento
                 foreach (DataGridViewRow row in dgvMorosos.Rows)
                 {
-                    if (row.Cells["DiasVencidos"].Value != null)
+                    if (row.Cells["Vencimiento"].Value != null)
                     {
-                        int dias = Convert.ToInt32(row.Cells["DiasVencidos"].Value);
-                        if (dias > 30)
+                        var fechaStr = row.Cells["Vencimiento"].Value.ToString();
+                        if (DateTime.TryParse(fechaStr, out DateTime vencimiento))
                         {
-                            row.DefaultCellStyle.BackColor = Color.LightCoral;
-                            row.DefaultCellStyle.Font = new Font(dgvMorosos.Font, FontStyle.Bold);
-                        }
-                        else if (dias > 0)
-                        {
-                            row.DefaultCellStyle.BackColor = Color.LightYellow;
+                            var diasVencidos = (DateTime.Today - vencimiento).Days;
+
+                            if (diasVencidos == 0) // Vence hoy
+                            {
+                                row.DefaultCellStyle.BackColor = Color.LightYellow;
+                                row.DefaultCellStyle.Font = new Font(dgvMorosos.Font, FontStyle.Bold);
+                            }
+                            else if (diasVencidos > 0) // Vencido
+                            {
+                                row.DefaultCellStyle.BackColor = Color.LightPink;
+                            }
                         }
                     }
                 }
@@ -154,6 +161,11 @@ namespace ClubDeportivoApp
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             CargarMorosos();
+        }
+
+        private void Listado_Load(object sender, EventArgs e)
+        {
+            // Carga automática ya se hace en el constructor
         }
     }
 }
