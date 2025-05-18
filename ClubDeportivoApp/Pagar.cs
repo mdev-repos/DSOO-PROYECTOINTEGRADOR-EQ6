@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using ClubDeportivoApp.Datos;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 
 namespace ClubDeportivoApp
 {
@@ -18,18 +19,47 @@ namespace ClubDeportivoApp
             {
                 string query;
                 mySqlConnection = Conexion.getInstancia().CrearConexion();
-                query = @"SELECT c.Nombre, c.Apellido, cuotMens.ValorMensual, cuotMens.TipoDePago, cuotMens.Vencimiento
-                    FROM Clientes c INNER JOIN Socio soc ON c.Dni = soc.Dni INNER JOIN CuotaMensual cuotMens 
-                    ON soc.CodSocio = cuotMens.CodSocio where c.Dni = @dni";
+                mySqlConnection.Open();
+                string tipoQuery = @"SELECT 'socio' AS tipo FROM Socio WHERE Dni = @dni 
+                     UNION 
+                     SELECT 'nosocio' AS tipo FROM NoSocios WHERE Dni = @dni";
 
-                query = @"SELECT c.Nombre, c.Apellido, cuotDia.ValorFinal, cuotDia.TipoDePago
+                MySqlCommand tipoCmd = new MySqlCommand(tipoQuery, mySqlConnection);
+                tipoCmd.Parameters.AddWithValue("@dni", txtDni.Text);
+
+                object? result = tipoCmd.ExecuteScalar();
+                string? tipo = result != null ? result.ToString() : null;
+
+                if (tipo == null)
+                {
+                    MessageBox.Show("El cliente no está registrado como socio ni como no socio.");
+                    return;
+                }
+
+                if (tipo == "socio")
+                {
+                   
+                    query = @"SELECT c.Nombre, c.Apellido, soc.CodNoSocio, cuotMens.ValorMensual, cuotMens.TipoDePago, cuotMens.Vencimiento, cuotMens.CodCuota
+                        FROM Clientes c INNER JOIN Socio soc ON c.Dni = soc.Dni INNER JOIN CuotaMensual cuotMens 
+                        ON soc.CodSocio = cuotMens.CodSocio where c.Dni = @dni";
+                }
+                else if (tipo == "nosocio")
+                {
+                    query = @"SELECT c.Nombre, c.Apellido,noSoc.CodNoSocio, cuotDia.ValorFinal, cuotDia.TipoDePago, cuotDia.CodCuota
                     FROM Clientes c inner join NoSocios noSoc ON c.Dni = noSoc.Dni inner join Actividades act 
-                    ON noSoc.CodNoSocio = act.CodNoSocio inner join CuotaDiaria cuotDia ON cuotDia.CodCuotDiaria 
+                    ON noSoc.CodNoSocio = act.CodNoSocio inner join CuotaDiaria cuotDia ON cuotDia.CodCuota 
                     = act.CodCuotaDiaria where c.Dni = @dni";
+                }
+                else
+                {
+                    MessageBox.Show("Cliente no encontrado como socio ni no socio.");
+                    return;
+                }
+
                 MySqlCommand comando = new MySqlCommand(query, mySqlConnection);
                 comando.Parameters.AddWithValue("@Dni", txtDni.Text);
                 comando.CommandType = CommandType.Text;
-                mySqlConnection.Open();
+                
 
                 MySqlDataReader mySqlDataReader;
                 mySqlDataReader = comando.ExecuteReader();
@@ -39,9 +69,21 @@ namespace ClubDeportivoApp
                     {
                         lblResNombre.Text = mySqlDataReader["Nombre"].ToString();
                         lblResApellido.Text = mySqlDataReader["Apellido"].ToString();
-                        lblResValor.Text = mySqlDataReader["Valor"].ToString();
-                        lblResVencimiento.Text = mySqlDataReader["Vencimiento"].ToString();
-                        lblResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
+                        lblResCodCuota.Text = mySqlDataReader["CodCuota"].ToString();
+                        if (tipo == "socio")
+                        {
+                            lblResCod.Text = mySqlDataReader["CodSocio"].ToString();
+                            lblResValor.Text = mySqlDataReader["ValorMensual"].ToString();
+                            lblResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
+                            lblResVencimiento.Text = mySqlDataReader["Vencimiento"].ToString();
+                        }
+                        else if (tipo == "nosocio")
+                        {
+                            lblResCod.Text = mySqlDataReader["CodNoSocio"].ToString();
+                            lblResValor.Text = mySqlDataReader["ValorFinal"].ToString();
+                            lblResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
+                            lblResVencimiento.Text = "No posee.";
+                        }
                     }
                 }
                 else 
