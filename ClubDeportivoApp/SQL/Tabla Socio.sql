@@ -14,21 +14,13 @@ create table Socio(
 DROP PROCEDURE IF EXISTS ListarSociosMorosos;
 DELIMITER //
 CREATE PROCEDURE ListarSociosMorosos()
-BEGIN
-    /*
-    Devuelve los socios morosos con información de sus cuotas vencidas
-    */
-    
+BEGIN    
     SELECT 
         s.CodSocio,
-        c.nombre,
         c.apellido,
+        c.nombre,
         c.dni,
-        cm.CodCuota,
-        cm.NroCuota,
-        cm.Vencimiento,
-        cm.ValorMensual,
-        cm.TipoDePago
+        cm.Vencimiento
     FROM 
         Socio s
     JOIN 

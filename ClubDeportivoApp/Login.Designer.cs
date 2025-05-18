@@ -42,7 +42,7 @@
             // 
             txtUsuario.Anchor = AnchorStyles.None;
             txtUsuario.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold);
-            txtUsuario.Location = new Point(503, 231);
+            txtUsuario.Location = new Point(489, 219);
             txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Usuario";
@@ -56,7 +56,7 @@
             // 
             txtContrasenia.Anchor = AnchorStyles.None;
             txtContrasenia.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold);
-            txtContrasenia.Location = new Point(503, 304);
+            txtContrasenia.Location = new Point(489, 292);
             txtContrasenia.Margin = new Padding(3, 4, 3, 4);
             txtContrasenia.Name = "txtContrasenia";
             txtContrasenia.PasswordChar = '*';
@@ -71,10 +71,10 @@
             // 
             imgBoxLog.Anchor = AnchorStyles.None;
             imgBoxLog.Image = (Image)resources.GetObject("imgBoxLog.Image");
-            imgBoxLog.Location = new Point(108, 177);
+            imgBoxLog.Location = new Point(117, 156);
             imgBoxLog.Margin = new Padding(3, 4, 3, 4);
             imgBoxLog.Name = "imgBoxLog";
-            imgBoxLog.Size = new Size(298, 318);
+            imgBoxLog.Size = new Size(292, 315);
             imgBoxLog.SizeMode = PictureBoxSizeMode.StretchImage;
             imgBoxLog.TabIndex = 2;
             imgBoxLog.TabStop = false;
@@ -85,7 +85,7 @@
             btnIngresar.BackColor = Color.DarkGreen;
             btnIngresar.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnIngresar.ForeColor = Color.Linen;
-            btnIngresar.Location = new Point(717, 382);
+            btnIngresar.Location = new Point(703, 370);
             btnIngresar.Margin = new Padding(3, 4, 3, 4);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(128, 53);
@@ -100,7 +100,7 @@
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTitulo.Location = new Point(361, 38);
+            lblTitulo.Location = new Point(352, 57);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(248, 31);
             lblTitulo.TabIndex = 4;
@@ -113,7 +113,7 @@
             btnSalir.BackColor = Color.FromArgb(120, 10, 90);
             btnSalir.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnSalir.ForeColor = Color.Linen;
-            btnSalir.Location = new Point(522, 382);
+            btnSalir.Location = new Point(508, 370);
             btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(128, 53);
@@ -127,7 +127,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(982, 653);
+            ClientSize = new Size(982, 553);
             Controls.Add(btnSalir);
             Controls.Add(lblTitulo);
             Controls.Add(btnIngresar);
@@ -137,7 +137,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
-            MinimumSize = new Size(1000, 700);
+            MinimumSize = new Size(1000, 600);
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

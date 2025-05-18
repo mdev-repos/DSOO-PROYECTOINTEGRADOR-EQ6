@@ -76,17 +76,10 @@ namespace ClubDeportivoApp.Datos
                     var socioMoroso = new DTO_SocioMoroso
                     {
                         CodSocio = reader.IsDBNull("CodSocio") ? string.Empty : reader.GetString("CodSocio"),
-                        Nombre = reader.IsDBNull("nombre") ? string.Empty : reader.GetString("nombre"),
                         Apellido = reader.IsDBNull("apellido") ? string.Empty : reader.GetString("apellido"),
+                        Nombre = reader.IsDBNull("nombre") ? string.Empty : reader.GetString("nombre"),
                         Dni = reader.IsDBNull("dni") ? 0 : reader.GetInt32("dni"),
-                        CuotaVencida = new E_CuotaMensual
-                        {
-                            CodCuota = reader.IsDBNull("CodCuota") ? string.Empty : reader.GetString("CodCuota"),
-                            NroCuota = reader.IsDBNull("NroCuota") ? 0 : reader.GetInt32("NroCuota"),
-                            Vencimiento = reader.IsDBNull("Vencimiento") ? DateTime.MinValue : reader.GetDateTime("Vencimiento"),
-                            ValorMensual = reader.IsDBNull("ValorMensual") ? 0 : reader.GetFloat("ValorMensual"),
-                            TipoDePago = reader.IsDBNull("TipoDePago") ? string.Empty : reader.GetString("TipoDePago")
-                        }
+                        Vencimiento = reader.IsDBNull("Vencimiento") ? DateTime.MinValue : reader.GetDateTime("Vencimiento")
                     };
 
                     lista.Add(socioMoroso);
