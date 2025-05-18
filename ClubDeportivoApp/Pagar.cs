@@ -39,7 +39,7 @@ namespace ClubDeportivoApp
                 if (tipo == "socio")
                 {
                    
-                    query = @"SELECT c.Nombre, c.Apellido, soc.CodNoSocio, cuotMens.ValorMensual, cuotMens.TipoDePago, cuotMens.Vencimiento, cuotMens.CodCuota
+                    query = @"SELECT c.Nombre, c.Apellido, soc.CodSocio, cuotMens.ValorMensual, cuotMens.TipoDePago, cuotMens.Vencimiento, cuotMens.CodCuota
                         FROM Clientes c INNER JOIN Socio soc ON c.Dni = soc.Dni INNER JOIN CuotaMensual cuotMens 
                         ON soc.CodSocio = cuotMens.CodSocio where c.Dni = @dni";
                 }
