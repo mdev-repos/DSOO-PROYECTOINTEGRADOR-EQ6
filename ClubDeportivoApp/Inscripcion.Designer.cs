@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inscripcion));
             lblNombre = new Label();
             lblApellido = new Label();
             lblEmail = new Label();
@@ -51,6 +52,7 @@
             gboxTipoCliente = new GroupBox();
             rbtNoSocio = new RadioButton();
             rbtSocio = new RadioButton();
+            lblTituloList = new Label();
             gboxTipoCliente.SuspendLayout();
             SuspendLayout();
             // 
@@ -184,12 +186,13 @@
             btnLimpiar.BackColor = Color.Red;
             btnLimpiar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.Linen;
-            btnLimpiar.Location = new Point(527, 403);
+            btnLimpiar.Location = new Point(527, 404);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(89, 35);
             btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnVolver
             // 
@@ -280,11 +283,25 @@
             rbtSocio.UseVisualStyleBackColor = true;
             rbtSocio.CheckedChanged += rbtSocio_CheckedChanged;
             // 
+            // lblTituloList
+            // 
+            lblTituloList.Anchor = AnchorStyles.None;
+            lblTituloList.AutoSize = true;
+            lblTituloList.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTituloList.ForeColor = Color.FromArgb(120, 10, 90);
+            lblTituloList.Location = new Point(282, 15);
+            lblTituloList.Name = "lblTituloList";
+            lblTituloList.Size = new Size(133, 25);
+            lblTituloList.TabIndex = 30;
+            lblTituloList.Text = "INSCRIPCIÓN";
+            // 
             // Inscripcion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Linen;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblTituloList);
             Controls.Add(gboxTipoCliente);
             Controls.Add(lblDatosPersonales);
             Controls.Add(dtpFechaNac);
@@ -306,8 +323,9 @@
             Controls.Add(lblEmail);
             Controls.Add(lblApellido);
             Controls.Add(lblNombre);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Inscripcion";
-            Text = "Inscripción";
+            Text = "Sistema Gestor | Sports Club";
             Load += Inscripcion_Load;
             gboxTipoCliente.ResumeLayout(false);
             gboxTipoCliente.PerformLayout();
@@ -342,5 +360,6 @@
         private GroupBox gboxTipoCliente;
         private RadioButton rbtNoSocio;
         private RadioButton rbtSocio;
+        private Label lblTituloList;
     }
 }

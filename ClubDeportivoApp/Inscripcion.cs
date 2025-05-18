@@ -93,10 +93,10 @@ namespace ClubDeportivoApp
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("¿Está seguro que desea salir?", "AVISO DEL SISTEMA",
+            if (MessageBox.Show("¿Está seguro que desea salir?", "AVISO DEL SISTEMA",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if(Application.OpenForms.OfType<Opciones>().Any())
+                if (Application.OpenForms.OfType<Opciones>().Any())
                 {
                     Application.OpenForms.OfType<Opciones>().First().Show();
                 }
@@ -107,7 +107,25 @@ namespace ClubDeportivoApp
                 }
                 this.Close();
             }
-            
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("¿Esta seguro que desea limpiar todos los campos?", "AVISO DEL SISTEMA",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
+            {
+                rbtSocio.Checked = false;
+                rbtNoSocio.Checked = false;
+                txtNombre.Clear();
+                txtApellido.Clear();
+                txtDni.Clear();
+                dtpFechaNac.Value = DateTime.Now;
+                txtDireccion.Clear();
+                txtTelefono.Clear();
+                txtEmail.Clear();
+                rbtnFichaMedica.Checked = false;
+            }
         }
     }
 }
