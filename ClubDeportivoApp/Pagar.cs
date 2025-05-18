@@ -39,13 +39,13 @@ namespace ClubDeportivoApp
                 if (tipo == "socio")
                 {
                    
-                    query = @"SELECT c.Nombre, c.Apellido, soc.CodSocio, cuotMens.ValorMensual, cuotMens.TipoDePago, cuotMens.Vencimiento, cuotMens.CodCuota
+                    query = @"SELECT c.Nombre, c.Apellido, soc.CodSocio, cuotMens.ValorMensual, cuotMens.TipoDePago, cuotMens.Vencimiento, cuotMens.CodCuotaMensual
                         FROM Clientes c INNER JOIN Socio soc ON c.Dni = soc.Dni INNER JOIN CuotaMensual cuotMens 
                         ON soc.CodSocio = cuotMens.CodSocio where c.Dni = @dni";
                 }
                 else if (tipo == "nosocio")
                 {
-                    query = @"SELECT c.Nombre, c.Apellido,noSoc.CodNoSocio, cuotDia.ValorFinal, cuotDia.TipoDePago, cuotDia.CodCuota
+                    query = @"SELECT c.Nombre, c.Apellido,noSoc.CodNoSocio, cuotDia.ValorFinal, cuotDia.TipoDePago, cuotDia.CodCuotaDiaria
                     FROM Clientes c inner join NoSocios noSoc ON c.Dni = noSoc.Dni inner join Actividades act 
                     ON noSoc.CodNoSocio = act.CodNoSocio inner join CuotaDiaria cuotDia ON cuotDia.CodCuota 
                     = act.CodCuotaDiaria where c.Dni = @dni";
@@ -69,9 +69,10 @@ namespace ClubDeportivoApp
                     {
                         lblResNombre.Text = mySqlDataReader["Nombre"].ToString();
                         lblResApellido.Text = mySqlDataReader["Apellido"].ToString();
-                        lblResCodCuota.Text = mySqlDataReader["CodCuota"].ToString();
+                        
                         if (tipo == "socio")
                         {
+                            lblResCodCuota.Text = mySqlDataReader["CodCuotaMensual"].ToString();
                             lblResCod.Text = mySqlDataReader["CodSocio"].ToString();
                             lblResValor.Text = mySqlDataReader["ValorMensual"].ToString();
                             lblResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
@@ -79,11 +80,12 @@ namespace ClubDeportivoApp
                         }
                         else if (tipo == "nosocio")
                         {
+                            lblResCodCuota.Text = mySqlDataReader["CodCuotaDiaria"].ToString();
                             lblResCod.Text = mySqlDataReader["CodNoSocio"].ToString();
                             lblResValor.Text = mySqlDataReader["ValorFinal"].ToString();
                             lblResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
                             lblResVencimiento.Text = "No posee.";
-                        }
+                        } 
                     }
                 }
                 else 
