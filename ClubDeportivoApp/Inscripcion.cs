@@ -30,32 +30,44 @@ namespace ClubDeportivoApp
             }
             else
             {
-                string respuesta;
-                E_Cliente cliente = new E_Cliente();
-                cliente.Nombre = txtNombre.Text;
-                cliente.Apellido = txtApellido.Text;
-                cliente.Dni = Convert.ToInt32(txtDni.Text);
-                cliente.FechaNac = dtpFechaNac.Value;
-                cliente.Direccion = txtDireccion.Text;
-                cliente.Telefono = txtTelefono.Text;
-                cliente.Email = txtEmail.Text;
-                cliente.FichaMedica = estado;
-                Datos.Clientes clientes = new Datos.Clientes();
-                respuesta = clientes.Nuevo_Cliente(cliente);
-                MessageBox.Show("Cliente" + cliente.Apellido);
-                bool esNumero = int.TryParse(respuesta, out int codigo);
-                if (esNumero)
+                if (rbtSocio.Checked)
                 {
-                    if (codigo == 1)
+                    string respuesta;
+                    E_Socio socio = new E_Socio();
+                    socio.Nombre = txtNombre.Text;
+                    socio.Apellido = txtApellido.Text;
+                    socio.Dni = Convert.ToInt32(txtDni.Text);
+                    socio.FechaNac = dtpFechaNac.Value;
+                    socio.Direccion = txtDireccion.Text;
+                    socio.Telefono = txtTelefono.Text;
+                    socio.Email = txtEmail.Text;
+                    socio.FichaMedica = estado;
+                    socio.CodSocio = $"SOC-{socio.Dni}";
+                    socio.Carnet = true;
+                    socio.FechaInscripcion = DateTime.Now.ToString("yyyy-MM-dd");
+                    socio.Moroso = false;
+
+                    Datos.Socio socioDatos = new Datos.Socio();
+                    respuesta = socioDatos.Nuevo_Socio(socio);
+                    MessageBox.Show("Socio: " + socio.Apellido + ", " + socio.Nombre);
+                    bool esNumero = int.TryParse(respuesta, out int codigo);
+                    if (esNumero)
                     {
-                        MessageBox.Show("El cliente ya existe", "AVISO DEL SISTEMA",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (codigo == 1)
+                        {
+                            MessageBox.Show("El socio ya existe", "AVISO DEL SISTEMA",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"El socio {socio.Nombre} {socio.Apellido} se registró con éxito con el código número: {socio.CodSocio} " + respuesta,
+                                 "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("El cliente se registró con éxito con el código número: " + respuesta,
-                             "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    }
+                }
+                else
+                {
+
                 }
             }
         }
