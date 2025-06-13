@@ -26,7 +26,7 @@ namespace ClubDeportivoApp.Datos
             this.servidor = "localhost";
             this.puerto = "3306";
             this.usuario = "root";
-            this.clave = "43094Css.";
+            this.clave = "";
         }
 
         // proceso de interacción  
