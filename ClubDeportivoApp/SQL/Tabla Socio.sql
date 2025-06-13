@@ -11,6 +11,9 @@ create table Socio(
 	constraint fk_Clientes_Socio foreign key (Dni) references Clientes(Dni)
 );
 
+-- PODRIAMOS AGREGAR UN CAMPO (PLAN) PARA ESTABLECER EL VALOR DE LA CuotaMensual
+
+
 DROP PROCEDURE IF EXISTS ListarSociosMorosos;
 DELIMITER //
 CREATE PROCEDURE ListarSociosMorosos()

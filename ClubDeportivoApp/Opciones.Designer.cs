@@ -54,7 +54,7 @@
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.Location = new Point(599, 583);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Padding = new Padding(5, 5, 5, 5);
+            pictureBox4.Padding = new Padding(5);
             pictureBox4.Size = new Size(88, 88);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 27;
@@ -68,7 +68,7 @@
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.Location = new Point(599, 447);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Padding = new Padding(5, 5, 5, 5);
+            pictureBox3.Padding = new Padding(5);
             pictureBox3.Size = new Size(88, 88);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 26;
@@ -82,7 +82,7 @@
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(599, 302);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Padding = new Padding(5, 5, 5, 5);
+            pictureBox2.Padding = new Padding(5);
             pictureBox2.Size = new Size(88, 88);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 25;
@@ -96,7 +96,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(599, 155);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Padding = new Padding(5, 5, 5, 5);
+            pictureBox1.Padding = new Padding(5);
             pictureBox1.Size = new Size(88, 88);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 24;
@@ -204,7 +204,6 @@
             Name = "Opciones";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";
-            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

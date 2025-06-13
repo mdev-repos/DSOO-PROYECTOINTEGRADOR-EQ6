@@ -66,7 +66,7 @@
             btnPagarCuota.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPagarCuota.ForeColor = Color.White;
             btnPagarCuota.Image = (Image)resources.GetObject("btnPagarCuota.Image");
-            btnPagarCuota.Location = new Point(399, 612);
+            btnPagarCuota.Location = new Point(405, 651);
             btnPagarCuota.Name = "btnPagarCuota";
             btnPagarCuota.Size = new Size(205, 45);
             btnPagarCuota.TabIndex = 0;
@@ -81,7 +81,7 @@
             btnVolverPagar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVolverPagar.ForeColor = Color.White;
             btnVolverPagar.Image = (Image)resources.GetObject("btnVolverPagar.Image");
-            btnVolverPagar.Location = new Point(717, 612);
+            btnVolverPagar.Location = new Point(723, 651);
             btnVolverPagar.Name = "btnVolverPagar";
             btnVolverPagar.Size = new Size(205, 45);
             btnVolverPagar.TabIndex = 2;
@@ -94,7 +94,7 @@
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(47, 155);
+            lblDni.Location = new Point(53, 194);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(131, 23);
             lblDni.TabIndex = 3;
@@ -103,7 +103,7 @@
             // txtDni
             // 
             txtDni.Anchor = AnchorStyles.None;
-            txtDni.Location = new Point(182, 155);
+            txtDni.Location = new Point(188, 194);
             txtDni.MaximumSize = new Size(238, 45);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(238, 27);
@@ -113,10 +113,10 @@
             // 
             lblDatosCliente.Anchor = AnchorStyles.None;
             lblDatosCliente.AutoSize = true;
-            lblDatosCliente.Font = new Font("Bebas Kai", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDatosCliente.Location = new Point(43, 219);
+            lblDatosCliente.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDatosCliente.Location = new Point(49, 258);
             lblDatosCliente.Name = "lblDatosCliente";
-            lblDatosCliente.Size = new Size(222, 40);
+            lblDatosCliente.Size = new Size(277, 39);
             lblDatosCliente.TabIndex = 5;
             lblDatosCliente.Text = "Datos del Cliente";
             // 
@@ -125,7 +125,7 @@
             lblCodigo.Anchor = AnchorStyles.None;
             lblCodigo.AutoSize = true;
             lblCodigo.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodigo.Location = new Point(47, 337);
+            lblCodigo.Location = new Point(53, 376);
             lblCodigo.Name = "lblCodigo";
             lblCodigo.Size = new Size(81, 23);
             lblCodigo.TabIndex = 6;
@@ -136,7 +136,7 @@
             lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblApellido.Location = new Point(516, 338);
+            lblApellido.Location = new Point(522, 377);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(83, 23);
             lblApellido.TabIndex = 7;
@@ -147,7 +147,7 @@
             lblCodCliente.Anchor = AnchorStyles.None;
             lblCodCliente.AutoSize = true;
             lblCodCliente.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodCliente.Location = new Point(45, 281);
+            lblCodCliente.Location = new Point(51, 320);
             lblCodCliente.Name = "lblCodCliente";
             lblCodCliente.Size = new Size(131, 23);
             lblCodCliente.TabIndex = 8;
@@ -157,10 +157,10 @@
             // 
             lblDatosCuota.Anchor = AnchorStyles.None;
             lblDatosCuota.AutoSize = true;
-            lblDatosCuota.Font = new Font("Bebas Kai", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDatosCuota.Location = new Point(43, 402);
+            lblDatosCuota.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDatosCuota.Location = new Point(49, 441);
             lblDatosCuota.Name = "lblDatosCuota";
-            lblDatosCuota.Size = new Size(225, 40);
+            lblDatosCuota.Size = new Size(281, 39);
             lblDatosCuota.TabIndex = 9;
             lblDatosCuota.Text = "Datos de la cuota";
             // 
@@ -169,7 +169,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(47, 462);
+            label1.Location = new Point(53, 501);
             label1.Name = "label1";
             label1.Size = new Size(122, 23);
             label1.TabIndex = 10;
@@ -180,7 +180,7 @@
             lblTipoPago.Anchor = AnchorStyles.None;
             lblTipoPago.AutoSize = true;
             lblTipoPago.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblTipoPago.Location = new Point(47, 525);
+            lblTipoPago.Location = new Point(53, 564);
             lblTipoPago.Name = "lblTipoPago";
             lblTipoPago.Size = new Size(122, 23);
             lblTipoPago.TabIndex = 11;
@@ -191,7 +191,7 @@
             lblValorCuota.Anchor = AnchorStyles.None;
             lblValorCuota.AutoSize = true;
             lblValorCuota.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblValorCuota.Location = new Point(516, 462);
+            lblValorCuota.Location = new Point(522, 501);
             lblValorCuota.Name = "lblValorCuota";
             lblValorCuota.Size = new Size(97, 23);
             lblValorCuota.TabIndex = 12;
@@ -202,7 +202,7 @@
             lblVencimientoCuota.Anchor = AnchorStyles.None;
             lblVencimientoCuota.AutoSize = true;
             lblVencimientoCuota.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblVencimientoCuota.Location = new Point(516, 524);
+            lblVencimientoCuota.Location = new Point(522, 563);
             lblVencimientoCuota.Name = "lblVencimientoCuota";
             lblVencimientoCuota.Size = new Size(114, 23);
             lblVencimientoCuota.TabIndex = 13;
@@ -216,7 +216,7 @@
             btnBuscarCliente.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnBuscarCliente.ForeColor = Color.White;
             btnBuscarCliente.Image = (Image)resources.GetObject("btnBuscarCliente.Image");
-            btnBuscarCliente.Location = new Point(435, 144);
+            btnBuscarCliente.Location = new Point(441, 183);
             btnBuscarCliente.Name = "btnBuscarCliente";
             btnBuscarCliente.Size = new Size(195, 45);
             btnBuscarCliente.TabIndex = 14;
@@ -232,7 +232,7 @@
             btnComprobantePago.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnComprobantePago.ForeColor = Color.White;
             btnComprobantePago.Image = (Image)resources.GetObject("btnComprobantePago.Image");
-            btnComprobantePago.Location = new Point(54, 612);
+            btnComprobantePago.Location = new Point(60, 651);
             btnComprobantePago.Name = "btnComprobantePago";
             btnComprobantePago.Size = new Size(205, 45);
             btnComprobantePago.TabIndex = 15;
@@ -243,7 +243,7 @@
             // txtBoxResApellido
             // 
             txtBoxResApellido.Anchor = AnchorStyles.None;
-            txtBoxResApellido.Location = new Point(636, 337);
+            txtBoxResApellido.Location = new Point(642, 376);
             txtBoxResApellido.Name = "txtBoxResApellido";
             txtBoxResApellido.ReadOnly = true;
             txtBoxResApellido.Size = new Size(286, 27);
@@ -252,7 +252,7 @@
             // txtBoxResNombre
             // 
             txtBoxResNombre.Anchor = AnchorStyles.None;
-            txtBoxResNombre.Location = new Point(182, 333);
+            txtBoxResNombre.Location = new Point(188, 372);
             txtBoxResNombre.Name = "txtBoxResNombre";
             txtBoxResNombre.ReadOnly = true;
             txtBoxResNombre.Size = new Size(300, 27);
@@ -261,7 +261,7 @@
             // txtBoxResCod
             // 
             txtBoxResCod.Anchor = AnchorStyles.None;
-            txtBoxResCod.Location = new Point(182, 281);
+            txtBoxResCod.Location = new Point(188, 320);
             txtBoxResCod.Name = "txtBoxResCod";
             txtBoxResCod.ReadOnly = true;
             txtBoxResCod.Size = new Size(300, 27);
@@ -270,7 +270,7 @@
             // txtBoxResCodCuota
             // 
             txtBoxResCodCuota.Anchor = AnchorStyles.None;
-            txtBoxResCodCuota.Location = new Point(182, 459);
+            txtBoxResCodCuota.Location = new Point(188, 498);
             txtBoxResCodCuota.Name = "txtBoxResCodCuota";
             txtBoxResCodCuota.ReadOnly = true;
             txtBoxResCodCuota.Size = new Size(278, 27);
@@ -279,7 +279,7 @@
             // txtBoxResValor
             // 
             txtBoxResValor.Anchor = AnchorStyles.None;
-            txtBoxResValor.Location = new Point(636, 462);
+            txtBoxResValor.Location = new Point(642, 501);
             txtBoxResValor.Name = "txtBoxResValor";
             txtBoxResValor.ReadOnly = true;
             txtBoxResValor.Size = new Size(286, 27);
@@ -288,7 +288,7 @@
             // txtBoxResVencimiento
             // 
             txtBoxResVencimiento.Anchor = AnchorStyles.None;
-            txtBoxResVencimiento.Location = new Point(636, 521);
+            txtBoxResVencimiento.Location = new Point(642, 560);
             txtBoxResVencimiento.Name = "txtBoxResVencimiento";
             txtBoxResVencimiento.ReadOnly = true;
             txtBoxResVencimiento.Size = new Size(286, 27);
@@ -299,7 +299,7 @@
             cbResTipoPago.Anchor = AnchorStyles.None;
             cbResTipoPago.FormattingEnabled = true;
             cbResTipoPago.Items.AddRange(new object[] { "Efectivo", "Adelanto", "Tarjeta de crédito" });
-            cbResTipoPago.Location = new Point(182, 520);
+            cbResTipoPago.Location = new Point(188, 559);
             cbResTipoPago.Name = "cbResTipoPago";
             cbResTipoPago.Size = new Size(278, 28);
             cbResTipoPago.TabIndex = 22;
@@ -308,11 +308,11 @@
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Font = new Font("Bebas Kai", 28.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 28.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(120, 10, 90);
-            label2.Location = new Point(384, 28);
+            label2.Location = new Point(390, 67);
             label2.Name = "label2";
-            label2.Size = new Size(246, 57);
+            label2.Size = new Size(401, 54);
             label2.TabIndex = 23;
             label2.Text = "COBRAR CUOTA";
             // 
@@ -321,7 +321,7 @@
             imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = Color.Linen;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
-            imgBoxOpc.Location = new Point(36, 12);
+            imgBoxOpc.Location = new Point(42, 51);
             imgBoxOpc.Name = "imgBoxOpc";
             imgBoxOpc.Size = new Size(92, 93);
             imgBoxOpc.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -332,7 +332,7 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(604, 315);
+            label3.Location = new Point(610, 354);
             label3.Name = "label3";
             label3.Size = new Size(0, 20);
             label3.TabIndex = 25;
@@ -342,7 +342,7 @@
             pbVolver.Anchor = AnchorStyles.None;
             pbVolver.BackColor = Color.Linen;
             pbVolver.Image = (Image)resources.GetObject("pbVolver.Image");
-            pbVolver.Location = new Point(878, 43);
+            pbVolver.Location = new Point(884, 82);
             pbVolver.Name = "pbVolver";
             pbVolver.Size = new Size(44, 26);
             pbVolver.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -355,7 +355,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(971, 674);
+            ClientSize = new Size(982, 753);
             Controls.Add(pbVolver);
             Controls.Add(label3);
             Controls.Add(imgBoxOpc);
@@ -382,6 +382,7 @@
             Controls.Add(lblDni);
             Controls.Add(btnVolverPagar);
             Controls.Add(btnPagarCuota);
+            MinimumSize = new Size(1000, 800);
             Name = "Pagar";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
