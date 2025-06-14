@@ -108,6 +108,7 @@
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(238, 27);
             txtDni.TabIndex = 4;
+            txtDni.KeyPress += txtDni_KeyPress;
             // 
             // lblDatosCliente
             // 
