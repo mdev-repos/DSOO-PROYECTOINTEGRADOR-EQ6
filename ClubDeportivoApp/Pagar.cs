@@ -125,6 +125,10 @@ namespace ClubDeportivoApp
             }
             this.Close();
         }
-    }
 
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           e.Handled = !char.IsControl(e.KeyChar) && (!char.IsDigit(e.KeyChar) || txtDni.Text.Length >= 12);
+        }
+    }
 }
