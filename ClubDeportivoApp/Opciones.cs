@@ -38,20 +38,20 @@ namespace ClubDeportivoApp
 
         private void InscripcionBtn_Click_1(object sender, EventArgs e)
         {
-            Form inscripcionWdw = new Inscripcion();
-            inscripcionWdw.ShowDialog();
+            Form clientesWdw = new Clientes();
+            clientesWdw.ShowDialog();
         }
 
         private void CobrarBtn_Click(object sender, EventArgs e)
         {
-            Form pagarWdw = new Pagar();
-            pagarWdw.ShowDialog();
+            Form pagosWdw = new Pagos();
+            pagosWdw.ShowDialog();
         }
 
         private void ListarBtn_Click(object sender, EventArgs e)
         {
-            Form listadoWdw = new Listado();
-            listadoWdw.ShowDialog();
+            Form actividadesWdw = new Actividades();
+            actividadesWdw.ShowDialog();
         }
     }
 }

@@ -29,7 +29,6 @@ namespace ClubDeportivoApp
 
         private void ConfigurarVentana()
         {
-            this.WindowState = FormWindowState.Maximized;
             this.BringToFront();
             this.Activate();
         }
