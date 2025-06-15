@@ -63,6 +63,16 @@ namespace ClubDeportivoApp.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_NuevoCliente {
+            get {
+                object obj = ResourceManager.GetObject("icon-NuevoCliente", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pictureBox1_Image {
             get {
                 object obj = ResourceManager.GetObject("pictureBox1.Image", resourceCulture);
