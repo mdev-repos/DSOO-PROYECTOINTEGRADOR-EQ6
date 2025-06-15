@@ -11,41 +11,76 @@ namespace ClubDeportivoApp.Datos
 {
     internal class CuotaMensual
     {
-        public string NuevaCuotaMensual(E_CuotaMensual cuota)
+        public string GenerarPrimerCuota(E_CuotaMensual cuota)
         {
-            string? salida;
-            MySqlConnection mySqlConnection = new MySqlConnection();
+            string salida;
+            MySqlConnection conexion = new MySqlConnection();
+
             try
             {
-                mySqlConnection = Conexion.getInstancia().CrearConexion();
-                MySqlCommand comando = new MySqlCommand("NuevaCuota", mySqlConnection);
+                conexion = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("GenerarPrimerCuota", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("CodCuota", MySqlDbType.VarChar).Value = cuota.CodCuota;
-                comando.Parameters.Add("NroCuota", MySqlDbType.Int32).Value = cuota.NroCuota;
-                comando.Parameters.Add("Vencimiento", MySqlDbType.DateTime).Value = cuota.Vencimiento;
-                comando.Parameters.Add("ValorMensual", MySqlDbType.Float).Value = cuota.ValorMensual;
-                comando.Parameters.Add("TipoDePago", MySqlDbType.VarChar).Value = cuota.TipoDePago;
-                MySqlParameter ParCodigo = new MySqlParameter();
-                ParCodigo.ParameterName = "rta";
-                ParCodigo.MySqlDbType = MySqlDbType.Int32;
+
+                comando.Parameters.AddWithValue("p_CodCuota", cuota.CodCuota);
+                comando.Parameters.AddWithValue("p_NroCuota", cuota.NroCuota);
+                comando.Parameters.AddWithValue("p_Vencimiento", cuota.Vencimiento);
+                comando.Parameters.AddWithValue("p_ValorMensual", cuota.ValorMensual);
+                comando.Parameters.AddWithValue("p_CodSocio", cuota.CodSocio);
+
+                MySqlParameter ParCodigo = new MySqlParameter("rta", MySqlDbType.Int32);
                 ParCodigo.Direction = ParameterDirection.Output;
                 comando.Parameters.Add(ParCodigo);
-                mySqlConnection.Open();
+
+                conexion.Open();
                 comando.ExecuteNonQuery();
                 salida = Convert.ToString(ParCodigo.Value);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar la cuota:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 salida = ex.Message;
             }
             finally
             {
-                if (mySqlConnection.State == ConnectionState.Open)
-                {
-                    mySqlConnection.Close();
-                }
+                if (conexion.State == ConnectionState.Open) conexion.Close();
             }
+
+            return salida;
+        }
+
+        public string GenerarNuevaCuota(string codCuotaActual, out string nuevaCodCuota)
+        {
+            string salida;
+            nuevaCodCuota = string.Empty;
+            MySqlConnection conexion = new MySqlConnection();
+
+            try
+            {
+                conexion = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("GenerarNuevaCuota", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("p_CodCuotaActual", codCuotaActual);
+
+                // Parámetros de salida
+                comando.Parameters.Add("p_NuevaCodCuota", MySqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+                comando.Parameters.Add("rta", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+
+                conexion.Open();
+                comando.ExecuteNonQuery();
+
+                nuevaCodCuota = comando.Parameters["p_NuevaCodCuota"].Value.ToString();
+                salida = comando.Parameters["rta"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                salida = ex.Message;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+
             return salida;
         }
     }

@@ -29,7 +29,11 @@ namespace ClubDeportivoApp
 
         private void SalirBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("¿Está seguro que desea salir?", "AVISO DEL SISTEMA",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void InscripcionBtn_Click_1(object sender, EventArgs e)

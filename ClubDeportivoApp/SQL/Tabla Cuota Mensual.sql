@@ -7,13 +7,90 @@ CREATE TABLE CuotaMensual (
     NroCuota INT NOT NULL,
     Vencimiento DATETIME NOT NULL,
     ValorMensual FLOAT NOT NULL,
-    TipoDePago VARCHAR(50) NOT NULL, -- DEBERIA SER NULL
     Pagada bit NOT NULL,
-    -- FECHA DE PAGO NULL
-    --COMPROBANTE NULL
+    TipoDePago VARCHAR(50) NULL,    
+    FechaDePago VARCHAR(10) NULL,
     CodSocio VARCHAR(50) NOT NULL,
     constraint pk_CuotaMensual primary key (CodCuotaMensual),
     constraint fk_CodSocio foreign key (CodSocio) references Socio(CodSocio)
 );
 
--- SE PUEDEN AGREGAR LOS CAMPOS O CREAR OTRA ENTIDAD (PAGO) PARA MANEJAR LOS MISMOS
+
+DELIMITER //
+CREATE PROCEDURE GenerarPrimerCuota(
+    IN p_CodCuota VARCHAR(50),
+    IN p_NroCuota INT,
+    IN p_Vencimiento DATETIME,
+    IN p_ValorMensual FLOAT,
+    IN p_CodSocio VARCHAR(50),
+    OUT rta INT
+)
+BEGIN
+    INSERT INTO CuotaMensual(
+        CodCuotaMensual,
+        NroCuota,
+        Vencimiento,
+        ValorMensual,
+        Pagada,
+        CodSocio
+    ) VALUES (
+        p_CodCuota,
+        p_NroCuota,
+        p_Vencimiento,
+        p_ValorMensual,
+        0, 
+        p_CodSocio
+    );
+    
+    SET rta = 0;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE GenerarNuevaCuota(
+    IN p_CodCuotaActual VARCHAR(50),
+    OUT p_NuevaCodCuota VARCHAR(50),
+    OUT rta INT
+)
+BEGIN
+    DECLARE v_CodSocio VARCHAR(50);
+    DECLARE v_NroCuota INT;
+    DECLARE v_ValorMensual FLOAT;
+    
+    -- 1. Obtener datos de la cuota actual
+    SELECT 
+        CodSocio, 
+        NroCuota + 1, 
+        ValorMensual,
+        DATE_ADD(Vencimiento, INTERVAL 1 MONTH)
+    INTO 
+        v_CodSocio, 
+        v_NroCuota, 
+        v_ValorMensual,
+        @nuevoVencimiento
+    FROM CuotaMensual 
+    WHERE CodCuotaMensual = p_CodCuotaActual;
+    
+    -- 2. Generar nuevo código de cuota
+    SET p_NuevaCodCuota = CONCAT('CUOTA-', LPAD(v_NroCuota, 2, '0'), '-', v_CodSocio);
+    
+    -- 3. Insertar nueva cuota
+    INSERT INTO CuotaMensual (
+        CodCuotaMensual,
+        NroCuota,
+        Vencimiento,
+        ValorMensual,
+        Pagada,
+        CodSocio
+    ) VALUES (
+        p_NuevaCodCuota,
+        v_NroCuota,
+        @nuevoVencimiento,
+        v_ValorMensual,
+        0,
+        v_CodSocio
+    );
+    
+    SET rta = 0;
+END //
+DELIMITER ;

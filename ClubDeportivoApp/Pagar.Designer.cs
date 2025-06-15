@@ -73,6 +73,7 @@
             btnPagarCuota.Text = "PAGAR CUOTA";
             btnPagarCuota.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPagarCuota.UseVisualStyleBackColor = false;
+            btnPagarCuota.Click += btnPagarCuota_Click;
             // 
             // btnVolverPagar
             // 
@@ -388,7 +389,6 @@
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagar";
-            WindowState = FormWindowState.Minimized;
             ((System.ComponentModel.ISupportInitialize)imgBoxOpc).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbVolver).EndInit();
             ResumeLayout(false);

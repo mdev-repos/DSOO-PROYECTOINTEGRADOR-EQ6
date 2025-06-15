@@ -263,7 +263,7 @@
             dtpFechaNac.Location = new Point(415, 390);
             dtpFechaNac.Margin = new Padding(3, 4, 3, 4);
             dtpFechaNac.Name = "dtpFechaNac";
-            dtpFechaNac.Size = new Size(228, 27);
+            dtpFechaNac.Size = new Size(366, 27);
             dtpFechaNac.TabIndex = 5;
             dtpFechaNac.ValueChanged += dtpFechaNac_ValueChanged;
             // 

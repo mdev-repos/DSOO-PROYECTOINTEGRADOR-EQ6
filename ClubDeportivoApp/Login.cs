@@ -91,8 +91,11 @@ namespace ClubDeportivoApp
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            if (MessageBox.Show("¿Está seguro que desea salir?", "AVISO DEL SISTEMA",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
