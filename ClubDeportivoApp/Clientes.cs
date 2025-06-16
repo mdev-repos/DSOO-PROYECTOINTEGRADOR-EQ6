@@ -31,5 +31,11 @@ namespace ClubDeportivoApp
                 this.Close();
             }
         }
+
+        private void ListarBtn_Click(object sender, EventArgs e)
+        {
+            VerClientes verClientes = new VerClientes();
+            verClientes.Show();
+        }
     }
 }
