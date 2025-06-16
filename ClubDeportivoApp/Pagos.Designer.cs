@@ -154,6 +154,7 @@
             ComprobantesBtn.TabIndex = 41;
             ComprobantesBtn.Text = "Ver Comprobantes";
             ComprobantesBtn.UseVisualStyleBackColor = false;
+            ComprobantesBtn.Click += ComprobantesBtn_Click;
             // 
             // CobrarBtn
             // 

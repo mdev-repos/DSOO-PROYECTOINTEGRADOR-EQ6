@@ -228,7 +228,6 @@ namespace ClubDeportivoApp
 
             Datos.NoSocio noSocioDatos = new Datos.NoSocio();
             respuesta = noSocioDatos.Nuevo_NoSocio(nosocio);
-            MessageBox.Show("No Socio: " + nosocio.Apellido + ", " + nosocio.Nombre);
             bool esNumero = int.TryParse(respuesta, out int codigo);
             if (esNumero)
             {
@@ -241,7 +240,6 @@ namespace ClubDeportivoApp
                 {
                     MessageBox.Show($"El no socio {nosocio.Nombre} {nosocio.Apellido} se registró con éxito con el código número: {nosocio.CodNoSocio} " + respuesta,
                          "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
             }
         }
                     

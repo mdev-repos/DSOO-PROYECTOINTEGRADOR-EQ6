@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="./Resources/Templates/Comprobante/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="comprobante">
+
+        <div class="marca-agua">
+            <img src="./Resources/Templates/Comprobante/Assets/Icon-Pagado.png" alt="Pagado">
+        </div>
+
+        <header class="header">
+            <div class="club-header">
+                <img class="club-logo" src="./Resources/Templates/Comprobante/Assets/logo.png" alt="Logo Sports Club">
+                <div class="club-info">
+                    <h1>SPORTS CLUB</h1>
+                    <p>Direccion: Avenida Falsa 321</p>
+                    <p>Telefono: 4677-8833</p>
+                </div>
+            </div>
+            <h2 class="titulo-comprobante">COMPROBANTE DE PAGO #{{codCuota}}</h2>
+        </header>
+
+        <section class="seccion datos-cliente">
+            <h3>DATOS DEL CLIENTE</h3>
+            <div class="grid-datos">
+                <div class="dato">
+                    <span class="etiqueta">SOCIO N°</span>
+                    <span class="valor">{{codSocio}}</span>
+                </div>
+                <div class="dato">
+                    <span class="etiqueta">DNI</span>
+                    <span class="valor">{{dni}}</span>
+                </div>
+                <div class="dato">
+                    <span class="etiqueta">NOMBRE</span>
+                    <span class="valor">{{nombre}}</span>
+                </div>
+                <div class="dato">
+                    <span class="etiqueta">APELLIDO</span>
+                    <span class="valor">{{apellido}}</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion detalle-pago">
+            <h3>DETALLE DEL PAGO</h3>
+            <div class="grid-detalle">
+                <div class="dato-detalle">
+                    <span class="etiqueta">CODIGO</span>
+                    <span class="valor">{{codCuota}}</span>
+                </div>
+                <div class="dato-detalle">
+                    <span class="etiqueta">NUMERO</span>
+                    <span class="valor">{{nroCuota}}</span>
+                </div>
+                <div class="dato-detalle">
+                    <span class="etiqueta">VENCIMIENTO</span>
+                    <span class="valor">{{vencimiento}}</span>
+                </div>
+                <div class="dato-detalle">
+                    <span class="etiqueta">MONTO</span>
+                    <span class="valor">{{monto}}</span>
+                </div>
+                <div class="dato-detalle">
+                    <span class="etiqueta">TIPO de PAGO</span>
+                    <span class="valor">{{tipoPago}}</span>
+                </div>
+                <div class="dato-detalle">
+                    <span class="etiqueta">FECHA</span>
+                    <span class="valor">{{fechaPago}}</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
