@@ -326,6 +326,7 @@
             // 
             // cBoxTipoCliente
             // 
+            cBoxTipoCliente.Anchor = AnchorStyles.None;
             cBoxTipoCliente.FormattingEnabled = true;
             cBoxTipoCliente.Items.AddRange(new object[] { "Socio", "No Socio" });
             cBoxTipoCliente.Location = new Point(251, 454);
