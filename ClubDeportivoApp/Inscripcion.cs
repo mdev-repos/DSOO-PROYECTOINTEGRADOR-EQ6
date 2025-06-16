@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ClubDeportivoApp.Datos;
 using ClubDeportivoApp.Entidades;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.Design.AxImporter;
 
 namespace ClubDeportivoApp
 {
@@ -213,7 +214,35 @@ namespace ClubDeportivoApp
         //======== METODOS DE INSCRIPCION DE NO SOCIO ========//
         private void ProcesarInscripcionNoSocio()
         {
+            string respuesta; 
+            E_NoSocio nosocio = new E_NoSocio();
+            nosocio.Nombre = txtNombre.Text;
+            nosocio.Apellido = txtApellido.Text;
+            nosocio.Dni = Convert.ToInt32(txtDni.Text);
+            nosocio.FechaNac = dtpFechaNac.Value;
+            nosocio.Direccion = txtDireccion.Text;
+            nosocio.Telefono = txtTelefono.Text;
+            nosocio.Email = txtEmail.Text;
+            nosocio.FichaMedica = estado;
+            nosocio.CodNoSocio = $"NOSOC-{nosocio.Dni}";
 
+            Datos.NoSocio noSocioDatos = new Datos.NoSocio();
+            respuesta = noSocioDatos.Nuevo_NoSocio(nosocio);
+            bool esNumero = int.TryParse(respuesta, out int codigo);
+            if (esNumero)
+            {
+                if (codigo == 1)
+                {
+                    MessageBox.Show("El no socio ya existe", "AVISO DEL SISTEMA",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show($"El no socio {nosocio.Nombre} {nosocio.Apellido} se registró con éxito con el código número: {nosocio.CodNoSocio} " + respuesta,
+                         "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                
+            }
         }
                     
         private void Inscripcion_Load(object sender, EventArgs e)
