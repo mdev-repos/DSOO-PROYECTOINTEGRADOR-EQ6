@@ -240,6 +240,7 @@ namespace ClubDeportivoApp
                 {
                     MessageBox.Show($"El no socio {nosocio.Nombre} {nosocio.Apellido} se registró con éxito con el código número: {nosocio.CodNoSocio} " + respuesta,
                          "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
             }
         }
                     
