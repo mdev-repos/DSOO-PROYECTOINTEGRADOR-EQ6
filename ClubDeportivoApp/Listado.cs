@@ -14,35 +14,41 @@ namespace ClubDeportivoApp
     public partial class Listado : Form
     {
         private readonly Socio _socioDatos;
+        private enum FiltroMorosos { Todos, VencimientoHoy };
 
         public Listado()
         {
             InitializeComponent();
             _socioDatos = new Socio();
+            ConfigurarFormulario();
             ConfigurarDataGridView();
-            CargarMorosos();
+            CargarMorosos(FiltroMorosos.VencimientoHoy); // Carga hoy por defecto
+        }
+
+        private void ConfigurarFormulario()
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
         private void ConfigurarDataGridView()
         {
-            // Limpiamos columnas auto-generadas
             dgvMorosos.AutoGenerateColumns = false;
             dgvMorosos.Columns.Clear();
 
             // Configuración básica del grid
-            dgvMorosos.BackgroundColor = Color.Linen;
-            dgvMorosos.BorderStyle = BorderStyle.None;
+            dgvMorosos.BorderStyle = BorderStyle.Fixed3D;
             dgvMorosos.DefaultCellStyle.Font = new Font("Segoe UI", 10);
             dgvMorosos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            dgvMorosos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(120, 10, 90);
+            dgvMorosos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(51, 51, 76);
             dgvMorosos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvMorosos.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvMorosos.EnableHeadersVisualStyles = false;
-            dgvMorosos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dgvMorosos.AllowUserToResizeRows = false;
             dgvMorosos.RowHeadersVisible = false;
+            dgvMorosos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMorosos.AllowUserToResizeColumns = true;
+            dgvMorosos.AllowUserToOrderColumns = true;
+            dgvMorosos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            // Configuración de columnas manualmente (solo las 5 solicitadas)
+            // Configuración de columnas
             var columns = new[]
             {
                 new DataGridViewTextBoxColumn {
@@ -51,9 +57,7 @@ namespace ClubDeportivoApp
                     DataPropertyName = "CodSocio",
                     Width = 120,
                     DefaultCellStyle = new DataGridViewCellStyle {
-                        Alignment = DataGridViewContentAlignment.MiddleCenter,
-                        BackColor = Color.Linen,
-                        ForeColor = Color.Black
+                        Alignment = DataGridViewContentAlignment.MiddleCenter
                     }
                 },
                 new DataGridViewTextBoxColumn {
@@ -92,23 +96,33 @@ namespace ClubDeportivoApp
                         Alignment = DataGridViewContentAlignment.MiddleCenter,
                         Format = "dd/MM/yyyy"
                     }
+                },
+                new DataGridViewTextBoxColumn {
+                    Name = "DiasVencidos",
+                    HeaderText = "DÍAS VENCIDOS",
+                    DataPropertyName = "DiasVencidos",
+                    Width = 120,
+                    DefaultCellStyle = new DataGridViewCellStyle {
+                        Alignment = DataGridViewContentAlignment.MiddleCenter
+                    }
                 }
             };
 
             dgvMorosos.Columns.AddRange(columns);
-
-            // Configurar scroll
-            dgvMorosos.ScrollBars = ScrollBars.Vertical;
-
-            // Alternar colores de filas para mejor legibilidad
-            dgvMorosos.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dgvMorosos.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
         }
 
-        private void CargarMorosos()
+        private void CargarMorosos(FiltroMorosos filtro)
         {
             try
             {
                 var morosos = _socioDatos.ListarSociosMorosos();
+
+                // Aplicar filtro
+                if (filtro == FiltroMorosos.VencimientoHoy)
+                {
+                    morosos = morosos.Where(m => m.Vencimiento.Date == DateTime.Today).ToList();
+                }
 
                 var datosParaMostrar = morosos.Select(m => new
                 {
@@ -116,7 +130,10 @@ namespace ClubDeportivoApp
                     m.Apellido,
                     m.Nombre,
                     m.Dni,
-                    Vencimiento = m.Vencimiento.ToString("dd/MM/yyyy")
+                    Vencimiento = m.Vencimiento.ToString("dd/MM/yyyy"),
+                    DiasVencidos = (DateTime.Today - m.Vencimiento).Days > 0 ?
+                                   (DateTime.Today - m.Vencimiento).Days.ToString() :
+                                   (m.Vencimiento.Date == DateTime.Today ? "Hoy" : "")
                 }).ToList();
 
                 dgvMorosos.DataSource = datosParaMostrar;
@@ -124,25 +141,30 @@ namespace ClubDeportivoApp
                 // Resaltar filas según vencimiento
                 foreach (DataGridViewRow row in dgvMorosos.Rows)
                 {
-                    if (row.Cells["Vencimiento"].Value != null)
+                    if (row.Cells["DiasVencidos"].Value != null)
                     {
-                        var fechaStr = row.Cells["Vencimiento"].Value.ToString();
-                        if (DateTime.TryParse(fechaStr, out DateTime vencimiento))
-                        {
-                            var diasVencidos = (DateTime.Today - vencimiento).Days;
+                        string diasValue = row.Cells["DiasVencidos"].Value.ToString();
 
-                            if (diasVencidos == 0) // Vence hoy
+                        if (diasValue == "Hoy")
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                            row.DefaultCellStyle.Font = new Font(dgvMorosos.Font, FontStyle.Bold);
+                        }
+                        else if (!string.IsNullOrEmpty(diasValue))
+                        {
+                            int dias = int.Parse(diasValue);
+                            if (dias > 0)
                             {
-                                row.DefaultCellStyle.BackColor = Color.LightYellow;
-                                row.DefaultCellStyle.Font = new Font(dgvMorosos.Font, FontStyle.Bold);
-                            }
-                            else if (diasVencidos > 0) // Vencido
-                            {
-                                row.DefaultCellStyle.BackColor = Color.LightPink;
+                                row.DefaultCellStyle.BackColor = Color.LightCoral;
+                                if (dias > 7)
+                                {
+                                    row.DefaultCellStyle.ForeColor = Color.DarkRed;
+                                }
                             }
                         }
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -157,19 +179,24 @@ namespace ClubDeportivoApp
         {
             if (MessageBox.Show("¿Está seguro que desea salir?", "AVISO DEL SISTEMA",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
+            {               
                 this.Close();
             }
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            CargarMorosos();
         }
 
         private void Listado_Load(object sender, EventArgs e)
         {
             // Carga automática ya se hace en el constructor
+        }
+
+        private void btnTodos_Click_1(object sender, EventArgs e)
+        {
+            CargarMorosos(FiltroMorosos.Todos);
+        }
+
+        private void btnVencimientoHoy_Click_1(object sender, EventArgs e)
+        {
+            CargarMorosos(FiltroMorosos.VencimientoHoy);
         }
     }
 }
