@@ -202,6 +202,9 @@ namespace ClubDeportivoApp
                 {
                     conn.Open();
 
+                    // Guardamos el código de cuota para reutilizarlo
+                    string codCuotaPagada = txtBoxResCodCuota.Text;
+
                     // Actualizar pago
                     string updateQuery = @"UPDATE CuotaMensual 
                                   SET Pagada = 1, 
@@ -211,17 +214,34 @@ namespace ClubDeportivoApp
 
                     MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
                     updateCmd.Parameters.AddWithValue("@tipoPago", cbResTipoPago.Text);
-                    updateCmd.Parameters.AddWithValue("@fechaPago", DateTime.Now.ToString("yyyy-MM-dd"));
+                    updateCmd.Parameters.AddWithValue("@fechaPago", DateTime.Now.ToString("dd/MM/yyyy"));
                     updateCmd.Parameters.AddWithValue("@codCuota", txtBoxResCodCuota.Text);
                     updateCmd.ExecuteNonQuery();
 
                     // 2. Generar nueva cuota
                     CuotaMensual cuotaDatos = new CuotaMensual();
-                    string respuesta = cuotaDatos.GenerarNuevaCuota(txtBoxResCodCuota.Text, out string nuevaCodCuota);
+                    string respuesta = cuotaDatos.GenerarNuevaCuota(codCuotaPagada, out string nuevaCodCuota);
 
                     if (respuesta == "0")
                     {
                         PagoRealizado = true;
+
+                        // 3. Mostrar comprobante de pago
+                        Datos.CuotaMensual datosCuota = new Datos.CuotaMensual();
+                        E_CuotaMensual cuota = datosCuota.ObtenerCuotaCompleta(codCuotaPagada);
+
+                        if(cuota != null)
+                        {
+                            Datos.Socio socioDatos = new Datos.Socio();
+                            E_Socio socio = socioDatos.ObtenerSocioPorCodigo(cuota.CodSocio);
+
+                            if(socio != null)
+                            {
+                                Detalle_Comprobante comprobante = new Detalle_Comprobante(socio, cuota);
+                                comprobante.ShowDialog();
+                            }
+                        }                    
+
                         MessageBox.Show($"Pago registrado. Nueva cuota generada: {nuevaCodCuota}",
                                       "Éxito",
                                       MessageBoxButtons.OK,
