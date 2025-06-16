@@ -37,5 +37,11 @@ namespace ClubDeportivoApp
                 this.Close();
             }
         }
+
+        private void ComprobantesBtn_Click(object sender, EventArgs e)
+        {
+            Form comprobantesWdw = new Comprobantes();
+            comprobantesWdw.ShowDialog();
+        }
     }
 }

@@ -101,7 +101,49 @@ namespace ClubDeportivoApp.Datos
             return lista;
         }
 
+        public E_Socio ObtenerSocioPorCodigo(string codSocio)
+        {
+            E_Socio socio = null;
+            MySqlConnection conexion = null;
 
+            try
+            {
+                conexion = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("ObtenerSocioPorCodigo", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@p_codSocio", codSocio);
 
+                conexion.Open();
+                MySqlDataReader reader = comando.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    socio = new E_Socio
+                    {
+                        CodSocio = reader["CodSocio"].ToString(),
+                        Dni = reader.GetInt32("Dni"),
+                        Nombre = reader["Nombre"].ToString(),
+                        Apellido = reader["Apellido"].ToString(),
+                        Carnet = reader.GetBoolean("Carnet"),
+                        FechaInscripcion = reader["FechaInscripcion"].ToString(),
+                        Moroso = reader.GetBoolean("Moroso")
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener socio: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return socio;
+        }
     }
 }

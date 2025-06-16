@@ -181,3 +181,44 @@ BEGIN
     SET rta = 0;
 END //
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS ObtenerSocioPorCodigo;
+DELIMITER //
+CREATE PROCEDURE ObtenerSocioPorCodigo(IN p_codSocio VARCHAR(50))
+BEGIN
+    SELECT 
+        s.CodSocio, 
+        s.Dni, 
+        c.Nombre, 
+        c.Apellido,
+        s.Carnet,
+        s.FechaInscripcion,
+        s.Moroso
+    FROM 
+        Socio s
+    JOIN 
+        Clientes c ON s.Dni = c.dni
+    WHERE 
+        s.CodSocio = p_codSocio;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS ObtenerCuotaCompleta;
+DELIMITER //
+CREATE PROCEDURE ObtenerCuotaCompleta(IN p_codCuota VARCHAR(50))
+BEGIN
+    SELECT 
+        CodCuotaMensual, 
+        NroCuota, 
+        Vencimiento, 
+        ValorMensual, 
+        Pagada, 
+        TipoDePago, 
+        FechaDePago,
+        CodSocio
+    FROM 
+        CuotaMensual
+    WHERE 
+        CodCuotaMensual = p_codCuota;
+END //
+DELIMITER ;
