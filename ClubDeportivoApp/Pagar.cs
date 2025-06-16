@@ -230,17 +230,17 @@ namespace ClubDeportivoApp
                         Datos.CuotaMensual datosCuota = new Datos.CuotaMensual();
                         E_CuotaMensual cuota = datosCuota.ObtenerCuotaCompleta(codCuotaPagada);
 
-                        if(cuota != null)
+                        if (cuota != null)
                         {
                             Datos.Socio socioDatos = new Datos.Socio();
                             E_Socio socio = socioDatos.ObtenerSocioPorCodigo(cuota.CodSocio);
 
-                            if(socio != null)
+                            if (socio != null)
                             {
                                 Detalle_Comprobante comprobante = new Detalle_Comprobante(socio, cuota);
                                 comprobante.ShowDialog();
                             }
-                        }                    
+                        }
 
                         MessageBox.Show($"Pago registrado. Nueva cuota generada: {nuevaCodCuota}",
                                       "Éxito",
@@ -260,6 +260,56 @@ namespace ClubDeportivoApp
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al procesar el pago: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbCuotas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Transformo el item seleccionado a string
+            // Evalúo con un if el string, si es igual a "1", "3" o "6" modifico el valor del text box valorCuota
+            // Verifica que haya una selección válida en el ComboBox
+            if (cbCuotas.SelectedItem != null)
+            {
+                // Convierte el ítem seleccionado a número
+                if (int.TryParse(cbCuotas.SelectedItem.ToString(), out int cuotas))
+                {
+                    // Evalúa si la cantidad de cuotas es 1, 3 o 6
+                    if (cuotas == 1 || cuotas == 3 || cuotas == 6)
+                    {
+                        // Obtiene el monto total desde txtBoxResValor
+                        if (decimal.TryParse(txtBoxResValor.Text, out decimal total) && total > 0)
+                        {
+                            // Calcula el valor de la cuota y lo formatea con dos decimales
+                            decimal precioCuota = total / cuotas;
+                            txtValorCuota.Text = precioCuota.ToString("F2");
+                        }
+                        else
+                        {
+                            txtValorCuota.Text = "0.00"; // Valor predeterminado si hay un error
+                        }
+                    }
+                }
+            }
+        }
+
+        private void cbResTipoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbResTipoPago.SelectedItem != null && cbResTipoPago.SelectedItem.ToString() == "Tarjeta de crédito")
+            {
+                cbCuotas.Enabled = true;
+            }
+            else
+            {
+                cbCuotas.Enabled = false;
+                cbCuotas.SelectedIndex = 0; // Restablece el número de cuotas a 1
+            }
+        }
+
+        private void cbCuotas_DropDown(object sender, EventArgs e)
+        {
+            if (cbResTipoPago.SelectedItem?.ToString() == "Tarjeta de Crédito")
+            {
+                cbCuotas.SelectedIndex = 0; // Siempre mantiene la primera opción
             }
         }
     }
