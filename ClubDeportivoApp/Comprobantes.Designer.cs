@@ -69,7 +69,7 @@
             lblTituloList.AutoSize = true;
             lblTituloList.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloList.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTituloList.Location = new Point(356, 60);
+            lblTituloList.Location = new Point(340, 60);
             lblTituloList.Name = "lblTituloList";
             lblTituloList.Size = new Size(303, 31);
             lblTituloList.TabIndex = 32;

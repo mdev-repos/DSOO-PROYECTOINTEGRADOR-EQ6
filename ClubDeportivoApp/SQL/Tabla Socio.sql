@@ -7,6 +7,7 @@ create table Socio(
 	Carnet bit,
 	FechaInscripcion varchar(20),
 	Moroso bit,
+    Activo bit,
 	constraint pk_Socio primary key (CodSocio),
 	constraint fk_Clientes_Socio foreign key (Dni) references Clientes(Dni)
 );
@@ -22,7 +23,8 @@ BEGIN
         c.Apellido,
         s.Carnet,
         s.FechaInscripcion,
-        s.Moroso
+        s.Moroso,
+        s.Activo
     FROM 
         Socio s
     JOIN 
@@ -73,6 +75,7 @@ CREATE PROCEDURE NuevoSocio(
     IN Carnet BIT,
     IN FechaInscripcion VARCHAR(20),
     IN Moroso BIT,
+    IN Activo BIT,
     OUT rta INT
 )
 BEGIN
@@ -87,8 +90,8 @@ BEGIN
         INSERT INTO clientes(nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
         VALUES (Nombre, Apellido, Dni, FechaNac, Direccion, Telefono, Email, FichaMedica);
         
-        INSERT INTO Socio(CodSocio, Dni, Carnet, FechaInscripcion, Moroso)
-        VALUES (CodSocio, Dni, Carnet, FechaInscripcion, Moroso);
+        INSERT INTO Socio(CodSocio, Dni, Carnet, FechaInscripcion, Moroso, Activo)
+        VALUES (CodSocio, Dni, Carnet, FechaInscripcion, Moroso, Activo);
         
         SET rta = 0;
     ELSE

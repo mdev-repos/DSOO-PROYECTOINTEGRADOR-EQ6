@@ -12,5 +12,6 @@ namespace ClubDeportivoApp.Entidades
         public Boolean Carnet { get; set;  }
         public string FechaInscripcion { get; set;  }
         public Boolean Moroso { get; set;  }
+        public Boolean Activo { get; set; }
     }
 }

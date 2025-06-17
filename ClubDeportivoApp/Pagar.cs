@@ -166,16 +166,11 @@ namespace ClubDeportivoApp
         {
             if (!_esModoInscripcion)
             {
-                if (Application.OpenForms.OfType<Opciones>().Any())
+                if (MessageBox.Show("¿Está seguro que desea salir?", "AVISO DEL SISTEMA",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Application.OpenForms.OfType<Opciones>().First().Show();
+                    this.Close();
                 }
-                else
-                {
-                    Opciones opciones = new Opciones();
-                    opciones.Show();
-                }
-                this.Close();
             }
         }
 

@@ -140,7 +140,6 @@
             ListarBtn.TabIndex = 32;
             ListarBtn.Text = "Ver Clientes";
             ListarBtn.UseVisualStyleBackColor = false;
-            ListarBtn.Click += ListarBtn_Click;
             // 
             // BajaBtn
             // 
@@ -152,8 +151,9 @@
             BajaBtn.Name = "BajaBtn";
             BajaBtn.Size = new Size(186, 88);
             BajaBtn.TabIndex = 31;
-            BajaBtn.Text = "Baja Cliente";
+            BajaBtn.Text = "Baja | Alta";
             BajaBtn.UseVisualStyleBackColor = false;
+            BajaBtn.Click += BajaBtn_Click;
             // 
             // InscripcionBtn
             // 

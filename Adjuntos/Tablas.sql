@@ -30,16 +30,10 @@ create table Socio(
 	Carnet bit,
 	FechaInscripcion varchar(20),
 	Moroso bit,
+    Activo bit,
 	constraint pk_Socio primary key (CodSocio),
 	constraint fk_Clientes_Socio foreign key (Dni) references Clientes(Dni)
 );
-
-DROP TABLE IF EXISTS NoSocios;
-CREATE TABLE NoSocios(
-	CodNoSocio VARCHAR(50),
-    Dni int,
-    constraint pk_NoSocio primary key (CodNoSocio),
-    constraint fk_NoSocioClientes foreign key (Dni) references Clientes(Dni));
 
 DROP TABLE IF EXISTS CuotaMensual;
 CREATE TABLE CuotaMensual (
@@ -55,27 +49,31 @@ CREATE TABLE CuotaMensual (
     constraint fk_CodSocio foreign key (CodSocio) references Socio(CodSocio)
 );
 
-DROP TABLE IF EXISTS CuotaDiaria;
-CREATE TABLE CuotaDiaria (
-	CodCuotaDiaria VARCHAR(50),
-	ValorFinal FLOAT NOT NULL,
-	--Pagada bit NOT NULL,
-	TipoDePago VARCHAR(50) NOT NULL,
-	--FechaDePago VARCHAR(10) NULL,
-	CodNoSocio VARCHAR(50) NOT NULL,
-	--CodActividad VARCHAR(50) NOT NULL,
-	constraint pk_CuotaDiaria primary key (CodCuotaDiaria),
-	constraint fk_CodNoSocio FOREIGN KEY (CodNoSocio) REFERENCES NoSocios(CodNoSocio)
-);
--- ATRIBUTOS PARA APLICAR LOS CAMBIOS HABLADOS.
+DROP TABLE IF EXISTS NoSocios;
+CREATE TABLE NoSocios(
+	CodNoSocio VARCHAR(50),
+    Dni int,
+    constraint pk_NoSocio primary key (CodNoSocio),
+    constraint fk_NoSocioClientes foreign key (Dni) references Clientes(Dni));
 
+    
 DROP TABLE IF EXISTS Actividades;
 CREATE TABLE Actividades(
 	CodActividad VARCHAR(50),
-    --CodNoSocio VARCHAR(50),
 	Nombre varchar(150),
 	Valor float,
-	Dia VARCHAR(12),
-	Horario varchar(20),
-    constraint pk_Actividades primary key (CodActividad),
-    constraint fk_NoSocio foreign key (CodNoSocio) references NoSocios(CodNoSocio));
+	Horario varchar(40),
+    constraint pk_Actividades primary key (CodActividad));
+
+DROP TABLE IF EXISTS CuotaDiaria;
+CREATE TABLE CuotaDiaria (
+	CodCuotaDiaria VARCHAR(50),
+    Pagada BIT NOT NULL,
+	ValorFinal FLOAT NOT NULL,
+	TipoDePago VARCHAR(50) NOT NULL,
+	FechaDePago VARCHAR(10) NOT NULL,
+	CodNoSocio VARCHAR(50) NOT NULL,
+	CodActividad VARCHAR(50) NOT NULL,
+	constraint pk_CuotaDiaria primary key (CodCuotaDiaria),
+	constraint fk_CodNoSocio FOREIGN KEY (CodNoSocio) REFERENCES NoSocios(CodNoSocio),
+    constraint fk_CodActividad FOREIGN KEY (CodActividad) REFERENCES Actividades(CodActividad));
