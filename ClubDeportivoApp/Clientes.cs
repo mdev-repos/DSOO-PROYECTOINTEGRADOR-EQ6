@@ -32,10 +32,17 @@ namespace ClubDeportivoApp
             }
         }
 
+<<<<<<< HEAD
         private void BajaBtn_Click(object sender, EventArgs e)
         {
             Form bajaWdw = new Baja_Socio();
             bajaWdw.ShowDialog();
+=======
+        private void ListarBtn_Click(object sender, EventArgs e)
+        {
+            VerClientes verClientes = new VerClientes();
+            verClientes.Show();
+>>>>>>> 52cb9a33b27e26d5f1d56cfd18dc456506ed35e5
         }
     }
 }
