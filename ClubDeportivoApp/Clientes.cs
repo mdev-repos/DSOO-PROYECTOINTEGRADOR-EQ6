@@ -31,5 +31,11 @@ namespace ClubDeportivoApp
                 this.Close();
             }
         }
+
+        private void BajaBtn_Click(object sender, EventArgs e)
+        {
+            Form bajaWdw = new Baja_Socio();
+            bajaWdw.ShowDialog();
+        }
     }
 }

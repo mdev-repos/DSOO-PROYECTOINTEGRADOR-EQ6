@@ -33,6 +33,7 @@ namespace ClubDeportivoApp.Datos
                 comando.Parameters.Add("Carnet", MySqlDbType.Bit).Value = socio.Carnet;
                 comando.Parameters.Add("FechaInscripcion", MySqlDbType.VarChar).Value = socio.FechaInscripcion;
                 comando.Parameters.Add("Moroso", MySqlDbType.Bit).Value = socio.Moroso;
+                comando.Parameters.Add("Activo", MySqlDbType.Bit).Value = socio.Activo;
                 MySqlParameter ParCodigo = new MySqlParameter();
                 ParCodigo.ParameterName = "rta";
                 ParCodigo.MySqlDbType = MySqlDbType.Int32;
@@ -126,7 +127,8 @@ namespace ClubDeportivoApp.Datos
                         Apellido = reader["Apellido"].ToString(),
                         Carnet = reader.GetBoolean("Carnet"),
                         FechaInscripcion = reader["FechaInscripcion"].ToString(),
-                        Moroso = reader.GetBoolean("Moroso")
+                        Moroso = reader.GetBoolean("Moroso"),
+                        Activo = reader.GetBoolean("Activo")
                     };
                 }
             }

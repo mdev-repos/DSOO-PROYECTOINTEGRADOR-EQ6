@@ -21,6 +21,8 @@ namespace ClubDeportivoApp
         {
             Form pagarWdw = new Pagar();
             pagarWdw.ShowDialog();
+
+            this.Close();
         }
 
         private void ListarMorososBtn_Click(object sender, EventArgs e)

@@ -1,3 +1,71 @@
+-- PROCEDURES SOCIO
+
+-- NUEVO SOCIO (CREATE)
+DROP PROCEDURE IF EXISTS NuevoSocio;
+DELIMITER //
+CREATE PROCEDURE NuevoSocio(
+    IN Nombre VARCHAR(50),
+    IN Apellido VARCHAR(50),
+    IN Dni INT,
+    IN FechaNac DATETIME,
+    IN Direccion VARCHAR(100),
+    IN Telefono VARCHAR(20),
+    IN Email VARCHAR(100),
+    IN FichaMedica BIT,
+    IN CodSocio VARCHAR(50),
+    IN Carnet BIT,
+    IN FechaInscripcion VARCHAR(20),
+    IN Moroso BIT,
+    IN Activo BIT,
+    OUT rta INT
+)
+BEGIN
+    -- Verificar si el cliente ya existe por su DNI
+	DECLARE existe INT DEFAULT 0;
+    
+    SELECT COUNT(*) INTO existe FROM Socio s 
+    JOIN clientes c ON s.Dni = c.dni 
+    WHERE c.dni = Dni;
+    
+    IF existe = 0 THEN
+        INSERT INTO clientes(nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
+        VALUES (Nombre, Apellido, Dni, FechaNac, Direccion, Telefono, Email, FichaMedica);
+        
+        INSERT INTO Socio(CodSocio, Dni, Carnet, FechaInscripcion, Moroso, Activo)
+        VALUES (CodSocio, Dni, Carnet, FechaInscripcion, Moroso, Activo);
+        
+        SET rta = 0;
+    ELSE
+        SET rta = 1;
+    END IF;
+
+    
+END//
+
+-- OBTENER SOCIO POR CODIGO (READ)
+DROP PROCEDURE IF EXISTS ObtenerSocioPorCodigo;
+DELIMITER //
+CREATE PROCEDURE ObtenerSocioPorCodigo(IN p_codSocio VARCHAR(50))
+BEGIN
+    SELECT 
+        s.CodSocio, 
+        s.Dni, 
+        c.Nombre, 
+        c.Apellido,
+        s.Carnet,
+        s.FechaInscripcion,
+        s.Moroso,
+        s.Activo
+    FROM 
+        Socio s
+    JOIN 
+        Clientes c ON s.Dni = c.dni
+    WHERE 
+        s.CodSocio = p_codSocio;
+END //
+DELIMITER ;
+
+-- LISTAR SOCIOS MOROSOS (READ)
 DROP PROCEDURE IF EXISTS ListarSociosMorosos;
 DELIMITER //
 CREATE PROCEDURE ListarSociosMorosos()
@@ -23,46 +91,10 @@ BEGIN
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS NuevoSocio;
-DELIMITER //
-CREATE PROCEDURE NuevoSocio(
-    IN Nombre VARCHAR(50),
-    IN Apellido VARCHAR(50),
-    IN Dni INT,
-    IN FechaNac DATETIME,
-    IN Direccion VARCHAR(100),
-    IN Telefono VARCHAR(20),
-    IN Email VARCHAR(100),
-    IN FichaMedica BIT,
-    IN CodSocio VARCHAR(50),
-    IN Carnet BIT,
-    IN FechaInscripcion VARCHAR(20),
-    IN Moroso BIT,
-    OUT rta INT
-)
-BEGIN
-    -- Verificar si el cliente ya existe por su DNI
-	DECLARE existe INT DEFAULT 0;
-    
-    SELECT COUNT(*) INTO existe FROM Socio s 
-    JOIN clientes c ON s.Dni = c.dni 
-    WHERE c.dni = Dni;
-    
-    IF existe = 0 THEN
-        INSERT INTO clientes(nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
-        VALUES (Nombre, Apellido, Dni, FechaNac, Direccion, Telefono, Email, FichaMedica);
-        
-        INSERT INTO Socio(CodSocio, Dni, Carnet, FechaInscripcion, Moroso)
-        VALUES (CodSocio, Dni, Carnet, FechaInscripcion, Moroso);
-        
-        SET rta = 0;
-    ELSE
-        SET rta = 1;
-    END IF;
 
-    
-END//
+-- PROCEDURES NO SOCIO
 
+-- NUEVO NO SOCIO (CREATE)
 DROP PROCEDURE IF EXISTS NuevoNoSocio;
 DELIMITER //
 CREATE PROCEDURE NuevoNoSocio(
@@ -99,7 +131,9 @@ BEGIN
     
 END//
 
+-- PROCEDURES CUOTA MENSUAL
 
+-- GENERAR PRIMER CUOTA (CREATE)
 DROP PROCEDURE IF EXISTS GenerarPrimerCuota;
 DELIMITER //
 CREATE PROCEDURE GenerarPrimerCuota(
@@ -132,6 +166,7 @@ END //
 DELIMITER ;
 
 
+-- GENERAR NUEVA CUOTA (CREATE)
 DROP PROCEDURE IF EXISTS GenerarNuevaCuota;
 DELIMITER //
 CREATE PROCEDURE GenerarNuevaCuota(
@@ -182,27 +217,7 @@ BEGIN
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS ObtenerSocioPorCodigo;
-DELIMITER //
-CREATE PROCEDURE ObtenerSocioPorCodigo(IN p_codSocio VARCHAR(50))
-BEGIN
-    SELECT 
-        s.CodSocio, 
-        s.Dni, 
-        c.Nombre, 
-        c.Apellido,
-        s.Carnet,
-        s.FechaInscripcion,
-        s.Moroso
-    FROM 
-        Socio s
-    JOIN 
-        Clientes c ON s.Dni = c.dni
-    WHERE 
-        s.CodSocio = p_codSocio;
-END //
-DELIMITER ;
-
+-- OBTENER CUOTA COMPLETA (READ)
 DROP PROCEDURE IF EXISTS ObtenerCuotaCompleta;
 DELIMITER //
 CREATE PROCEDURE ObtenerCuotaCompleta(IN p_codCuota VARCHAR(50))

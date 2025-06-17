@@ -143,6 +143,7 @@ namespace ClubDeportivoApp
             socio.Carnet = true;
             socio.FechaInscripcion = DateTime.Now.ToString("yyyy-MM-dd");
             socio.Moroso = false;
+            socio.Activo = true;
 
             //PERSISTENCIA DEL SOCIO EN BBDD
             Datos.Socio socioDatos = new Datos.Socio();
