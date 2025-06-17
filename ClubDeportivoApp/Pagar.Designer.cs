@@ -250,6 +250,7 @@
             btnComprobantePago.Text = "LIMPIAR";
             btnComprobantePago.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnComprobantePago.UseVisualStyleBackColor = false;
+            btnComprobantePago.Click += btnComprobantePago_Click;
             // 
             // txtBoxResApellido
             // 

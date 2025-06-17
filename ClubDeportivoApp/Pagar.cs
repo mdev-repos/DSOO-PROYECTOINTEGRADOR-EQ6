@@ -312,5 +312,26 @@ namespace ClubDeportivoApp
                 cbCuotas.SelectedIndex = 0; // Siempre mantiene la primera opción
             }
         }
+
+        private void btnComprobantePago_Click(object sender, EventArgs e)
+        {
+            //Limpiar todos los TextBox
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is TextBox txt)
+                {
+                    txt.Clear(); // Borra el contenido de los TextBox
+                }
+            }
+
+            // Restablecer los ComboBox a su primera opción
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is ComboBox cb && cb.Items.Count > 0)
+                {
+                    cb.SelectedIndex = 0; // Selecciona el primer elemento disponible
+                }
+            }
+        }
     }
 }
