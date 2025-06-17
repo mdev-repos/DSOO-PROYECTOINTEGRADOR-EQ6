@@ -140,6 +140,7 @@
             ListarBtn.TabIndex = 32;
             ListarBtn.Text = "Ver Clientes";
             ListarBtn.UseVisualStyleBackColor = false;
+            ListarBtn.Click += ListarBtn_Click_1;
             // 
             // BajaBtn
             // 
