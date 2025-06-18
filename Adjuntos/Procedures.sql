@@ -382,3 +382,32 @@ BEGIN
 END//
 
 DELIMITER ;
+
+-- =============================================
+-- PROCEDIMIENTOS PARA ACTIVIDADES
+-- =============================================
+DROP PROCEDURE IF EXISTS NuevaActividad;
+DELIMITER //
+CREATE PROCEDURE NuevaActividad(
+    IN CodActividad VARCHAR(30),
+    IN Nombre VARCHAR(25),
+    IN Valor FLOAT,
+    IN Horario VARCHAR(55),
+    OUT rta INT
+)
+BEGIN
+	DECLARE existe INT DEFAULT 0;
+    
+    SELECT COUNT(*) INTO existe FROM Actividades act
+    WHERE act.nombre = Nombre;
+    
+    IF existe = 0 THEN
+        INSERT INTO Actividades(codActividad, nombre, valor, horario)
+        VALUES (CodActividad , Nombre, Valor, Horario);
+        
+        SET rta = 0;
+    ELSE
+        SET rta = 1;
+    END IF;  
+END//
+DELIMITER ;
