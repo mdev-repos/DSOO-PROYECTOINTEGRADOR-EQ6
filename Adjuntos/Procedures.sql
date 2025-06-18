@@ -150,7 +150,8 @@ CREATE PROCEDURE BuscarNoSocioPorDni(IN dni VARCHAR(20))
 BEGIN
     SELECT c.Nombre, c.Apellido
     FROM Clientes c
-    INNER JOIN NoSocios ns ON c.Dni = dni AND ns.Activo = 1;
+    INNER JOIN NoSocios ns ON c.Dni = dni
+    WHERE ns.Dni = dni;
 END //
 DELIMITER ;
 
