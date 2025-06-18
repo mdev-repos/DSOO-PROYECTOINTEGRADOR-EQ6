@@ -129,5 +129,52 @@ namespace ClubDeportivoApp.Datos
 
             return cuota;
         }
+
+        public E_CuotaMensual ObtenerCuotaPorSocio(string codSocio, Boolean pagada)
+        {
+            E_CuotaMensual cuota = null;
+            MySqlConnection conexion = null;
+
+            try
+            {
+                conexion = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("ObtenerCuotaPorSocio", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@p_codSocio", codSocio);
+                comando.Parameters.AddWithValue("@p_pagada", pagada);
+
+                conexion.Open();
+                MySqlDataReader reader = comando.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    cuota = new E_CuotaMensual
+                    {
+                        CodCuota = reader["CodCuotaMensual"].ToString(),
+                        NroCuota = reader.GetInt32("NroCuota"),
+                        Vencimiento = reader.GetDateTime("Vencimiento"),
+                        ValorMensual = reader.GetFloat("ValorMensual"),
+                        Pagada = reader.GetBoolean("Pagada"),
+                        TipoDePago = reader["TipoDePago"].ToString(),
+                        FechaDePago = reader["FechaDePago"].ToString(),
+                        CodSocio = reader["CodSocio"].ToString()
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener cuota: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return cuota;
+        }
     }
 }

@@ -15,6 +15,27 @@ CREATE TABLE CuotaMensual (
     constraint fk_CodSocio foreign key (CodSocio) references Socio(CodSocio)
 );
 
+DROP PROCEDURE IF EXISTS ObtenerCuotaPorSocio;
+DELIMITER //
+CREATE PROCEDURE ObtenerCuotaPorSocio(IN p_codSocio VARCHAR(50), IN p_pagada bit)
+BEGIN
+    SELECT 
+        CodCuotaMensual, 
+        NroCuota, 
+        Vencimiento, 
+        ValorMensual, 
+        Pagada, 
+        TipoDePago, 
+        FechaDePago,
+        CodSocio
+    FROM 
+        CuotaMensual
+    WHERE 
+        CodSocio = p_codSocio AND Pagada = p_pagada;
+END //
+DELIMITER ;
+
+
 DROP PROCEDURE IF EXISTS ObtenerCuotaCompleta;
 DELIMITER //
 CREATE PROCEDURE ObtenerCuotaCompleta(IN p_codCuota VARCHAR(50))

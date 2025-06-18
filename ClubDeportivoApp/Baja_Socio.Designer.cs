@@ -229,6 +229,7 @@
             btnReincorporar.TabIndex = 59;
             btnReincorporar.Text = "REINCORPORAR";
             btnReincorporar.UseVisualStyleBackColor = false;
+            btnReincorporar.Click += btnReincorporar_Click;
             // 
             // btnBaja
             // 
@@ -243,6 +244,7 @@
             btnBaja.TabIndex = 61;
             btnBaja.Text = "EFECTUAR BAJA";
             btnBaja.UseVisualStyleBackColor = false;
+            btnBaja.Click += btnBaja_Click;
             // 
             // Baja_Socio
             // 
