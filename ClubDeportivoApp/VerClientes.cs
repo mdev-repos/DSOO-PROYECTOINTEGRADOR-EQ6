@@ -89,7 +89,8 @@ namespace ClubDeportivoApp
                 string dni = fila.Cells["Dni"].Value?.ToString() ?? "";
 
                 DetalleCliente detallesForm = new DetalleCliente(dni);
-                detallesForm.FormClosed += (s, args) => {
+                detallesForm.FormClosed += (s, args) =>
+                {
                     CargarDatosClientes();
                 };
                 detallesForm.ShowDialog();
@@ -122,7 +123,7 @@ namespace ClubDeportivoApp
             CargarDatosClientes();
         }
 
-        private void btnComprobantePago_Click(object sender, EventArgs e)
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtDni.Clear();
             isBuscar = false;

@@ -30,9 +30,15 @@ namespace ClubDeportivoApp
         {
             // Instanciamos el formulario Crear_Actividad
             Crear_Actividad crearActividadForm = new Crear_Actividad();
-            
+
             // Mostramos el formulario
             crearActividadForm.ShowDialog(); // Muestra como ventana modal
+        }
+
+        private void InscribirActBtn_Click(object sender, EventArgs e)
+        {
+            Inscribir_Actividad inscribirActividadForm = new Inscribir_Actividad();
+            inscribirActividadForm.ShowDialog();
         }
     }
 }
