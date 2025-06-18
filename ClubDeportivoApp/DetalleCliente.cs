@@ -7,6 +7,7 @@ namespace ClubDeportivoApp
     public partial class DetalleCliente : Form
     {
         private string dni;
+        string? tipo = "";
         public DetalleCliente(string dni)
         {
             InitializeComponent();
@@ -16,49 +17,28 @@ namespace ClubDeportivoApp
 
         private void cargarCliente()
         {
-            MySqlConnection mySqlConnection = new MySqlConnection();
+             MySqlConnection mySqlConnection = new MySqlConnection();
             try
             {
-                string query = "";
                 mySqlConnection = Conexion.getInstancia().CrearConexion();
                 mySqlConnection.Open();
-                string tipoQuery = @"SELECT 'socio' AS tipo FROM Socio WHERE Dni = @dni 
-                     UNION 
-                     SELECT 'nosocio' AS tipo FROM NoSocios WHERE Dni = @dni";
 
-                MySqlCommand tipoCmd = new MySqlCommand(tipoQuery, mySqlConnection);
-                tipoCmd.Parameters.AddWithValue("@dni", dni);
+                MySqlCommand comando = new MySqlCommand("sp_ObtenerDatosClienteTipoActivo", mySqlConnection);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@p_dni", dni);
 
-                object? result = tipoCmd.ExecuteScalar();
-                string? tipo = result != null ? nombreTipoCliente(result.ToString()) : null;
-
-                if (tipo == "Socio")
-                {
-
-                    query = @"SELECT c.Nombre, c.Apellido,c.Dni, c.Fecha_Nac, c.Direccion, c.Telefono, c.Email, c.Ficha_Medica, soc.CodSocio as Codigo, soc.Carnet, soc.FechaInscripcion, soc.Moroso
-                        FROM Clientes c INNER JOIN Socio soc ON c.Dni = soc.Dni where c.Dni = @dni";
-                }
-                else if (tipo == "No Socio")
-                {
-                    query = @"SELECT c.Nombre, c.Apellido, c.Dni,c.Fecha_Nac, c.Direccion, c.Telefono, c.Email, c.Ficha_Medica, noSoc.CodNoSocio as Codigo
-                    FROM Clientes c inner join NoSocios noSoc ON c.Dni = noSoc.Dni where c.Dni = @dni";
-                }
-
-                MySqlCommand comando = new MySqlCommand(query, mySqlConnection);
-                comando.Parameters.AddWithValue("@Dni", dni);
-                comando.CommandType = CommandType.Text;
-
-                MySqlDataReader mySqlDataReader;
-                mySqlDataReader = comando.ExecuteReader();
+                MySqlDataReader mySqlDataReader = comando.ExecuteReader();
                 if (mySqlDataReader.HasRows)
                 {
                     while (mySqlDataReader.Read())
                     {
+                        tipo = mySqlDataReader["TipoCliente"].ToString();
+                        
                         lblCliente.Text = mySqlDataReader["Codigo"].ToString();
                         txtBoxResNombre.Text = mySqlDataReader["Nombre"].ToString();
                         txtBoxResApellido.Text = mySqlDataReader["Apellido"].ToString();
                         txtBoxResDni.Text = mySqlDataReader["Dni"].ToString();
-                        txtBoxResFechaNac.Text = mySqlDataReader["Fecha_Nac"].ToString();
+                        dtpResFechaNac.Text = mySqlDataReader["Fecha_Nac"].ToString();
                         txtBoxResFichaMed.Text = convertirBooleanoEnString(mySqlDataReader["Ficha_Medica"].ToString());
                         txtBoxResDireccion.Text = mySqlDataReader["Direccion"].ToString();
                         txtBoxResTelefono.Text = mySqlDataReader["Telefono"].ToString();
@@ -69,17 +49,15 @@ namespace ClubDeportivoApp
                         {
                             txtBoxResCarnet.Text = convertirBooleanoEnString(mySqlDataReader["Carnet"].ToString());
                             txtBoxResMoroso.Text = convertirBooleanoEnString(mySqlDataReader["Moroso"].ToString());
-                            txtBoxResFechaInscr.Text = mySqlDataReader["FechaInscripcion"].ToString();
+                            dtpResFechaInscr.Text = mySqlDataReader["FechaInscripcion"].ToString();
                         }
-
-                        modificarEstadoTextBox(tipo);
                     }
+                    modificarEstadoTextBox();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
             finally
             {
@@ -95,28 +73,22 @@ namespace ClubDeportivoApp
             return Convert.ToInt32(mySqlDataReader) == 1 ? "Sí" : "No";
         }
 
-        private string nombreTipoCliente(String? tipo)
-        {
-            return tipo.Equals("socio") ? "Socio" : "No Socio";
-        }
-        private void modificarEstadoTextBox(string tipo)
+        private void modificarEstadoTextBox()
         {
             bool habilitar = tipo.Equals("Socio");
 
-            txtBoxResCarnet.ReadOnly = !habilitar;
-            txtBoxResCarnet.Enabled = habilitar;
-
-            txtBoxResMoroso.ReadOnly = !habilitar;
-            txtBoxResMoroso.Enabled = habilitar;
-
-            txtBoxResFechaInscr.ReadOnly = !habilitar;
-            txtBoxResFechaInscr.Enabled = habilitar;
+            txtBoxResCarnet.Visible = habilitar;
+            lblCarnet.Visible = habilitar;
+            txtBoxResMoroso.Visible = habilitar;
+            lblMoroso.Visible = habilitar;
+            dtpResFechaInscr.Visible = habilitar;
+            lblFechaInscr.Visible = habilitar;
         }
 
         private void cBoxTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string tipo = cBoxTipoCliente.SelectedItem.ToString();
-            modificarEstadoTextBox(tipo);
+            tipo = cBoxTipoCliente.SelectedItem.ToString();
+            modificarEstadoTextBox();
         }
 
         private void pbVolver_Click(object sender, EventArgs e)
@@ -131,6 +103,46 @@ namespace ClubDeportivoApp
                 opciones.Show();
             }
             this.Close();
+        }
+
+        private void btnActualizarDatos_Click(object sender, EventArgs e)
+        {
+            MySqlConnection mySqlConnection = new MySqlConnection();
+            try
+            {
+                int fichaMedica = txtBoxResFichaMed.Text.Trim().ToLower() == "sí" ? 1 : 0;
+                mySqlConnection = Conexion.getInstancia().CrearConexion();
+                mySqlConnection.Open();
+
+                MySqlCommand comando = new MySqlCommand("sp_ActualizarClienteYTipo", mySqlConnection);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@p_dni", Convert.ToInt32(txtBoxResDni.Text));
+                comando.Parameters.AddWithValue("@p_nombre", txtBoxResNombre.Text.Trim());
+                comando.Parameters.AddWithValue("@p_apellido", txtBoxResApellido.Text.Trim());
+                comando.Parameters.AddWithValue("@p_fecha_nac", DateTime.Parse(dtpResFechaNac.Text));
+                comando.Parameters.AddWithValue("@p_direccion", txtBoxResDireccion.Text.Trim());
+                comando.Parameters.AddWithValue("@p_telefono", txtBoxResTelefono.Text.Trim());
+                comando.Parameters.AddWithValue("@p_email", txtBoxResEmail.Text.Trim());
+                comando.Parameters.AddWithValue("@p_ficha_medica", fichaMedica);
+                comando.Parameters.AddWithValue("@p_nuevo_tipo_cliente", tipo);
+
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Datos actualizados correctamente.", "Actualización exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarCliente();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (mySqlConnection.State == ConnectionState.Open)
+                {
+                    mySqlConnection.Close();
+                }
+            }
         }
     }
 }

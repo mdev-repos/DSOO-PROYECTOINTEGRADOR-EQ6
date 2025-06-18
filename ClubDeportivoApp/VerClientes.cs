@@ -45,9 +45,14 @@ namespace ClubDeportivoApp
 
                 if (tabla.Rows.Count == 0)
                 {
+                    if (dgvClientes.Columns.Contains("VerMas"))
+                    {
+                        dgvClientes.Columns.Remove("VerMas");
+                    }
+
                     DataTable tablaMensaje = new DataTable();
                     tablaMensaje.Columns.Add("Mensaje");
-                    tablaMensaje.Rows.Add("No hay clientes inscriptos aún.");
+                    tablaMensaje.Rows.Add("No hay clientes.");
                     dgvClientes.DataSource = tablaMensaje;
                 }
                 else
@@ -84,6 +89,9 @@ namespace ClubDeportivoApp
                 string dni = fila.Cells["Dni"].Value?.ToString() ?? "";
 
                 DetalleCliente detallesForm = new DetalleCliente(dni);
+                detallesForm.FormClosed += (s, args) => {
+                    CargarDatosClientes();
+                };
                 detallesForm.ShowDialog();
             }
         }
@@ -116,6 +124,7 @@ namespace ClubDeportivoApp
 
         private void btnComprobantePago_Click(object sender, EventArgs e)
         {
+            txtDni.Clear();
             isBuscar = false;
             CargarDatosClientes();
         }

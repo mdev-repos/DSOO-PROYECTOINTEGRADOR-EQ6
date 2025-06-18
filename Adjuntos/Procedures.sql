@@ -51,6 +51,7 @@ BEGIN
         SET rta = 1;
     END IF;  
 END//
+DELIMITER ;
 
 -- OBTENER SOCIO POR CODIGO (READ)
 DROP PROCEDURE IF EXISTS ObtenerSocioPorCodigo;
@@ -140,7 +141,7 @@ BEGIN
         SET rta = 1;
     END IF;    
 END//
-
+DELIMITER ;
 
 -- =============================================
 -- PROCEDIMIENTOS PARA CUOTA MENSUAL
@@ -264,4 +265,120 @@ BEGIN
     WHERE 
         CodSocio = p_codSocio AND Pagada = p_pagada;
 END //
+DELIMITER ;
+
+
+-- =============================================
+-- PROCEDIMIENTOS PARA CLIENTES
+-- =============================================
+
+-- OBTENER DATOS CLIENTES
+DROP PROCEDURE IF EXISTS sp_ObtenerDatosClienteTipoActivo;
+DELIMITER //
+CREATE PROCEDURE sp_ObtenerDatosClienteTipoActivo(IN p_dni INT)
+BEGIN
+	SELECT 
+        c.Nombre,
+        c.Apellido,
+        c.Dni,
+        c.Fecha_Nac,
+        c.Direccion,
+        c.Telefono,
+        c.Email,
+        c.Ficha_Medica,
+        
+        CASE 
+            WHEN s.Activo = 1 THEN s.CodSocio
+            WHEN ns.Activo = 1 THEN ns.CodNoSocio
+            ELSE NULL
+        END AS Codigo,
+        
+        s.Carnet,
+        s.FechaInscripcion,
+        s.Moroso,
+        
+        CASE 
+            WHEN s.Activo = 1 THEN 'Socio'
+            WHEN ns.Activo = 1 THEN 'No Socio'
+        END AS TipoCliente
+    FROM Clientes c
+    LEFT JOIN Socio s ON c.Dni = s.Dni AND s.Activo = 1
+    LEFT JOIN NoSocios ns ON c.Dni = ns.Dni AND ns.Activo = 1
+    WHERE c.Dni = p_dni;
+END//
+
+DELIMITER ;
+
+-- ACTUALIZAR CLIENTE
+DROP PROCEDURE IF EXISTS sp_ActualizarClienteYTipo;
+DELIMITER //
+CREATE PROCEDURE sp_ActualizarClienteYTipo(
+    IN p_dni INT,
+    IN p_nombre VARCHAR(50),
+    IN p_apellido VARCHAR(50),
+    IN p_fecha_nac DATE,
+    IN p_direccion VARCHAR(100),
+    IN p_telefono VARCHAR(20),
+    IN p_email VARCHAR(100),
+    IN p_ficha_medica TINYINT(1),
+    IN p_nuevo_tipo_cliente VARCHAR(20)
+)
+BEGIN
+    DECLARE tipo_actual VARCHAR(20);
+    DECLARE cod_socio VARCHAR(50);
+    DECLARE cod_no_socio VARCHAR(50);
+
+    START TRANSACTION;
+    
+    UPDATE Clientes
+    SET Nombre = p_nombre,
+        Apellido = p_apellido,
+        Fecha_Nac = p_fecha_nac,
+        Direccion = p_direccion,
+        Telefono = p_telefono,
+        Email = p_email,
+        Ficha_Medica = p_ficha_medica
+    WHERE Dni = p_dni;
+
+    IF EXISTS (SELECT 1 FROM Socio WHERE Dni = p_dni AND activo = 1) THEN
+        SET tipo_actual = 'Socio';
+    ELSEIF EXISTS (SELECT 1 FROM NoSocios WHERE Dni = p_dni AND activo = 1) THEN
+        SET tipo_actual = 'No Socio';
+    END IF;
+
+    IF tipo_actual <> p_nuevo_tipo_cliente THEN
+        IF tipo_actual = 'Socio' THEN
+            UPDATE Socio SET activo = 0 WHERE Dni = p_dni;
+        ELSEIF tipo_actual = 'No Socio' THEN
+            UPDATE NoSocios SET activo = 0 WHERE Dni = p_dni;
+        END IF;
+
+        IF p_nuevo_tipo_cliente = 'Socio' THEN
+            SET cod_socio = CONCAT('SOC-', p_dni);
+            IF EXISTS (SELECT 1 FROM Socio WHERE Dni = p_dni) THEN
+                UPDATE Socio
+                SET activo = 1,
+                    FechaInscripcion = CURDATE(),
+                    Moroso = 0,
+                    Carnet = 1
+                WHERE Dni = p_dni;
+            ELSE
+                INSERT INTO Socio (CodSocio, Dni, Carnet, FechaInscripcion, Moroso, activo)
+                VALUES (cod_socio, p_dni, 1, CURDATE(), 0, 1);
+            END IF;
+        ELSEIF p_nuevo_tipo_cliente = 'No Socio' THEN
+            SET cod_no_socio = CONCAT('NOSOC-', p_dni);
+            IF EXISTS (SELECT 1 FROM NoSocios WHERE Dni = p_dni) THEN
+                UPDATE NoSocios
+                SET activo = 1
+                WHERE Dni = p_dni;
+            ELSE
+                INSERT INTO NoSocios (CodNoSocio, Dni, activo)
+                VALUES (cod_no_socio, p_dni, 1);
+            END IF;
+        END IF;
+    END IF;
+    COMMIT;
+END//
+
 DELIMITER ;
