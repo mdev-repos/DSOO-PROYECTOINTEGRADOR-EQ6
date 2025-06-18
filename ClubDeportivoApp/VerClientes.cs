@@ -17,27 +17,12 @@ namespace ClubDeportivoApp
         {
             try
             {
-                string query;
                 MySqlConnection mySqlConnection = Conexion.getInstancia().CrearConexion();
                 mySqlConnection.Open();
 
-                if (!isBuscar)
-                {
-                    query = @"SELECT Nombre, Apellido, Dni FROM Clientes";
-                }
-                else
-                {
-                    query = @"SELECT Nombre, Apellido, Dni FROM Clientes WHERE Dni = @dni";
-                }
-
-                MySqlCommand comando = new MySqlCommand(query, mySqlConnection);
-
-                if (isBuscar)
-                {
-                    comando.Parameters.AddWithValue("@dni", txtDni.Text);
-                }
-
-                comando.CommandType = CommandType.Text;
+                MySqlCommand comando = new MySqlCommand("ObtenerClientesActivosYFiltrados", mySqlConnection);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("dni", txtDni.Text);
 
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 DataTable tabla = new DataTable();

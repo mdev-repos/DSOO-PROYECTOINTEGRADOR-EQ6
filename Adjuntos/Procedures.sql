@@ -285,6 +285,28 @@ DELIMITER ;
 -- PROCEDIMIENTOS PARA CLIENTES
 -- =============================================
 
+-- OBTENER TODOS LOS CLIENTES MENOS LOS QUE ESTEN DE BAJA Y FILTRADOS
+DROP PROCEDURE IF EXISTS ObtenerClientesActivosYFiltrados;
+DELIMITER //
+CREATE PROCEDURE ObtenerClientesActivosYFiltrados(IN dni VARCHAR(20))
+BEGIN
+    IF dni IS NULL OR dni = '' THEN
+        SELECT c.Nombre, c.Apellido, c.Dni
+        FROM Clientes c
+        LEFT JOIN Socio s ON c.Dni = s.Dni AND s.Activo = 1
+        LEFT JOIN NoSocios ns ON c.Dni = ns.Dni 
+        WHERE s.Activo = 1;
+    ELSE
+        SELECT c.Nombre, c.Apellido, c.Dni
+        FROM Clientes c
+        LEFT JOIN Socio s ON c.Dni = s.Dni AND s.Activo = 1
+        LEFT JOIN NoSocios ns ON c.Dni = ns.Dni 
+        WHERE s.Activo = 1 AND c.Dni = dni;
+    END IF;
+END //
+DELIMITER ;
+
+
 -- OBTENER DATOS CLIENTES
 DROP PROCEDURE IF EXISTS sp_ObtenerDatosClienteTipoActivo;
 DELIMITER //
