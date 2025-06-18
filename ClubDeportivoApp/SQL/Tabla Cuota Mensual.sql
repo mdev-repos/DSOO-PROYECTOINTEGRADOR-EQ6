@@ -26,14 +26,16 @@ BEGIN
         Vencimiento, 
         ValorMensual, 
         Pagada, 
-        TipoDePago,
-        CantidadCuotas,
-        FechaDePago,
+        IFNULL(TipoDePago, '') AS TipoDePago,
+        IFNULL(CantidadCuotas, 0) AS CantidadCuotas,
+        IFNULL(FechaDePago, '') AS FechaDePago,
         CodSocio
     FROM 
         CuotaMensual
     WHERE 
-        CodSocio = p_codSocio AND Pagada = p_pagada;
+        CodSocio = p_codSocio AND Pagada = p_pagada
+    ORDER BY Vencimiento DESC
+    LIMIT 1;
 END //
 DELIMITER ;
 

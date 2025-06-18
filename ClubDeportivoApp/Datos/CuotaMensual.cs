@@ -157,7 +157,7 @@ namespace ClubDeportivoApp.Datos
                         ValorMensual = reader.GetFloat("ValorMensual"),
                         Pagada = reader.GetBoolean("Pagada"),
                         TipoDePago = reader["TipoDePago"].ToString(),
-                        CantidadCuotas = reader.GetInt32("CantidadCuotas"),
+                        CantidadCuotas = Convert.ToInt32(reader["CantidadCuotas"]),
                         FechaDePago = reader["FechaDePago"].ToString(),
                         CodSocio = reader["CodSocio"].ToString()
                     };

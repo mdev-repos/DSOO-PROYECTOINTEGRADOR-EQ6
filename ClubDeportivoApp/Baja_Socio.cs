@@ -86,77 +86,78 @@ namespace ClubDeportivoApp
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
-            Datos.Socio socioDatos = new Datos.Socio();
-            Datos.CuotaMensual cuotaMensualDatos = new Datos.CuotaMensual();
-            String socioDNI = txtDniInput.Text;
-            Boolean pagada = false;
+            if (string.IsNullOrEmpty(txtDniInput.Text))
+            {
+                MessageBox.Show("Ingrese un DNI válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Obtener Socio
-            E_Socio socio = socioDatos.ObtenerSocioPorCodigo($"SOC-{socioDNI}");
-
-            // Obtener Cuota
-            E_CuotaMensual cuota = cuotaMensualDatos.ObtenerCuotaPorSocio(socio.CodSocio, pagada);
-
-            // Modificar Cuota
-            cuota.Vencimiento = cuota.Vencimiento.AddYears(100);
-
-            // Actualizar en BBDD
             try
             {
+                Datos.Socio socioDatos = new Datos.Socio();
+                Datos.CuotaMensual cuotaMensualDatos = new Datos.CuotaMensual();
+                string socioDNI = txtDniInput.Text;
+                string codSocio = $"SOC-{socioDNI}";
+
+                // Obtener Socio
+                E_Socio socio = socioDatos.ObtenerSocioPorCodigo(codSocio);
+                if (socio == null)
+                {
+                    MessageBox.Show("No se encontró el socio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Obtener Cuota no pagada
+                E_CuotaMensual cuota = cuotaMensualDatos.ObtenerCuotaPorSocio(socio.CodSocio, false);
+                if (cuota == null)
+                {
+                    MessageBox.Show("No se encontró cuota pendiente para este socio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 using (MySqlConnection conn = Conexion.getInstancia().CrearConexion())
                 {
                     conn.Open();
+                    MySqlTransaction transaction = conn.BeginTransaction();
 
-                    // Actualizar vencimiento
-                    string updateQuery = @"UPDATE CuotaMensual 
+                    try
+                    {
+                        // 1. Actualizar vencimiento de la cuota (sumar 100 años)
+                        string updateCuotaQuery = @"UPDATE CuotaMensual 
                                       SET Vencimiento = @vencimiento
                                       WHERE CodCuotaMensual = @codCuota";
 
-                    MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
-                    updateCmd.Parameters.AddWithValue("@vencimiento", cuota.Vencimiento);
-                    updateCmd.Parameters.AddWithValue("@codCuota", cuota.CodCuota);
-                    updateCmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al actualizar el vencimiento: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                        MySqlCommand updateCuotaCmd = new MySqlCommand(updateCuotaQuery, conn, transaction);
+                        updateCuotaCmd.Parameters.AddWithValue("@vencimiento", DateTime.Now.AddYears(100));
+                        updateCuotaCmd.Parameters.AddWithValue("@codCuota", cuota.CodCuota);
+                        updateCuotaCmd.ExecuteNonQuery();
 
-            // Modificar Socio (ACTIVO = FALSE)
-            socio.Activo = false;
-
-            // Actualizar en BBDD
-            try
-            {
-                using (MySqlConnection conn = Conexion.getInstancia().CrearConexion())
-                {
-                    conn.Open();
-
-                    // Actualizar vencimiento
-                    string updateQuery = @"UPDATE Socio 
+                        // 2. Dar de baja al socio (ACTIVO = FALSE)
+                        string updateSocioQuery = @"UPDATE Socio 
                                       SET Activo = @activo
                                       WHERE CodSocio = @codSocio";
 
-                    MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
-                    updateCmd.Parameters.AddWithValue("@activo", socio.Activo);
-                    updateCmd.Parameters.AddWithValue("@codSocio", socio.CodSocio);
-                    updateCmd.ExecuteNonQuery();
+                        MySqlCommand updateSocioCmd = new MySqlCommand(updateSocioQuery, conn, transaction);
+                        updateSocioCmd.Parameters.AddWithValue("@activo", false);
+                        updateSocioCmd.Parameters.AddWithValue("@codSocio", socio.CodSocio);
+                        updateSocioCmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        MessageBox.Show("Baja de socio exitosa", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Error al procesar la baja: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al actualizar al Socio: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (MessageBox.Show("BAJA DE SOCIO EXITOSA", "AVISO DEL SISTEMA",
-                MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.Yes)
-            {
-                this.Close();
-
-            }
-
-            this.Close();
         }
 
         private void btnReincorporar_Click(object sender, EventArgs e)
