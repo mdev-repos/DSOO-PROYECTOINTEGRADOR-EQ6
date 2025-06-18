@@ -1,4 +1,17 @@
--- PROCEDURES SOCIO
+/*
+PROCEDURES PARA CLUB DEPORTIVO
+
+Versión: 1.0
+Autor: EQUIPO 6 - DSOO 1er CUATRIMESTRE 2025
+Fecha: 18/06/2025
+
+*/
+
+USE clubdeportivo;
+
+-- =============================================
+-- PROCEDIMIENTOS PARA SOCIOS
+-- =============================================
 
 -- NUEVO SOCIO (CREATE)
 DROP PROCEDURE IF EXISTS NuevoSocio;
@@ -20,7 +33,6 @@ CREATE PROCEDURE NuevoSocio(
     OUT rta INT
 )
 BEGIN
-    -- Verificar si el cliente ya existe por su DNI
 	DECLARE existe INT DEFAULT 0;
     
     SELECT COUNT(*) INTO existe FROM Socio s 
@@ -37,9 +49,7 @@ BEGIN
         SET rta = 0;
     ELSE
         SET rta = 1;
-    END IF;
-
-    
+    END IF;  
 END//
 
 -- OBTENER SOCIO POR CODIGO (READ)
@@ -92,7 +102,9 @@ END //
 DELIMITER ;
 
 
--- PROCEDURES NO SOCIO
+-- =============================================
+-- PROCEDIMIENTOS PARA NO SOCIOS
+-- =============================================
 
 -- NUEVO NO SOCIO (CREATE)
 DROP PROCEDURE IF EXISTS NuevoNoSocio;
@@ -126,12 +138,13 @@ BEGIN
         SET rta = 0;
     ELSE
         SET rta = 1;
-    END IF;
-
-    
+    END IF;    
 END//
 
--- PROCEDURES CUOTA MENSUAL
+
+-- =============================================
+-- PROCEDIMIENTOS PARA CUOTA MENSUAL
+-- =============================================
 
 -- GENERAR PRIMER CUOTA (CREATE)
 DROP PROCEDURE IF EXISTS GenerarPrimerCuota;
@@ -165,7 +178,6 @@ BEGIN
 END //
 DELIMITER ;
 
-
 -- GENERAR NUEVA CUOTA (CREATE)
 DROP PROCEDURE IF EXISTS GenerarNuevaCuota;
 DELIMITER //
@@ -177,9 +189,7 @@ CREATE PROCEDURE GenerarNuevaCuota(
 BEGIN
     DECLARE v_CodSocio VARCHAR(50);
     DECLARE v_NroCuota INT;
-    DECLARE v_ValorMensual FLOAT;
-    
-    -- 1. Obtener datos de la cuota actual
+    DECLARE v_ValorMensual FLOAT;    
     SELECT 
         CodSocio, 
         NroCuota + 1, 
@@ -192,11 +202,7 @@ BEGIN
         @nuevoVencimiento
     FROM CuotaMensual 
     WHERE CodCuotaMensual = p_CodCuotaActual;
-    
-    -- 2. Generar nuevo código de cuota
     SET p_NuevaCodCuota = CONCAT('CUOTA-', LPAD(v_NroCuota, 2, '0'), '-', v_CodSocio);
-    
-    -- 3. Insertar nueva cuota
     INSERT INTO CuotaMensual (
         CodCuotaMensual,
         NroCuota,
@@ -212,7 +218,6 @@ BEGIN
         0,
         v_CodSocio
     );
-    
     SET rta = 0;
 END //
 DELIMITER ;
@@ -239,8 +244,7 @@ BEGIN
 END //
 DELIMITER ;
 
-
--- OBTENER CUOTA POR COD SOCIO (READ)
+-- OBTENER CUOTA POR CODIGO DE SOCIO (READ)
 DROP PROCEDURE IF EXISTS ObtenerCuotaPorSocio;
 DELIMITER //
 CREATE PROCEDURE ObtenerCuotaPorSocio(IN p_codSocio VARCHAR(50), IN p_pagada bit)

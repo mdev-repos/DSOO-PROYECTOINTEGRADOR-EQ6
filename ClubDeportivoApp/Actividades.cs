@@ -30,8 +30,7 @@ namespace ClubDeportivoApp
         {
             // Instanciamos el formulario Crear_Actividad
             Crear_Actividad crearActividadForm = new Crear_Actividad();
-            // Copia el tamaño de la ventana anterior
-            crearActividadForm.Size = this.Size;
+            
             // Mostramos el formulario
             crearActividadForm.ShowDialog(); // Muestra como ventana modal
         }
