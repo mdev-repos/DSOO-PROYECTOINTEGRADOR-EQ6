@@ -15,6 +15,7 @@ namespace ClubDeportivoApp.Entidades
         public float ValorMensual { get; set; }
         public Boolean Pagada { get; set; }
         public string TipoDePago { get; set; }
+        public int CantidadCuotas { get; set; }
         public string FechaDePago { get; set; }
         public string CodSocio { get; set; }
 

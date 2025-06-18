@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using ClubDeportivoApp.Entidades;
+using System.Globalization;
 
 namespace ClubDeportivoApp
 {
@@ -40,8 +41,12 @@ namespace ClubDeportivoApp
             txtBoxResApellido.Text = socio.Apellido;
             txtBoxResCodCuota.Text = cuota.CodCuota;
             txtBoxResCod.Text = socio.CodSocio;
-            txtBoxResValor.Text = cuota.ValorMensual.ToString("F2");
-            txtBoxResVencimiento.Text = cuota.Vencimiento.ToString("yyyy-MM-dd");
+            txtBoxResValor.Text = cuota.ValorMensual.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
+            txtBoxResVencimiento.Text = cuota.Vencimiento.ToString("dd/MM/yyyy");
+
+            cbResTipoPago.SelectedItem = "Efectivo";
+            cbCuotas.Enabled = false;
+            txtValorCuota.Text = txtBoxResValor.Text;
 
             // Deshabilitar campos (excepto tipo de pago)
             foreach (Control ctrl in this.Controls)
@@ -128,15 +133,32 @@ namespace ClubDeportivoApp
                         {
                             txtBoxResCodCuota.Text = mySqlDataReader["CodCuotaMensual"].ToString();
                             txtBoxResCod.Text = mySqlDataReader["CodSocio"].ToString();
-                            txtBoxResValor.Text = mySqlDataReader["ValorMensual"].ToString();
+                            
+                            // Moneda Argentina
+                            decimal valor = Convert.ToDecimal(mySqlDataReader["ValorMensual"]);
+                            txtBoxResValor.Text = valor.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
+
                             cbResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
-                            txtBoxResVencimiento.Text = mySqlDataReader["Vencimiento"].ToString();
+                            
+                            // Fecha dd/MM/yyyy
+                            if (DateTime.TryParse(mySqlDataReader["Vencimiento"].ToString(), out DateTime fecha))
+                            {
+                                txtBoxResVencimiento.Text = fecha.ToString("dd/MM/yyyy");
+                            }
+                            else
+                            {
+                                txtBoxResVencimiento.Text = "Fecha inválida";
+                            }
                         }
                         else if (tipo == "nosocio")
                         {
                             txtBoxResCodCuota.Text = mySqlDataReader["CodCuotaDiaria"].ToString();
                             txtBoxResCod.Text = mySqlDataReader["CodNoSocio"].ToString();
-                            txtBoxResValor.Text = mySqlDataReader["ValorFinal"].ToString();
+
+                            // Moneda Argentina
+                            decimal valor = Convert.ToDecimal(mySqlDataReader["ValorFinal"]);
+                            txtBoxResValor.Text = valor.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
+
                             cbResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
                             txtBoxResVencimiento.Text = "No posee.";
                         }
@@ -203,12 +225,20 @@ namespace ClubDeportivoApp
                     // Actualizar pago
                     string updateQuery = @"UPDATE CuotaMensual 
                                   SET Pagada = 1, 
-                                      TipoDePago = @tipoPago, 
+                                      TipoDePago = @tipoPago,
+                                      CantidadCuotas = @cantidadCuotas,
                                       FechaDePago = @fechaPago 
                                   WHERE CodCuotaMensual = @codCuota";
 
                     MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
                     updateCmd.Parameters.AddWithValue("@tipoPago", cbResTipoPago.Text);
+
+                    if (cbCuotas.SelectedItem != null)
+                    {
+                        int.TryParse(cbCuotas.SelectedItem.ToString(), out int cantidadCuotas);
+                        updateCmd.Parameters.AddWithValue("@cantidadCuotas", cantidadCuotas);
+                    }
+                    
                     updateCmd.Parameters.AddWithValue("@fechaPago", DateTime.Now.ToString("dd/MM/yyyy"));
                     updateCmd.Parameters.AddWithValue("@codCuota", txtBoxResCodCuota.Text);
                     updateCmd.ExecuteNonQuery();
@@ -260,28 +290,22 @@ namespace ClubDeportivoApp
 
         private void cbCuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Transformo el item seleccionado a string
-            // Evalúo con un if el string, si es igual a "1", "3" o "6" modifico el valor del text box valorCuota
-            // Verifica que haya una selección válida en el ComboBox
-            if (cbCuotas.SelectedItem != null)
+            if (cbCuotas.SelectedItem != null && int.TryParse(cbCuotas.SelectedItem.ToString(), out int cuotas))
             {
-                // Convierte el ítem seleccionado a número
-                if (int.TryParse(cbCuotas.SelectedItem.ToString(), out int cuotas))
+                if (cuotas == 1 || cuotas == 3 || cuotas == 6)
                 {
-                    // Evalúa si la cantidad de cuotas es 1, 3 o 6
-                    if (cuotas == 1 || cuotas == 3 || cuotas == 6)
+                    string valorTexto = txtBoxResValor.Text;
+
+                    string valorLimpio = valorTexto.Replace("$", "").Replace(".", "").Replace(",", ".");
+
+                    if (decimal.TryParse(valorLimpio, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal total))
                     {
-                        // Obtiene el monto total desde txtBoxResValor
-                        if (decimal.TryParse(txtBoxResValor.Text, out decimal total) && total > 0)
-                        {
-                            // Calcula el valor de la cuota y lo formatea con dos decimales
-                            decimal precioCuota = total / cuotas;
-                            txtValorCuota.Text = precioCuota.ToString("F2");
-                        }
-                        else
-                        {
-                            txtValorCuota.Text = "0.00"; // Valor predeterminado si hay un error
-                        }
+                        decimal precioCuota = total / cuotas;
+                        txtValorCuota.Text = precioCuota.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
+                    }
+                    else
+                    {
+                        txtValorCuota.Text = "$0,00";
                     }
                 }
             }

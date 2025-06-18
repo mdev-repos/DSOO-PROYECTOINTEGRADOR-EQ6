@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using ClubDeportivoApp.Entidades;
+using System.Globalization;
 
 
 namespace ClubDeportivoApp.Helpers
@@ -31,6 +32,9 @@ namespace ClubDeportivoApp.Helpers
                 .Replace("src=\"./Resources/Templates/Comprobante/Assets/Icon-Pagado.png\"",
                         $"src=\"data:image/png;base64,{iconBase64}\"");
 
+            // Calcular importe por cuota
+            float importePorCuota = cuota.ValorMensual / cuota.CantidadCuotas;
+
             // Reemplazar variables
             return html
                 .Replace("{{codCuota}}", cuota.CodCuota)
@@ -40,9 +44,11 @@ namespace ClubDeportivoApp.Helpers
                 .Replace("{{dni}}", socio.Dni.ToString())
                 .Replace("{{nroCuota}}", cuota.NroCuota.ToString())
                 .Replace("{{vencimiento}}", cuota.Vencimiento.ToString("dd/MM/yyyy"))
-                .Replace("{{monto}}", cuota.ValorMensual.ToString("C2"))
+                .Replace("{{monto}}", cuota.ValorMensual.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR")))
                 .Replace("{{tipoPago}}", cuota.TipoDePago)
-                .Replace("{{fechaPago}}", DateTime.Parse(cuota.FechaDePago).ToString("yyyy/MM/dd"));
+                .Replace("{{fechaPago}}", DateTime.Parse(cuota.FechaDePago).ToString("dd/MM/yyyy"))
+                .Replace("{{cantidadCuotas}}", cuota.CantidadCuotas.ToString())
+                .Replace("{{importeCuota}}", importePorCuota.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR")));
         }
     }
 }

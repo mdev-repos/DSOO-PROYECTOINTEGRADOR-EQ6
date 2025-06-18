@@ -59,6 +59,10 @@
             label9 = new Label();
             btnDescargarResumen = new Button();
             btnVolver = new Button();
+            txtCantidadCuotas = new TextBox();
+            lblCantidadCuotas = new Label();
+            txtImporteCuotas = new TextBox();
+            lblImporteCuotas = new Label();
             ((System.ComponentModel.ISupportInitialize)imgBoxOpc).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ImgOptPagado).BeginInit();
             SuspendLayout();
@@ -114,9 +118,9 @@
             ImgOptPagado.Anchor = AnchorStyles.None;
             ImgOptPagado.BackColor = Color.Transparent;
             ImgOptPagado.Image = (Image)resources.GetObject("ImgOptPagado.Image");
-            ImgOptPagado.Location = new Point(382, 57);
+            ImgOptPagado.Location = new Point(387, 35);
             ImgOptPagado.Name = "ImgOptPagado";
-            ImgOptPagado.Size = new Size(262, 158);
+            ImgOptPagado.Size = new Size(261, 163);
             ImgOptPagado.SizeMode = PictureBoxSizeMode.StretchImage;
             ImgOptPagado.TabIndex = 40;
             ImgOptPagado.TabStop = false;
@@ -125,7 +129,7 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(186, 392);
+            label3.Location = new Point(466, 260);
             label3.Name = "label3";
             label3.Size = new Size(0, 20);
             label3.TabIndex = 53;
@@ -133,28 +137,28 @@
             // txtBoxCodSoc
             // 
             txtBoxCodSoc.Anchor = AnchorStyles.None;
-            txtBoxCodSoc.Location = new Point(148, 250);
+            txtBoxCodSoc.Location = new Point(141, 237);
             txtBoxCodSoc.Name = "txtBoxCodSoc";
             txtBoxCodSoc.ReadOnly = true;
-            txtBoxCodSoc.Size = new Size(281, 27);
+            txtBoxCodSoc.Size = new Size(187, 27);
             txtBoxCodSoc.TabIndex = 1;
             // 
             // txtBoxNomSoc
             // 
             txtBoxNomSoc.Anchor = AnchorStyles.None;
-            txtBoxNomSoc.Location = new Point(148, 287);
+            txtBoxNomSoc.Location = new Point(141, 273);
             txtBoxNomSoc.Name = "txtBoxNomSoc";
             txtBoxNomSoc.ReadOnly = true;
-            txtBoxNomSoc.Size = new Size(281, 27);
+            txtBoxNomSoc.Size = new Size(187, 27);
             txtBoxNomSoc.TabIndex = 2;
             // 
             // txtBoxApellSoc
             // 
             txtBoxApellSoc.Anchor = AnchorStyles.None;
-            txtBoxApellSoc.Location = new Point(148, 326);
+            txtBoxApellSoc.Location = new Point(428, 273);
             txtBoxApellSoc.Name = "txtBoxApellSoc";
             txtBoxApellSoc.ReadOnly = true;
-            txtBoxApellSoc.Size = new Size(281, 27);
+            txtBoxApellSoc.Size = new Size(178, 27);
             txtBoxApellSoc.TabIndex = 3;
             // 
             // lblCodCliente
@@ -162,7 +166,7 @@
             lblCodCliente.Anchor = AnchorStyles.None;
             lblCodCliente.AutoSize = true;
             lblCodCliente.Font = new Font("Segoe UI", 9F);
-            lblCodCliente.Location = new Point(69, 253);
+            lblCodCliente.Location = new Point(62, 240);
             lblCodCliente.Name = "lblCodCliente";
             lblCodCliente.Size = new Size(73, 20);
             lblCodCliente.TabIndex = 49;
@@ -173,7 +177,7 @@
             lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 9F);
-            lblApellido.Location = new Point(67, 329);
+            lblApellido.Location = new Point(347, 276);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(75, 20);
             lblApellido.TabIndex = 48;
@@ -184,7 +188,7 @@
             lblCodigo.Anchor = AnchorStyles.None;
             lblCodigo.AutoSize = true;
             lblCodigo.Font = new Font("Segoe UI", 9F);
-            lblCodigo.Location = new Point(72, 290);
+            lblCodigo.Location = new Point(65, 277);
             lblCodigo.Name = "lblCodigo";
             lblCodigo.Size = new Size(70, 20);
             lblCodigo.TabIndex = 47;
@@ -195,7 +199,7 @@
             lblTituloCliente.Anchor = AnchorStyles.None;
             lblTituloCliente.AutoSize = true;
             lblTituloCliente.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloCliente.Location = new Point(55, 200);
+            lblTituloCliente.Location = new Point(40, 183);
             lblTituloCliente.Name = "lblTituloCliente";
             lblTituloCliente.Size = new Size(194, 28);
             lblTituloCliente.TabIndex = 54;
@@ -206,7 +210,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F);
-            label1.Location = new Point(107, 371);
+            label1.Location = new Point(387, 239);
             label1.Name = "label1";
             label1.Size = new Size(35, 20);
             label1.TabIndex = 55;
@@ -215,10 +219,10 @@
             // txtBoxDniSoc
             // 
             txtBoxDniSoc.Anchor = AnchorStyles.None;
-            txtBoxDniSoc.Location = new Point(148, 368);
+            txtBoxDniSoc.Location = new Point(428, 236);
             txtBoxDniSoc.Name = "txtBoxDniSoc";
             txtBoxDniSoc.ReadOnly = true;
-            txtBoxDniSoc.Size = new Size(281, 27);
+            txtBoxDniSoc.Size = new Size(178, 27);
             txtBoxDniSoc.TabIndex = 4;
             // 
             // label2
@@ -226,7 +230,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(46, 445);
+            label2.Location = new Point(46, 342);
             label2.Name = "label2";
             label2.Size = new Size(188, 28);
             label2.TabIndex = 57;
@@ -235,10 +239,10 @@
             // txtBoxCodPago
             // 
             txtBoxCodPago.Anchor = AnchorStyles.None;
-            txtBoxCodPago.Location = new Point(148, 498);
+            txtBoxCodPago.Location = new Point(141, 394);
             txtBoxCodPago.Name = "txtBoxCodPago";
             txtBoxCodPago.ReadOnly = true;
-            txtBoxCodPago.Size = new Size(190, 27);
+            txtBoxCodPago.Size = new Size(187, 27);
             txtBoxCodPago.TabIndex = 5;
             // 
             // label4
@@ -246,18 +250,18 @@
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F);
-            label4.Location = new Point(77, 501);
+            label4.Location = new Point(20, 401);
             label4.Name = "label4";
-            label4.Size = new Size(65, 20);
+            label4.Size = new Size(115, 20);
             label4.TabIndex = 58;
-            label4.Text = "CODIGO";
+            label4.Text = "CODIGO CUOTA";
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F);
-            label5.Location = new Point(363, 500);
+            label5.Location = new Point(395, 397);
             label5.Name = "label5";
             label5.Size = new Size(71, 20);
             label5.TabIndex = 60;
@@ -266,19 +270,19 @@
             // txtBoxNumPago
             // 
             txtBoxNumPago.Anchor = AnchorStyles.None;
-            txtBoxNumPago.Location = new Point(440, 497);
+            txtBoxNumPago.Location = new Point(466, 394);
             txtBoxNumPago.Name = "txtBoxNumPago";
             txtBoxNumPago.ReadOnly = true;
-            txtBoxNumPago.Size = new Size(102, 27);
+            txtBoxNumPago.Size = new Size(140, 27);
             txtBoxNumPago.TabIndex = 6;
             // 
             // txtBoxVencPago
             // 
             txtBoxVencPago.Anchor = AnchorStyles.None;
-            txtBoxVencPago.Location = new Point(187, 543);
+            txtBoxVencPago.Location = new Point(141, 439);
             txtBoxVencPago.Name = "txtBoxVencPago";
             txtBoxVencPago.ReadOnly = true;
-            txtBoxVencPago.Size = new Size(151, 27);
+            txtBoxVencPago.Size = new Size(187, 27);
             txtBoxVencPago.TabIndex = 7;
             // 
             // label6
@@ -286,7 +290,7 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F);
-            label6.Location = new Point(77, 546);
+            label6.Location = new Point(31, 445);
             label6.Name = "label6";
             label6.Size = new Size(104, 20);
             label6.TabIndex = 62;
@@ -295,10 +299,10 @@
             // txtBoxTipoPago
             // 
             txtBoxTipoPago.Anchor = AnchorStyles.None;
-            txtBoxTipoPago.Location = new Point(187, 590);
+            txtBoxTipoPago.Location = new Point(141, 491);
             txtBoxTipoPago.Name = "txtBoxTipoPago";
             txtBoxTipoPago.ReadOnly = true;
-            txtBoxTipoPago.Size = new Size(151, 27);
+            txtBoxTipoPago.Size = new Size(187, 27);
             txtBoxTipoPago.TabIndex = 9;
             // 
             // label8
@@ -306,7 +310,7 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F);
-            label8.Location = new Point(78, 590);
+            label8.Location = new Point(32, 494);
             label8.Name = "label8";
             label8.Size = new Size(103, 20);
             label8.TabIndex = 66;
@@ -317,28 +321,28 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F);
-            label7.Location = new Point(363, 549);
+            label7.Location = new Point(352, 446);
             label7.Name = "label7";
-            label7.Size = new Size(62, 20);
+            label7.Size = new Size(114, 20);
             label7.TabIndex = 64;
-            label7.Text = "MONTO";
+            label7.Text = "IMPORTE TOTAL";
             // 
             // txtBoxMontoPago
             // 
             txtBoxMontoPago.Anchor = AnchorStyles.None;
-            txtBoxMontoPago.Location = new Point(440, 546);
+            txtBoxMontoPago.Location = new Point(466, 442);
             txtBoxMontoPago.Name = "txtBoxMontoPago";
             txtBoxMontoPago.ReadOnly = true;
-            txtBoxMontoPago.Size = new Size(166, 27);
+            txtBoxMontoPago.Size = new Size(140, 27);
             txtBoxMontoPago.TabIndex = 8;
             // 
             // txtBoxFechaPago
             // 
             txtBoxFechaPago.Anchor = AnchorStyles.None;
-            txtBoxFechaPago.Location = new Point(440, 589);
+            txtBoxFechaPago.Location = new Point(466, 487);
             txtBoxFechaPago.Name = "txtBoxFechaPago";
             txtBoxFechaPago.ReadOnly = true;
-            txtBoxFechaPago.Size = new Size(166, 27);
+            txtBoxFechaPago.Size = new Size(140, 27);
             txtBoxFechaPago.TabIndex = 10;
             // 
             // label9
@@ -346,11 +350,11 @@
             label9.Anchor = AnchorStyles.None;
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F);
-            label9.Location = new Point(363, 592);
+            label9.Location = new Point(342, 494);
             label9.Name = "label9";
-            label9.Size = new Size(54, 20);
+            label9.Size = new Size(117, 20);
             label9.TabIndex = 68;
-            label9.Text = "FECHA";
+            label9.Text = "FECHA de PAGO";
             // 
             // btnDescargarResumen
             // 
@@ -380,12 +384,56 @@
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
+            // txtCantidadCuotas
+            // 
+            txtCantidadCuotas.Anchor = AnchorStyles.None;
+            txtCantidadCuotas.Location = new Point(209, 550);
+            txtCantidadCuotas.Name = "txtCantidadCuotas";
+            txtCantidadCuotas.ReadOnly = true;
+            txtCantidadCuotas.Size = new Size(119, 27);
+            txtCantidadCuotas.TabIndex = 69;
+            // 
+            // lblCantidadCuotas
+            // 
+            lblCantidadCuotas.Anchor = AnchorStyles.None;
+            lblCantidadCuotas.AutoSize = true;
+            lblCantidadCuotas.Font = new Font("Segoe UI", 9F);
+            lblCantidadCuotas.Location = new Point(125, 557);
+            lblCantidadCuotas.Name = "lblCantidadCuotas";
+            lblCantidadCuotas.Size = new Size(63, 20);
+            lblCantidadCuotas.TabIndex = 70;
+            lblCantidadCuotas.Text = "CUOTAS";
+            // 
+            // txtImporteCuotas
+            // 
+            txtImporteCuotas.Anchor = AnchorStyles.None;
+            txtImporteCuotas.Location = new Point(209, 595);
+            txtImporteCuotas.Name = "txtImporteCuotas";
+            txtImporteCuotas.ReadOnly = true;
+            txtImporteCuotas.Size = new Size(119, 27);
+            txtImporteCuotas.TabIndex = 71;
+            // 
+            // lblImporteCuotas
+            // 
+            lblImporteCuotas.Anchor = AnchorStyles.None;
+            lblImporteCuotas.AutoSize = true;
+            lblImporteCuotas.Font = new Font("Segoe UI", 9F);
+            lblImporteCuotas.Location = new Point(37, 598);
+            lblImporteCuotas.Name = "lblImporteCuotas";
+            lblImporteCuotas.Size = new Size(151, 20);
+            lblImporteCuotas.TabIndex = 72;
+            lblImporteCuotas.Text = "IMPORTE POR CUOTA";
+            // 
             // Detalle_Comprobante
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
             ClientSize = new Size(682, 753);
+            Controls.Add(txtImporteCuotas);
+            Controls.Add(lblImporteCuotas);
+            Controls.Add(txtCantidadCuotas);
+            Controls.Add(lblCantidadCuotas);
             Controls.Add(btnDescargarResumen);
             Controls.Add(btnVolver);
             Controls.Add(txtBoxFechaPago);
@@ -458,5 +506,9 @@
         private Label label9;
         private Button btnDescargarResumen;
         private Button btnVolver;
+        private TextBox txtCantidadCuotas;
+        private Label lblCantidadCuotas;
+        private TextBox txtImporteCuotas;
+        private Label lblImporteCuotas;
     }
 }

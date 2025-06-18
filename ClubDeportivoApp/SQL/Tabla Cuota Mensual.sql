@@ -8,7 +8,8 @@ CREATE TABLE CuotaMensual (
     Vencimiento DATETIME NOT NULL,
     ValorMensual FLOAT NOT NULL,
     Pagada bit NOT NULL,
-    TipoDePago VARCHAR(50) NULL,    
+    TipoDePago VARCHAR(50) NULL,
+    CantidadCuotas INT NULL,
     FechaDePago VARCHAR(10) NULL,
     CodSocio VARCHAR(50) NOT NULL,
     constraint pk_CuotaMensual primary key (CodCuotaMensual),
@@ -25,7 +26,8 @@ BEGIN
         Vencimiento, 
         ValorMensual, 
         Pagada, 
-        TipoDePago, 
+        TipoDePago,
+        CantidadCuotas,
         FechaDePago,
         CodSocio
     FROM 
@@ -46,7 +48,8 @@ BEGIN
         Vencimiento, 
         ValorMensual, 
         Pagada, 
-        TipoDePago, 
+        TipoDePago,
+        CantidadCuotas,
         FechaDePago,
         CodSocio
     FROM 

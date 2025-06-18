@@ -228,12 +228,36 @@ BEGIN
         Vencimiento, 
         ValorMensual, 
         Pagada, 
-        TipoDePago, 
+        TipoDePago,
+        CantidadCuotas,
         FechaDePago,
         CodSocio
     FROM 
         CuotaMensual
     WHERE 
         CodCuotaMensual = p_codCuota;
+END //
+DELIMITER ;
+
+
+-- OBTENER CUOTA POR COD SOCIO (READ)
+DROP PROCEDURE IF EXISTS ObtenerCuotaPorSocio;
+DELIMITER //
+CREATE PROCEDURE ObtenerCuotaPorSocio(IN p_codSocio VARCHAR(50), IN p_pagada bit)
+BEGIN
+    SELECT 
+        CodCuotaMensual, 
+        NroCuota, 
+        Vencimiento, 
+        ValorMensual, 
+        Pagada, 
+        TipoDePago,
+        CantidadCuotas,
+        FechaDePago,
+        CodSocio
+    FROM 
+        CuotaMensual
+    WHERE 
+        CodSocio = p_codSocio AND Pagada = p_pagada;
 END //
 DELIMITER ;

@@ -2,13 +2,15 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: white;
+    display: flex;
+    justify-content: center;
 }
 
 .comprobante {
     width: 700px;
-    margin: 0 auto;
-    background-color: #faf0e6;
+    margin: 20px auto;
+    background-color: white;
     padding: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -37,6 +39,7 @@
         color: #0c6a0e;
         margin: 0 0 5px 0;
         font-size: 24px;
+        font-weight: bold;
     }
 
     .club-info p {
@@ -48,17 +51,22 @@
 .titulo-comprobante {
     color: #333;
     margin: 20px 0 30px 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 2px solid #0c6a0e;
+    padding-bottom: 10px;
 }
 
 .marca-agua {
     position: absolute;
-    width: 80%;
-    left: 10%;
+    width: 60%;
+    left: 20%;
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
     z-index: 1;
-    opacity: 0.3;
+    opacity: 0.1;
     pointer-events: none;
 }
 
@@ -70,41 +78,67 @@
 .seccion {
     position: relative;
     z-index: 2;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
     .seccion h3 {
         background-color: #0c6a0e;
         color: white;
-        padding: 12px 15px;
-        margin: 0 0 25px 0;
+        padding: 10px 15px;
+        margin: 0 0 15px 0;
+        font-size: 16px;
+        border-radius: 4px;
     }
 
 .grid-datos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 12px;
 }
 
 .grid-detalle {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
 }
 
 .dato, .dato-detalle {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #eee;
-    min-height: 20px
+    min-height: 20px;
 }
 
 .etiqueta {
     font-weight: bold;
     color: #555;
+    font-size: 14px;
 }
 
 .valor {
     color: #333;
+    font-size: 14px;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+@media print {
+    body {
+        background-color: white;
+    }
+
+    .comprobante {
+        box-shadow: none;
+        margin: 0;
+        padding: 20px;
+        width: 100%;
+    }
 }

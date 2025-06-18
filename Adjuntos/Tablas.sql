@@ -42,7 +42,8 @@ CREATE TABLE CuotaMensual (
     Vencimiento DATETIME NOT NULL,
     ValorMensual FLOAT NOT NULL,
     Pagada bit NOT NULL,
-    TipoDePago VARCHAR(50) NULL,    
+    TipoDePago VARCHAR(50) NULL,
+    CantidadCuotas INT NULL,
     FechaDePago VARCHAR(10) NULL,
     CodSocio VARCHAR(50) NOT NULL,
     constraint pk_CuotaMensual primary key (CodCuotaMensual),
@@ -60,7 +61,7 @@ CREATE TABLE NoSocios(
 DROP TABLE IF EXISTS Actividades;
 CREATE TABLE Actividades(
 	CodActividad VARCHAR(50),
-	Nombre varchar(150),
+	Nombre varchar(50),
 	Valor float,
 	Horario varchar(40),
     constraint pk_Actividades primary key (CodActividad));
@@ -71,6 +72,7 @@ CREATE TABLE CuotaDiaria (
     Pagada BIT NOT NULL,
 	ValorFinal FLOAT NOT NULL,
 	TipoDePago VARCHAR(50) NOT NULL,
+   	CantidadCuotas int NOT NULL,
 	FechaDePago VARCHAR(10) NOT NULL,
 	CodNoSocio VARCHAR(50) NOT NULL,
 	CodActividad VARCHAR(50) NOT NULL,

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,8 @@ namespace ClubDeportivoApp
             txtBoxTipoPago.ReadOnly = true;
             txtBoxMontoPago.ReadOnly = true;
             txtBoxFechaPago.ReadOnly = true;
+            txtCantidadCuotas.ReadOnly = true;
+            txtImporteCuotas.ReadOnly = true;
         }
 
         private void CargarDatos()
@@ -62,8 +65,11 @@ namespace ClubDeportivoApp
             txtBoxNumPago.Text = _cuota.NroCuota.ToString();
             txtBoxVencPago.Text = _cuota.Vencimiento.ToString("dd/MM/yyyy");
             txtBoxTipoPago.Text = _cuota.TipoDePago;
-            txtBoxMontoPago.Text = _cuota.ValorMensual.ToString("C2");
+            txtBoxMontoPago.Text = _cuota.ValorMensual.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
             txtBoxFechaPago.Text = _cuota.FechaDePago;
+            txtCantidadCuotas.Text = _cuota.CantidadCuotas.ToString();
+            float importeCuotas = _cuota.ValorMensual/_cuota.CantidadCuotas;
+            txtImporteCuotas.Text = importeCuotas.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
         }
 
         private void ConfigurarFormulario()
