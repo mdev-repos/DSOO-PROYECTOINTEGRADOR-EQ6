@@ -66,7 +66,7 @@
             pbVolver.Image = (Image)resources.GetObject("pbVolver.Image");
             pbVolver.Location = new Point(608, 591);
             pbVolver.Name = "pbVolver";
-            pbVolver.Padding = new Padding(5, 5, 5, 5);
+            pbVolver.Padding = new Padding(5);
             pbVolver.Size = new Size(88, 88);
             pbVolver.SizeMode = PictureBoxSizeMode.StretchImage;
             pbVolver.TabIndex = 57;
@@ -80,7 +80,7 @@
             pbVerActividades.Image = (Image)resources.GetObject("pbVerActividades.Image");
             pbVerActividades.Location = new Point(608, 455);
             pbVerActividades.Name = "pbVerActividades";
-            pbVerActividades.Padding = new Padding(5, 5, 5, 5);
+            pbVerActividades.Padding = new Padding(5);
             pbVerActividades.Size = new Size(88, 88);
             pbVerActividades.SizeMode = PictureBoxSizeMode.Zoom;
             pbVerActividades.TabIndex = 56;
@@ -94,7 +94,7 @@
             pbCrearModificarActividad.Image = (Image)resources.GetObject("pbCrearModificarActividad.Image");
             pbCrearModificarActividad.Location = new Point(608, 309);
             pbCrearModificarActividad.Name = "pbCrearModificarActividad";
-            pbCrearModificarActividad.Padding = new Padding(5, 5, 5, 5);
+            pbCrearModificarActividad.Padding = new Padding(5);
             pbCrearModificarActividad.Size = new Size(88, 88);
             pbCrearModificarActividad.SizeMode = PictureBoxSizeMode.Zoom;
             pbCrearModificarActividad.TabIndex = 55;
@@ -108,7 +108,7 @@
             pbInscribirActividad.Image = (Image)resources.GetObject("pbInscribirActividad.Image");
             pbInscribirActividad.Location = new Point(608, 163);
             pbInscribirActividad.Name = "pbInscribirActividad";
-            pbInscribirActividad.Padding = new Padding(5, 5, 5, 5);
+            pbInscribirActividad.Padding = new Padding(5);
             pbInscribirActividad.Size = new Size(88, 88);
             pbInscribirActividad.SizeMode = PictureBoxSizeMode.Zoom;
             pbInscribirActividad.TabIndex = 54;
@@ -153,6 +153,7 @@
             InscribirActBtn.TabIndex = 51;
             InscribirActBtn.Text = "Inscribir | Cobrar Actividad";
             InscribirActBtn.UseVisualStyleBackColor = false;
+            InscribirActBtn.Click += InscribirActBtn_Click;
             // 
             // CrearModificarBtn
             // 

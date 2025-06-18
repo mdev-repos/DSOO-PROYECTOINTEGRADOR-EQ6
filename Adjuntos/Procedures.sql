@@ -143,6 +143,17 @@ BEGIN
 END//
 DELIMITER ;
 
+-- BUSCAR NO SOCIOS POR DNI
+DROP PROCEDURE IF EXISTS BuscarNoSocioPorDni;
+DELIMITER //
+CREATE PROCEDURE BuscarNoSocioPorDni(IN dni VARCHAR(20))
+BEGIN
+    SELECT c.Nombre, c.Apellido
+    FROM Clientes c
+    INNER JOIN NoSocios ns ON c.Dni = dni AND ns.Activo = 1;
+END //
+DELIMITER ;
+
 -- =============================================
 -- PROCEDIMIENTOS PARA CUOTA MENSUAL
 -- =============================================
@@ -411,4 +422,26 @@ BEGIN
         SET rta = 1;
     END IF;  
 END//
+DELIMITER ;
+
+-- OBTENER NOMBRE DE ACTIVIDADES
+DROP PROCEDURE IF EXISTS ObtenerNombresActividades;
+DELIMITER //
+CREATE PROCEDURE ObtenerNombresActividades()
+BEGIN
+    SELECT Nombre FROM Actividades;
+END //
+
+DELIMITER ;
+
+-- OBTENER DATOS DE ACTIVIDADES
+DROP PROCEDURE IF EXISTS ObtenerDatosActividades;
+DELIMITER //
+CREATE PROCEDURE ObtenerDatosActividades(IN nombre VARCHAR(100))
+BEGIN
+    SELECT Valor, Horario
+    FROM Actividades
+    WHERE Nombre = nombre;
+END //
+
 DELIMITER ;
