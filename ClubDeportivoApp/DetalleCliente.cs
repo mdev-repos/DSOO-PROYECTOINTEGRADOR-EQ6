@@ -8,7 +8,6 @@ namespace ClubDeportivoApp
     {
         private string dni;
         string? tipo = "";
-        string query = "";
         public DetalleCliente(string dni)
         {
             InitializeComponent();
@@ -18,7 +17,7 @@ namespace ClubDeportivoApp
 
         private void cargarCliente()
         {
-            MySqlConnection mySqlConnection = new MySqlConnection();
+             MySqlConnection mySqlConnection = new MySqlConnection();
             try
             {
                 mySqlConnection = Conexion.getInstancia().CrearConexion();
@@ -89,7 +88,6 @@ namespace ClubDeportivoApp
         private void cBoxTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             tipo = cBoxTipoCliente.SelectedItem.ToString();
-            MessageBox.Show(tipo);
             modificarEstadoTextBox();
         }
 

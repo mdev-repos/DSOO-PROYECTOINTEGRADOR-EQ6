@@ -89,6 +89,9 @@ namespace ClubDeportivoApp
                 string dni = fila.Cells["Dni"].Value?.ToString() ?? "";
 
                 DetalleCliente detallesForm = new DetalleCliente(dni);
+                detallesForm.FormClosed += (s, args) => {
+                    CargarDatosClientes();
+                };
                 detallesForm.ShowDialog();
             }
         }

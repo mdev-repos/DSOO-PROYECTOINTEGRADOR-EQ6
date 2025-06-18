@@ -67,7 +67,7 @@
             pbVolver.Anchor = AnchorStyles.None;
             pbVolver.BackColor = Color.Linen;
             pbVolver.Image = (Image)resources.GetObject("pbVolver.Image");
-            pbVolver.Location = new Point(1039, 42);
+            pbVolver.Location = new Point(1000, 42);
             pbVolver.Name = "pbVolver";
             pbVolver.Size = new Size(44, 26);
             pbVolver.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -80,7 +80,7 @@
             imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = Color.Linen;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
-            imgBoxOpc.Location = new Point(88, 12);
+            imgBoxOpc.Location = new Point(49, 12);
             imgBoxOpc.Name = "imgBoxOpc";
             imgBoxOpc.Size = new Size(92, 93);
             imgBoxOpc.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -93,7 +93,7 @@
             lblCliente.AutoSize = true;
             lblCliente.Font = new Font("Microsoft Sans Serif", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCliente.ForeColor = Color.FromArgb(120, 10, 90);
-            lblCliente.Location = new Point(442, 30);
+            lblCliente.Location = new Point(414, 30);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(0, 54);
             lblCliente.TabIndex = 33;
@@ -101,7 +101,7 @@
             // txtBoxResNombre
             // 
             txtBoxResNombre.Anchor = AnchorStyles.None;
-            txtBoxResNombre.Location = new Point(251, 204);
+            txtBoxResNombre.Location = new Point(212, 204);
             txtBoxResNombre.Name = "txtBoxResNombre";
             txtBoxResNombre.Size = new Size(300, 27);
             txtBoxResNombre.TabIndex = 39;
@@ -111,7 +111,7 @@
             lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblApellido.Location = new Point(626, 205);
+            lblApellido.Location = new Point(587, 205);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(83, 23);
             lblApellido.TabIndex = 37;
@@ -122,7 +122,7 @@
             lblCodigo.Anchor = AnchorStyles.None;
             lblCodigo.AutoSize = true;
             lblCodigo.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodigo.Location = new Point(88, 205);
+            lblCodigo.Location = new Point(49, 205);
             lblCodigo.Name = "lblCodigo";
             lblCodigo.Size = new Size(81, 23);
             lblCodigo.TabIndex = 36;
@@ -131,7 +131,7 @@
             // txtBoxResApellido
             // 
             txtBoxResApellido.Anchor = AnchorStyles.None;
-            txtBoxResApellido.Location = new Point(783, 203);
+            txtBoxResApellido.Location = new Point(744, 203);
             txtBoxResApellido.Name = "txtBoxResApellido";
             txtBoxResApellido.Size = new Size(300, 27);
             txtBoxResApellido.TabIndex = 40;
@@ -139,7 +139,7 @@
             // txtBoxResDni
             // 
             txtBoxResDni.Anchor = AnchorStyles.None;
-            txtBoxResDni.Location = new Point(783, 262);
+            txtBoxResDni.Location = new Point(744, 262);
             txtBoxResDni.Name = "txtBoxResDni";
             txtBoxResDni.Size = new Size(300, 27);
             txtBoxResDni.TabIndex = 44;
@@ -149,7 +149,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(626, 264);
+            label1.Location = new Point(587, 264);
             label1.Name = "label1";
             label1.Size = new Size(46, 23);
             label1.TabIndex = 42;
@@ -160,7 +160,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label2.Location = new Point(88, 264);
+            label2.Location = new Point(49, 264);
             label2.Name = "label2";
             label2.Size = new Size(157, 23);
             label2.TabIndex = 41;
@@ -169,7 +169,7 @@
             // txtBoxResTelefono
             // 
             txtBoxResTelefono.Anchor = AnchorStyles.None;
-            txtBoxResTelefono.Location = new Point(783, 323);
+            txtBoxResTelefono.Location = new Point(744, 323);
             txtBoxResTelefono.Name = "txtBoxResTelefono";
             txtBoxResTelefono.Size = new Size(300, 27);
             txtBoxResTelefono.TabIndex = 48;
@@ -177,7 +177,7 @@
             // txtBoxResDireccion
             // 
             txtBoxResDireccion.Anchor = AnchorStyles.None;
-            txtBoxResDireccion.Location = new Point(251, 324);
+            txtBoxResDireccion.Location = new Point(212, 324);
             txtBoxResDireccion.Name = "txtBoxResDireccion";
             txtBoxResDireccion.Size = new Size(300, 27);
             txtBoxResDireccion.TabIndex = 47;
@@ -187,7 +187,7 @@
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label3.Location = new Point(626, 325);
+            label3.Location = new Point(587, 325);
             label3.Name = "label3";
             label3.Size = new Size(83, 23);
             label3.TabIndex = 46;
@@ -198,7 +198,7 @@
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label4.Location = new Point(88, 325);
+            label4.Location = new Point(49, 325);
             label4.Name = "label4";
             label4.Size = new Size(90, 23);
             label4.TabIndex = 45;
@@ -207,7 +207,7 @@
             // txtBoxResFichaMed
             // 
             txtBoxResFichaMed.Anchor = AnchorStyles.None;
-            txtBoxResFichaMed.Location = new Point(783, 387);
+            txtBoxResFichaMed.Location = new Point(744, 387);
             txtBoxResFichaMed.Name = "txtBoxResFichaMed";
             txtBoxResFichaMed.Size = new Size(300, 27);
             txtBoxResFichaMed.TabIndex = 52;
@@ -215,7 +215,7 @@
             // txtBoxResEmail
             // 
             txtBoxResEmail.Anchor = AnchorStyles.None;
-            txtBoxResEmail.Location = new Point(251, 388);
+            txtBoxResEmail.Location = new Point(212, 388);
             txtBoxResEmail.Name = "txtBoxResEmail";
             txtBoxResEmail.Size = new Size(300, 27);
             txtBoxResEmail.TabIndex = 51;
@@ -225,7 +225,7 @@
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(626, 389);
+            label5.Location = new Point(587, 389);
             label5.Name = "label5";
             label5.Size = new Size(119, 23);
             label5.TabIndex = 50;
@@ -236,7 +236,7 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(88, 389);
+            label6.Location = new Point(49, 389);
             label6.Name = "label6";
             label6.Size = new Size(59, 23);
             label6.TabIndex = 49;
@@ -247,7 +247,7 @@
             lblDatosCliente.Anchor = AnchorStyles.None;
             lblDatosCliente.AutoSize = true;
             lblDatosCliente.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDatosCliente.Location = new Point(88, 145);
+            lblDatosCliente.Location = new Point(49, 145);
             lblDatosCliente.Name = "lblDatosCliente";
             lblDatosCliente.Size = new Size(277, 39);
             lblDatosCliente.TabIndex = 53;
@@ -258,7 +258,7 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label8.Location = new Point(88, 453);
+            label8.Location = new Point(49, 453);
             label8.Name = "label8";
             label8.Size = new Size(109, 23);
             label8.TabIndex = 54;
@@ -270,7 +270,7 @@
             btnActualizarDatos.BackColor = Color.FromArgb(120, 10, 90);
             btnActualizarDatos.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnActualizarDatos.ForeColor = Color.White;
-            btnActualizarDatos.Location = new Point(426, 577);
+            btnActualizarDatos.Location = new Point(424, 584);
             btnActualizarDatos.Name = "btnActualizarDatos";
             btnActualizarDatos.Size = new Size(246, 45);
             btnActualizarDatos.TabIndex = 58;
@@ -282,7 +282,7 @@
             // txtBoxResMoroso
             // 
             txtBoxResMoroso.Anchor = AnchorStyles.None;
-            txtBoxResMoroso.Location = new Point(783, 513);
+            txtBoxResMoroso.Location = new Point(744, 513);
             txtBoxResMoroso.Name = "txtBoxResMoroso";
             txtBoxResMoroso.Size = new Size(300, 27);
             txtBoxResMoroso.TabIndex = 62;
@@ -290,7 +290,7 @@
             // txtBoxResCarnet
             // 
             txtBoxResCarnet.Anchor = AnchorStyles.None;
-            txtBoxResCarnet.Location = new Point(251, 514);
+            txtBoxResCarnet.Location = new Point(212, 514);
             txtBoxResCarnet.Name = "txtBoxResCarnet";
             txtBoxResCarnet.Size = new Size(300, 27);
             txtBoxResCarnet.TabIndex = 61;
@@ -300,7 +300,7 @@
             lblMoroso.Anchor = AnchorStyles.None;
             lblMoroso.AutoSize = true;
             lblMoroso.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblMoroso.Location = new Point(626, 515);
+            lblMoroso.Location = new Point(587, 515);
             lblMoroso.Name = "lblMoroso";
             lblMoroso.Size = new Size(75, 23);
             lblMoroso.TabIndex = 60;
@@ -311,7 +311,7 @@
             lblCarnet.Anchor = AnchorStyles.None;
             lblCarnet.AutoSize = true;
             lblCarnet.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCarnet.Location = new Point(88, 515);
+            lblCarnet.Location = new Point(49, 515);
             lblCarnet.Name = "lblCarnet";
             lblCarnet.Size = new Size(68, 23);
             lblCarnet.TabIndex = 59;
@@ -322,7 +322,7 @@
             cBoxTipoCliente.Anchor = AnchorStyles.None;
             cBoxTipoCliente.FormattingEnabled = true;
             cBoxTipoCliente.Items.AddRange(new object[] { "Socio", "No Socio" });
-            cBoxTipoCliente.Location = new Point(251, 454);
+            cBoxTipoCliente.Location = new Point(212, 454);
             cBoxTipoCliente.Name = "cBoxTipoCliente";
             cBoxTipoCliente.Size = new Size(300, 28);
             cBoxTipoCliente.TabIndex = 63;
@@ -333,7 +333,7 @@
             lblFechaInscr.Anchor = AnchorStyles.None;
             lblFechaInscr.AutoSize = true;
             lblFechaInscr.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblFechaInscr.Location = new Point(626, 454);
+            lblFechaInscr.Location = new Point(587, 454);
             lblFechaInscr.Name = "lblFechaInscr";
             lblFechaInscr.Size = new Size(151, 23);
             lblFechaInscr.TabIndex = 64;
@@ -342,7 +342,7 @@
             // dtpResFechaInscr
             // 
             dtpResFechaInscr.Anchor = AnchorStyles.None;
-            dtpResFechaInscr.Location = new Point(783, 452);
+            dtpResFechaInscr.Location = new Point(744, 452);
             dtpResFechaInscr.Name = "dtpResFechaInscr";
             dtpResFechaInscr.Size = new Size(300, 27);
             dtpResFechaInscr.TabIndex = 66;
@@ -350,7 +350,7 @@
             // dtpResFechaNac
             // 
             dtpResFechaNac.Anchor = AnchorStyles.None;
-            dtpResFechaNac.Location = new Point(251, 260);
+            dtpResFechaNac.Location = new Point(212, 260);
             dtpResFechaNac.Name = "dtpResFechaNac";
             dtpResFechaNac.Size = new Size(300, 27);
             dtpResFechaNac.TabIndex = 67;
@@ -360,7 +360,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(1125, 652);
+            ClientSize = new Size(1088, 652);
             Controls.Add(dtpResFechaNac);
             Controls.Add(dtpResFechaInscr);
             Controls.Add(lblFechaInscr);
