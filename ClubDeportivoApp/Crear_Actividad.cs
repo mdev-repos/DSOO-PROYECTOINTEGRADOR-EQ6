@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ClubDeportivoApp.Entidades;
 
 namespace ClubDeportivoApp
 {
@@ -88,13 +80,31 @@ namespace ClubDeportivoApp
                 return;
             }
 
-            // Lógica para crear la actividad
             try
             {
-                // TODO: Implementar lógica de creación en la base de datos
+                string respuesta;
+                E_Actividad actividad = new E_Actividad();
+                actividad.CodActividad = txtCodigo.Text;
+                actividad.Nombre = txtActividad.Text;
+                actividad.Valor = float.Parse(txtPrecio.Text);
+                actividad.Horario = txtHorarios.Text;
 
-
-                MessageBox.Show("Lógica de creación de actividad implementada aquí", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Datos.Actividades actividadDatos = new Datos.Actividades();
+                respuesta = actividadDatos.Nueva_Actividad(actividad);
+                bool esNumero = int.TryParse(respuesta, out int codigo);
+                if (esNumero)
+                {
+                    if (codigo == 1)
+                    {
+                        MessageBox.Show("La actividad ya existe", "AVISO DEL SISTEMA",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"La actividad {actividad.Nombre} se registró con éxito con el código número: {actividad.CodActividad} " + respuesta,
+                                "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                }
             }
             catch (Exception ex)
             {
