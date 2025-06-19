@@ -48,13 +48,11 @@
             label5 = new Label();
             label6 = new Label();
             lblDatosCliente = new Label();
-            label8 = new Label();
             btnActualizarDatos = new Button();
             txtBoxResMoroso = new TextBox();
             txtBoxResCarnet = new TextBox();
             lblMoroso = new Label();
             lblCarnet = new Label();
-            cBoxTipoCliente = new ComboBox();
             lblFechaInscr = new Label();
             dtpResFechaInscr = new DateTimePicker();
             dtpResFechaNac = new DateTimePicker();
@@ -253,17 +251,6 @@
             lblDatosCliente.TabIndex = 53;
             lblDatosCliente.Text = "Datos del Cliente";
             // 
-            // label8
-            // 
-            label8.Anchor = AnchorStyles.None;
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label8.Location = new Point(49, 453);
-            label8.Name = "label8";
-            label8.Size = new Size(109, 23);
-            label8.TabIndex = 54;
-            label8.Text = "Tipo cliente:";
-            // 
             // btnActualizarDatos
             // 
             btnActualizarDatos.Anchor = AnchorStyles.None;
@@ -282,7 +269,7 @@
             // txtBoxResMoroso
             // 
             txtBoxResMoroso.Anchor = AnchorStyles.None;
-            txtBoxResMoroso.Location = new Point(744, 513);
+            txtBoxResMoroso.Location = new Point(212, 450);
             txtBoxResMoroso.Name = "txtBoxResMoroso";
             txtBoxResMoroso.Size = new Size(300, 27);
             txtBoxResMoroso.TabIndex = 62;
@@ -300,7 +287,7 @@
             lblMoroso.Anchor = AnchorStyles.None;
             lblMoroso.AutoSize = true;
             lblMoroso.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblMoroso.Location = new Point(587, 515);
+            lblMoroso.Location = new Point(49, 452);
             lblMoroso.Name = "lblMoroso";
             lblMoroso.Size = new Size(75, 23);
             lblMoroso.TabIndex = 60;
@@ -316,17 +303,6 @@
             lblCarnet.Size = new Size(68, 23);
             lblCarnet.TabIndex = 59;
             lblCarnet.Text = "Carnet:";
-            // 
-            // cBoxTipoCliente
-            // 
-            cBoxTipoCliente.Anchor = AnchorStyles.None;
-            cBoxTipoCliente.FormattingEnabled = true;
-            cBoxTipoCliente.Items.AddRange(new object[] { "Socio", "No Socio" });
-            cBoxTipoCliente.Location = new Point(212, 454);
-            cBoxTipoCliente.Name = "cBoxTipoCliente";
-            cBoxTipoCliente.Size = new Size(300, 28);
-            cBoxTipoCliente.TabIndex = 63;
-            cBoxTipoCliente.SelectedIndexChanged += cBoxTipoCliente_SelectedIndexChanged;
             // 
             // lblFechaInscr
             // 
@@ -364,13 +340,11 @@
             Controls.Add(dtpResFechaNac);
             Controls.Add(dtpResFechaInscr);
             Controls.Add(lblFechaInscr);
-            Controls.Add(cBoxTipoCliente);
             Controls.Add(txtBoxResMoroso);
             Controls.Add(txtBoxResCarnet);
             Controls.Add(lblMoroso);
             Controls.Add(lblCarnet);
             Controls.Add(btnActualizarDatos);
-            Controls.Add(label8);
             Controls.Add(lblDatosCliente);
             Controls.Add(txtBoxResFichaMed);
             Controls.Add(txtBoxResEmail);
@@ -419,13 +393,11 @@
         private Label label5;
         private Label label6;
         private Label lblDatosCliente;
-        private Label label8;
         private Button btnActualizarDatos;
         private TextBox txtBoxResMoroso;
         private TextBox txtBoxResCarnet;
         private Label lblMoroso;
         private Label lblCarnet;
-        private ComboBox cBoxTipoCliente;
         private Label lblFechaInscr;
         private DateTimePicker dtpResFechaInscr;
         private DateTimePicker dtpResFechaNac;

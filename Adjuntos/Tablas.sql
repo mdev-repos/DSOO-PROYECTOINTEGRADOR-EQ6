@@ -66,7 +66,6 @@ DROP TABLE IF EXISTS NoSocios;
 CREATE TABLE NoSocios(
     CodNoSocio VARCHAR(50) PRIMARY KEY,
     Dni INT NOT NULL,
-    Activo BIT DEFAULT 1,
     CONSTRAINT fk_NoSocioClientes FOREIGN KEY (Dni) 
         REFERENCES clientes(dni)
         ON DELETE CASCADE

@@ -7,7 +7,7 @@ namespace ClubDeportivoApp
     public partial class DetalleCliente : Form
     {
         private string dni;
-        string? tipo = "";
+        private string esSocio = "";
         public DetalleCliente(string dni)
         {
             InitializeComponent();
@@ -32,8 +32,8 @@ namespace ClubDeportivoApp
                 {
                     while (mySqlDataReader.Read())
                     {
-                        tipo = mySqlDataReader["TipoCliente"].ToString();
-                        
+                        esSocio = mySqlDataReader["Codigo"].ToString();
+
                         lblCliente.Text = mySqlDataReader["Codigo"].ToString();
                         txtBoxResNombre.Text = mySqlDataReader["Nombre"].ToString();
                         txtBoxResApellido.Text = mySqlDataReader["Apellido"].ToString();
@@ -43,16 +43,29 @@ namespace ClubDeportivoApp
                         txtBoxResDireccion.Text = mySqlDataReader["Direccion"].ToString();
                         txtBoxResTelefono.Text = mySqlDataReader["Telefono"].ToString();
                         txtBoxResEmail.Text = mySqlDataReader["Email"].ToString();
-                        cBoxTipoCliente.Text = tipo;
 
-                        if (tipo == "Socio")
+                        if (esSocio.StartsWith("NO"))
+                        {
+                            txtBoxResCarnet.Visible = false;
+                            lblCarnet.Visible = false;
+                            txtBoxResMoroso.Visible = false;
+                            lblMoroso.Visible = false;
+                            dtpResFechaInscr.Visible = false;
+                            lblFechaInscr.Visible = false;
+                        }
+                        else
                         {
                             txtBoxResCarnet.Text = convertirBooleanoEnString(mySqlDataReader["Carnet"].ToString());
                             txtBoxResMoroso.Text = convertirBooleanoEnString(mySqlDataReader["Moroso"].ToString());
                             dtpResFechaInscr.Text = mySqlDataReader["FechaInscripcion"].ToString();
+                            txtBoxResCarnet.Enabled = true;
+                            txtBoxResCarnet.ReadOnly = true;
+                            txtBoxResMoroso.Enabled = true;
+                            txtBoxResMoroso.ReadOnly = true;
+                            dtpResFechaInscr.Enabled = true;
+                            dtpResFechaInscr.Enabled = true;
                         }
                     }
-                    modificarEstadoTextBox();
                 }
             }
             catch (Exception ex)
@@ -71,24 +84,6 @@ namespace ClubDeportivoApp
         private string convertirBooleanoEnString(String? mySqlDataReader)
         {
             return Convert.ToInt32(mySqlDataReader) == 1 ? "Sí" : "No";
-        }
-
-        private void modificarEstadoTextBox()
-        {
-            bool habilitar = tipo.Equals("Socio");
-
-            txtBoxResCarnet.Visible = habilitar;
-            lblCarnet.Visible = habilitar;
-            txtBoxResMoroso.Visible = habilitar;
-            lblMoroso.Visible = habilitar;
-            dtpResFechaInscr.Visible = habilitar;
-            lblFechaInscr.Visible = habilitar;
-        }
-
-        private void cBoxTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            tipo = cBoxTipoCliente.SelectedItem.ToString();
-            modificarEstadoTextBox();
         }
 
         private void pbVolver_Click(object sender, EventArgs e)
@@ -116,18 +111,7 @@ namespace ClubDeportivoApp
 
                 MySqlCommand comando = new MySqlCommand("sp_ActualizarClienteYTipo", mySqlConnection);
                 comando.CommandType = CommandType.StoredProcedure;
-
-                comando.Parameters.AddWithValue("@p_dni", Convert.ToInt32(txtBoxResDni.Text));
-                comando.Parameters.AddWithValue("@p_nombre", txtBoxResNombre.Text.Trim());
-                comando.Parameters.AddWithValue("@p_apellido", txtBoxResApellido.Text.Trim());
-                comando.Parameters.AddWithValue("@p_fecha_nac", DateTime.Parse(dtpResFechaNac.Text));
-                comando.Parameters.AddWithValue("@p_direccion", txtBoxResDireccion.Text.Trim());
-                comando.Parameters.AddWithValue("@p_telefono", txtBoxResTelefono.Text.Trim());
-                comando.Parameters.AddWithValue("@p_email", txtBoxResEmail.Text.Trim());
-                comando.Parameters.AddWithValue("@p_ficha_medica", fichaMedica);
-                comando.Parameters.AddWithValue("@p_nuevo_tipo_cliente", tipo);
-
-                comando.ExecuteNonQuery();
+                comando.Parameters.AddWithValue("dni", txtBoxResDni.Text);
 
                 MessageBox.Show("Datos actualizados correctamente.", "Actualización exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cargarCliente();
