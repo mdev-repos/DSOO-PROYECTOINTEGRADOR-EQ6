@@ -123,7 +123,7 @@
             VolverBtn.Location = new Point(715, 591);
             VolverBtn.Name = "VolverBtn";
             VolverBtn.Size = new Size(186, 88);
-            VolverBtn.TabIndex = 53;
+            VolverBtn.TabIndex = 4;
             VolverBtn.Text = "Volver";
             VolverBtn.UseVisualStyleBackColor = false;
             VolverBtn.Click += VolverBtn_Click;
@@ -137,7 +137,7 @@
             ListarActividadesBtn.Location = new Point(715, 455);
             ListarActividadesBtn.Name = "ListarActividadesBtn";
             ListarActividadesBtn.Size = new Size(186, 88);
-            ListarActividadesBtn.TabIndex = 52;
+            ListarActividadesBtn.TabIndex = 3;
             ListarActividadesBtn.Text = "Ver Actividades";
             ListarActividadesBtn.UseVisualStyleBackColor = false;
             ListarActividadesBtn.Click += ListarActividadesBtn_Click;
@@ -151,7 +151,7 @@
             InscribirActBtn.Location = new Point(715, 163);
             InscribirActBtn.Name = "InscribirActBtn";
             InscribirActBtn.Size = new Size(186, 88);
-            InscribirActBtn.TabIndex = 51;
+            InscribirActBtn.TabIndex = 1;
             InscribirActBtn.Text = "Inscribir | Cobrar Actividad";
             InscribirActBtn.UseVisualStyleBackColor = false;
             InscribirActBtn.Click += InscribirActBtn_Click;
@@ -165,7 +165,7 @@
             CrearModificarBtn.Location = new Point(715, 309);
             CrearModificarBtn.Name = "CrearModificarBtn";
             CrearModificarBtn.Size = new Size(186, 88);
-            CrearModificarBtn.TabIndex = 50;
+            CrearModificarBtn.TabIndex = 2;
             CrearModificarBtn.Text = "Crear | Modificar Actividad";
             CrearModificarBtn.UseVisualStyleBackColor = false;
             CrearModificarBtn.Click += CrearBtn_Click;

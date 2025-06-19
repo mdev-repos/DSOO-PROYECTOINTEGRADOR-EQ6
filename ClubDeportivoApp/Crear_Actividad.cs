@@ -1,4 +1,6 @@
-﻿using ClubDeportivoApp.Entidades;
+﻿using System.Data;
+using ClubDeportivoApp.Datos;
+using ClubDeportivoApp.Entidades;
 using MySql.Data.MySqlClient;
 
 namespace ClubDeportivoApp
@@ -123,6 +125,8 @@ namespace ClubDeportivoApp
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            MySqlConnection mySqlConnection = new MySqlConnection();
+
             // Validar campos vacíos
             if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
                 string.IsNullOrWhiteSpace(txtActividad.Text) ||
@@ -143,15 +147,16 @@ namespace ClubDeportivoApp
             // Lógica para modificar la actividad
             try
             {
-                string connectionString = "server=localhost;database=clubdeportivo;uid=root;pwd=;";
+                mySqlConnection = Conexion.getInstancia().CrearConexion();
+                mySqlConnection.Open();
+                
                 string query = @"UPDATE Actividades 
                  SET Nombre = @nombre, Valor = @valor, Horario = @horario 
                  WHERE CodActividad = @codigo";
 
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (mySqlConnection)
                 {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
                     {
                         cmd.Parameters.AddWithValue("@nombre", txtActividad.Text.Trim());
                         cmd.Parameters.AddWithValue("@valor", precio); // ya validado como float
@@ -176,10 +181,19 @@ namespace ClubDeportivoApp
             {
                 MessageBox.Show($"Error al modificar actividad: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                if (mySqlConnection.State == ConnectionState.Open)
+                {
+                    mySqlConnection.Close();
+                }
+            }
         }
 
         private void btnBuscarActividad_Click(object sender, EventArgs e)
         {
+            MySqlConnection mySqlConnection = new MySqlConnection();
+
             string codActividad = txtCodigo.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(codActividad) || !codActividad.StartsWith("ACT-"))
@@ -189,13 +203,14 @@ namespace ClubDeportivoApp
             }
             try
             {
-                string connectionString = "server=localhost;database=clubdeportivo;uid=root;pwd=;";
+                mySqlConnection = Conexion.getInstancia().CrearConexion();
+                mySqlConnection.Open();
                 string query = "SELECT Nombre, Valor, Horario FROM Actividades WHERE CodActividad = @codigo";
 
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using(mySqlConnection)
                 {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    //conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
                     {
                         cmd.Parameters.AddWithValue("@codigo", codActividad);
 
@@ -227,6 +242,13 @@ namespace ClubDeportivoApp
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al buscar actividad: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (mySqlConnection.State == ConnectionState.Open)
+                {
+                    mySqlConnection.Close();
+                }
             }
         }
 

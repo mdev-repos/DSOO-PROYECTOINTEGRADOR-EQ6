@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using ClubDeportivoApp.Datos;
+using ClubDeportivoApp.Entidades;
 using MySql.Data.MySqlClient;
 
 namespace ClubDeportivoApp
@@ -10,6 +11,10 @@ namespace ClubDeportivoApp
         public Inscribir_Actividad()
         {
             InitializeComponent();
+            txtBoxNombre.ReadOnly = true;
+            txtBoxApellido.ReadOnly = true;
+            txtBoxValor.ReadOnly = true;
+            txtBoxHorarios.ReadOnly = true;
         }
 
         private void CargarDatosClientesYActividad()
@@ -127,6 +132,11 @@ namespace ClubDeportivoApp
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtDni.Clear();
+            txtBoxNombre.Clear();
+            txtBoxApellido.Clear();
+            cBoxActividad.Text = string.Empty;
+            txtBoxValor.Clear();
+            txtBoxHorarios.Clear();
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -146,6 +156,21 @@ namespace ClubDeportivoApp
         private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsControl(e.KeyChar) && (!char.IsDigit(e.KeyChar) || txtDni.Text.Length >= 12);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Logica de Pago -- No Socio + Cuota Diaria
+            // Obtengo el CODIGO de NO SOCIO mediante el DNI suministrado
+            String codNoSocio = $"NOSOC-{txtDni.Text}";
+
+            // Obtengo el CODIGO de la ACTIVIDAD mediante la seleccion
+            String codActividad = cBoxActividad.Text;
+
+            // Genero la CUOTA DIARIA
+            E_CuotaDiaria cuotaDiaria = new E_CuotaDiaria();
+
+
         }
     }
 }
