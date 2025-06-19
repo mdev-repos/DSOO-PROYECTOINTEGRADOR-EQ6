@@ -40,5 +40,11 @@ namespace ClubDeportivoApp
             Inscribir_Actividad inscribirActividadForm = new Inscribir_Actividad();
             inscribirActividadForm.ShowDialog();
         }
+
+        private void ListarActividadesBtn_Click(object sender, EventArgs e)
+        {
+            Form verActividades = new Ver_Actividades();
+            verActividades.ShowDialog();
+        }
     }
 }

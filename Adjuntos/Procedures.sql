@@ -413,3 +413,19 @@ BEGIN
 END //
 
 DELIMITER ;
+
+-- OBTENER TODAS LAS ACTIVIDADES DESDE LA BBDD
+DROP PROCEDURE IF EXISTS ListarTodasLasActividades;
+DELIMITER //
+CREATE PROCEDURE ListarTodasLasActividades()
+BEGIN
+    SELECT 
+        CodActividad AS 'Código',
+        Nombre AS 'Nombre',
+        Valor AS 'Precio',
+        Horario AS 'Horarios'
+    FROM 
+        Actividades
+    ORDER BY Nombre;
+END //
+DELIMITER ;

@@ -82,6 +82,7 @@ namespace ClubDeportivoApp
             txtApellidoCliente.Text = "";
             txtEstadoCliente.Text = "";
             txtDniInput.Text = "";
+            txtDniInput.ReadOnly = false;
         }
 
         private void btnBaja_Click(object sender, EventArgs e)

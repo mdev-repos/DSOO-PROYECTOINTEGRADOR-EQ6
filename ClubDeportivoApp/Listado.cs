@@ -22,7 +22,7 @@ namespace ClubDeportivoApp
             _socioDatos = new Socio();
             ConfigurarFormulario();
             ConfigurarDataGridView();
-            CargarMorosos(FiltroMorosos.VencimientoHoy); // Carga hoy por defecto
+            dgvMorosos.DataSource = new List<dynamic>();
         }
 
         private void ConfigurarFormulario()
@@ -122,6 +122,30 @@ namespace ClubDeportivoApp
                 if (filtro == FiltroMorosos.VencimientoHoy)
                 {
                     morosos = morosos.Where(m => m.Vencimiento.Date == DateTime.Today).ToList();
+
+                    // Mensaje si no hay morosos con vencimiento hoy
+                    if (morosos.Count == 0)
+                    {
+                        MessageBox.Show("No hay ningún socio con vencimiento en el día de la fecha.",
+                                      "Información",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Information);
+                        dgvMorosos.DataSource = new List<dynamic>(); // Limpiar el DataGridView
+                        return;
+                    }
+                }
+                else // Filtro Todos
+                {
+                    // Mensaje si no hay morosos
+                    if (morosos.Count == 0)
+                    {
+                        MessageBox.Show("No hay ningún socio moroso en el sistema.",
+                                      "Información",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Information);
+                        dgvMorosos.DataSource = new List<dynamic>(); // Limpiar el DataGridView
+                        return;
+                    }
                 }
 
                 var datosParaMostrar = morosos.Select(m => new
@@ -164,7 +188,6 @@ namespace ClubDeportivoApp
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {

@@ -24,8 +24,8 @@ USE clubdeportivo;
 
 INSERT INTO Actividades (CodActividad, Nombre, Valor, Horario)
 VALUES 
-('ACT-Musculacion', 'Pase diario musculación', 3500.00, 'Lunes a Viernes 07:00 a 22:00. Sábados 10:00 a 17:00'),
-('ACT-Boxeo', 'Pase diario Boxeo', 2500.00, 'Lunes, Miercoles y Viernes 18:00 a 20:00');
+('ACT-Musculacion', 'Musculacion', 3500.00, 'Lun a Vie - 07:00 a 22:00 | Sab - 10:00 a 17:00'),
+('ACT-Boxeo', 'Boxeo', 2500.00, 'Lun | Mie | Vie - 18:00 a 20:00');
 
 -- =============================================
 -- INSERCIÓN DE CLIENTES Y SOCIOS
@@ -166,7 +166,7 @@ VALUES ('NOSOC-43123456', 43123456);
 INSERT INTO CuotaDiaria (CodCuotaDiaria, Pagada, ValorFinal, TipoDePago, CantidadCuotas, FechaDePago, FechaDeUso, CodNoSocio, CodActividad)
 VALUES 
 ('CUOTA-01-NOSOC-43123456', 1, 3500.00, 'Tarjeta de débito', 1, DATE_SUB(CURDATE(), INTERVAL 2 DAY), DATE_SUB(CURDATE(), INTERVAL 2 DAY), 'NOSOC-43123456', 'ACT-Musculacion'),
-('CUOTA-02-NOSOC-43123456', 1, 2500.00, NULL, 1, CURDATE(), CURDATE(), 'NOSOC-43123456', 'ACT-Boxeo');
+('CUOTA-02-NOSOC-43123456', 1, 2500.00, 'Tarjeta de débito', 1, CURDATE(), CURDATE(), 'NOSOC-43123456', 'ACT-Boxeo');
 
 -- No Socio 3
 INSERT INTO Clientes (nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)

@@ -142,6 +142,7 @@
             // 
             // txtPrecio
             // 
+            txtPrecio.Anchor = AnchorStyles.None;
             txtPrecio.Location = new Point(717, 449);
             txtPrecio.Margin = new Padding(3, 4, 3, 4);
             txtPrecio.Name = "txtPrecio";
@@ -150,6 +151,7 @@
             // 
             // txtActividad
             // 
+            txtActividad.Anchor = AnchorStyles.None;
             txtActividad.Location = new Point(163, 449);
             txtActividad.Margin = new Padding(3, 4, 3, 4);
             txtActividad.Name = "txtActividad";
@@ -159,6 +161,7 @@
             // 
             // txtCodigo
             // 
+            txtCodigo.Anchor = AnchorStyles.None;
             txtCodigo.Location = new Point(163, 382);
             txtCodigo.Margin = new Padding(3, 4, 3, 4);
             txtCodigo.Name = "txtCodigo";
@@ -231,6 +234,7 @@
             // 
             // txtHorarios
             // 
+            txtHorarios.Anchor = AnchorStyles.None;
             txtHorarios.Location = new Point(163, 518);
             txtHorarios.Margin = new Padding(3, 4, 3, 4);
             txtHorarios.Name = "txtHorarios";

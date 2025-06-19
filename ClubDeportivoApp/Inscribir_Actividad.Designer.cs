@@ -57,7 +57,7 @@
             pbVolver.BackColor = Color.Linen;
             pbVolver.Cursor = Cursors.Hand;
             pbVolver.Image = (Image)resources.GetObject("pbVolver.Image");
-            pbVolver.Location = new Point(815, 48);
+            pbVolver.Location = new Point(860, 121);
             pbVolver.Name = "pbVolver";
             pbVolver.Size = new Size(43, 27);
             pbVolver.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -70,7 +70,7 @@
             imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = Color.Linen;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
-            imgBoxOpc.Location = new Point(32, 21);
+            imgBoxOpc.Location = new Point(77, 94);
             imgBoxOpc.Name = "imgBoxOpc";
             imgBoxOpc.Size = new Size(91, 93);
             imgBoxOpc.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -83,7 +83,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 28.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(120, 10, 90);
-            label2.Location = new Point(215, 38);
+            label2.Location = new Point(260, 111);
             label2.Name = "label2";
             label2.Size = new Size(522, 54);
             label2.TabIndex = 27;
@@ -97,7 +97,7 @@
             btnLimpiar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.White;
             btnLimpiar.Image = (Image)resources.GetObject("btnLimpiar.Image");
-            btnLimpiar.Location = new Point(623, 138);
+            btnLimpiar.Location = new Point(670, 256);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(235, 45);
             btnLimpiar.TabIndex = 38;
@@ -114,7 +114,7 @@
             btnBuscarCliente.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnBuscarCliente.ForeColor = Color.White;
             btnBuscarCliente.Image = (Image)resources.GetObject("btnBuscarCliente.Image");
-            btnBuscarCliente.Location = new Point(422, 138);
+            btnBuscarCliente.Location = new Point(469, 256);
             btnBuscarCliente.Name = "btnBuscarCliente";
             btnBuscarCliente.Size = new Size(195, 45);
             btnBuscarCliente.TabIndex = 37;
@@ -126,7 +126,7 @@
             // txtDni
             // 
             txtDni.Anchor = AnchorStyles.None;
-            txtDni.Location = new Point(169, 149);
+            txtDni.Location = new Point(216, 265);
             txtDni.MaximumSize = new Size(238, 45);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(238, 27);
@@ -138,7 +138,7 @@
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(34, 149);
+            lblDni.Location = new Point(81, 265);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(131, 23);
             lblDni.TabIndex = 35;
@@ -149,7 +149,7 @@
             lblFechaInscr.Anchor = AnchorStyles.None;
             lblFechaInscr.AutoSize = true;
             lblFechaInscr.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblFechaInscr.Location = new Point(469, 312);
+            lblFechaInscr.Location = new Point(516, 428);
             lblFechaInscr.Name = "lblFechaInscr";
             lblFechaInscr.Size = new Size(57, 23);
             lblFechaInscr.TabIndex = 73;
@@ -159,7 +159,7 @@
             // 
             cBoxActividad.Anchor = AnchorStyles.None;
             cBoxActividad.FormattingEnabled = true;
-            cBoxActividad.Location = new Point(133, 312);
+            cBoxActividad.Location = new Point(180, 428);
             cBoxActividad.Name = "cBoxActividad";
             cBoxActividad.Size = new Size(300, 28);
             cBoxActividad.TabIndex = 72;
@@ -170,7 +170,7 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label8.Location = new Point(35, 312);
+            label8.Location = new Point(82, 428);
             label8.Name = "label8";
             label8.Size = new Size(92, 23);
             label8.TabIndex = 71;
@@ -179,7 +179,7 @@
             // txtBoxApellido
             // 
             txtBoxApellido.Anchor = AnchorStyles.None;
-            txtBoxApellido.Location = new Point(558, 245);
+            txtBoxApellido.Location = new Point(605, 361);
             txtBoxApellido.Name = "txtBoxApellido";
             txtBoxApellido.Size = new Size(300, 27);
             txtBoxApellido.TabIndex = 70;
@@ -187,7 +187,7 @@
             // txtBoxNombre
             // 
             txtBoxNombre.Anchor = AnchorStyles.None;
-            txtBoxNombre.Location = new Point(133, 245);
+            txtBoxNombre.Location = new Point(180, 361);
             txtBoxNombre.Name = "txtBoxNombre";
             txtBoxNombre.Size = new Size(300, 27);
             txtBoxNombre.TabIndex = 69;
@@ -197,7 +197,7 @@
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(469, 247);
+            label5.Location = new Point(516, 363);
             label5.Name = "label5";
             label5.Size = new Size(83, 23);
             label5.TabIndex = 68;
@@ -208,7 +208,7 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(35, 248);
+            label6.Location = new Point(82, 364);
             label6.Name = "label6";
             label6.Size = new Size(81, 23);
             label6.TabIndex = 67;
@@ -217,7 +217,7 @@
             // txtBoxValor
             // 
             txtBoxValor.Anchor = AnchorStyles.None;
-            txtBoxValor.Location = new Point(558, 313);
+            txtBoxValor.Location = new Point(605, 429);
             txtBoxValor.Name = "txtBoxValor";
             txtBoxValor.Size = new Size(300, 27);
             txtBoxValor.TabIndex = 74;
@@ -229,7 +229,7 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(378, 455);
+            button1.Location = new Point(404, 569);
             button1.Name = "button1";
             button1.Size = new Size(195, 45);
             button1.TabIndex = 75;
@@ -242,7 +242,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(35, 379);
+            label1.Location = new Point(82, 495);
             label1.Name = "label1";
             label1.Size = new Size(83, 23);
             label1.TabIndex = 76;
@@ -251,7 +251,7 @@
             // txtBoxHorarios
             // 
             txtBoxHorarios.Anchor = AnchorStyles.None;
-            txtBoxHorarios.Location = new Point(133, 378);
+            txtBoxHorarios.Location = new Point(180, 494);
             txtBoxHorarios.Name = "txtBoxHorarios";
             txtBoxHorarios.Size = new Size(300, 27);
             txtBoxHorarios.TabIndex = 77;
@@ -261,7 +261,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(889, 521);
+            ClientSize = new Size(982, 753);
             Controls.Add(txtBoxHorarios);
             Controls.Add(label1);
             Controls.Add(button1);
@@ -280,7 +280,9 @@
             Controls.Add(pbVolver);
             Controls.Add(imgBoxOpc);
             Controls.Add(label2);
+            MinimumSize = new Size(1000, 800);
             Name = "Inscribir_Actividad";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Inscribir_Actividad";
             ((System.ComponentModel.ISupportInitialize)pbVolver).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgBoxOpc).EndInit();

@@ -42,6 +42,49 @@ namespace ClubDeportivoApp.Datos
                 }
             }
             return salida;
-        }      
+        }
+
+        public List<E_Actividad> ListarTodasLasActividades()
+        {
+            var lista = new List<E_Actividad>();
+            MySqlConnection conexion = null;
+
+            try
+            {
+                conexion = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("ListarTodasLasActividades", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                conexion.Open();
+                MySqlDataReader reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    var actividad = new E_Actividad
+                    {
+                        CodActividad = reader.IsDBNull("Código") ? string.Empty : reader.GetString("Código"),
+                        Nombre = reader.IsDBNull("Nombre") ? string.Empty : reader.GetString("Nombre"),
+                        Valor = reader.IsDBNull("Precio") ? 0 : Convert.ToSingle(reader.GetDecimal("Precio")),
+                        Horario = reader.IsDBNull("Horarios") ? string.Empty : reader.GetString("Horarios")
+                    };
+
+                    lista.Add(actividad);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al listar actividades:\n" + ex.Message, "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return lista;
+        }
     }
 }

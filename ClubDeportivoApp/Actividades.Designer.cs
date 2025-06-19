@@ -140,6 +140,7 @@
             ListarActividadesBtn.TabIndex = 52;
             ListarActividadesBtn.Text = "Ver Actividades";
             ListarActividadesBtn.UseVisualStyleBackColor = false;
+            ListarActividadesBtn.Click += ListarActividadesBtn_Click;
             // 
             // InscribirActBtn
             // 
