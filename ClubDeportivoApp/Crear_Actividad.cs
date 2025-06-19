@@ -26,6 +26,9 @@ namespace ClubDeportivoApp
             else
             {
                 btnCrearActividad.Enabled = false;
+                btnBuscarActividad.Enabled = true;
+                txtCodigo.ReadOnly = true;
+                btnModificar.Enabled = false; // se activará después de una búsqueda
             }
         }
 
@@ -44,10 +47,10 @@ namespace ClubDeportivoApp
 
         private void txtActividad_TextChanged(object sender, EventArgs e)
         {
-            if (rbtCrear.Checked && !string.IsNullOrWhiteSpace(txtActividad.Text))
+            if (rbtModificar.Checked && !string.IsNullOrWhiteSpace(txtActividad.Text))
             {
-                // Generar código automático solo en modo creación
-                txtCodigo.Text = "ACT-" + txtActividad.Text.Replace(" ", "-");
+                string codigoGenerado = "ACT-" + txtActividad.Text.Trim().Replace(" ", "").ToUpper();
+                txtCodigo.Text = codigoGenerado;
             }
         }
 
@@ -121,6 +124,7 @@ namespace ClubDeportivoApp
             txtPrecio.Clear();
             txtHorarios.Clear();
             btnModificar.Enabled = false;
+            txtCodigo.ReadOnly = true;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -149,7 +153,7 @@ namespace ClubDeportivoApp
             {
                 mySqlConnection = Conexion.getInstancia().CrearConexion();
                 mySqlConnection.Open();
-                
+
                 string query = @"UPDATE Actividades 
                  SET Nombre = @nombre, Valor = @valor, Horario = @horario 
                  WHERE CodActividad = @codigo";
@@ -169,6 +173,8 @@ namespace ClubDeportivoApp
                         {
                             MessageBox.Show("Actividad modificada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LimpiarCampos();
+                            txtCodigo.ReadOnly = false;
+                            txtCodigo.Focus();
                         }
                         else
                         {
@@ -229,6 +235,8 @@ namespace ClubDeportivoApp
                                 txtHorarios.Text = reader.IsDBNull(reader.GetOrdinal("Horario"))
                                     ? string.Empty
                                     : reader.GetString(reader.GetOrdinal("Horario"));
+                                txtCodigo.ReadOnly = true;
+                                btnModificar.Enabled = true;
                             }
                             else
                             {
