@@ -1,4 +1,5 @@
 ﻿using ClubDeportivoApp.Entidades;
+using MySql.Data.MySqlClient;
 
 namespace ClubDeportivoApp
 {
@@ -111,6 +112,14 @@ namespace ClubDeportivoApp
                 MessageBox.Show($"Error al crear actividad: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void LimpiarCampos()
+        {
+            txtCodigo.Clear();
+            txtActividad.Clear();
+            txtPrecio.Clear();
+            txtHorarios.Clear();
+            btnModificar.Enabled = false;
+        }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -134,9 +143,34 @@ namespace ClubDeportivoApp
             // Lógica para modificar la actividad
             try
             {
-                // TODO: Implementar lógica de modificación en la base de datos
+                string connectionString = "server=localhost;database=clubdeportivo;uid=root;pwd=;";
+                string query = @"UPDATE Actividades 
+                 SET Nombre = @nombre, Valor = @valor, Horario = @horario 
+                 WHERE CodActividad = @codigo";
 
-                MessageBox.Show("Lógica de modificación de actividad implementada aquí", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", txtActividad.Text.Trim());
+                        cmd.Parameters.AddWithValue("@valor", precio); // ya validado como float
+                        cmd.Parameters.AddWithValue("@horario", txtHorarios.Text.Trim());
+                        cmd.Parameters.AddWithValue("@codigo", txtCodigo.Text.Trim());
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+
+                        if (filasAfectadas > 0)
+                        {
+                            MessageBox.Show("Actividad modificada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimpiarCampos();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró ninguna actividad con ese código.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -146,15 +180,48 @@ namespace ClubDeportivoApp
 
         private void btnBuscarActividad_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+            string codActividad = txtCodigo.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(codActividad) || !codActividad.StartsWith("ACT-"))
             {
-                MessageBox.Show("Ingrese un código de actividad para buscar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor ingrese un código válido, debe comenzar con 'ACT-'.");
                 return;
             }
-
             try
             {
-                // TODO: Implementar lógica de búsqueda en la base de datos
+                string connectionString = "server=localhost;database=clubdeportivo;uid=root;pwd=;";
+                string query = "SELECT Nombre, Valor, Horario FROM Actividades WHERE CodActividad = @codigo";
+
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@codigo", codActividad);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                txtActividad.Text = reader.IsDBNull(reader.GetOrdinal("Nombre"))
+                                    ? string.Empty
+                                    : reader.GetString(reader.GetOrdinal("Nombre"));
+
+                                txtPrecio.Text = reader.IsDBNull(reader.GetOrdinal("Valor"))
+                                    ? "0.00"
+                                    : reader.GetDouble(reader.GetOrdinal("Valor")).ToString("F2");
+
+                                txtHorarios.Text = reader.IsDBNull(reader.GetOrdinal("Horario"))
+                                    ? string.Empty
+                                    : reader.GetString(reader.GetOrdinal("Horario"));
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se encontró ninguna actividad con ese código.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
 
             }
             catch (Exception ex)
