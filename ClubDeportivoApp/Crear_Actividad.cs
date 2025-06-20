@@ -7,6 +7,9 @@ namespace ClubDeportivoApp
 {
     public partial class Crear_Actividad : Form
     {
+        // Variable de control para saber si se encontró una actividad
+        private bool _actividadEncontrada = false;
+
         public Crear_Actividad()
         {
             InitializeComponent();
@@ -61,10 +64,19 @@ namespace ClubDeportivoApp
             txtPrecio.Text = string.Empty;
             txtHorarios.Text = string.Empty;
 
+            // Restablecer el estado de txtCodigo según el modo seleccionado
             if (rbtCrear.Checked)
             {
-                txtCodigo.ReadOnly = true;
+                txtCodigo.ReadOnly = true; // En modo Crear, el campo debe estar bloqueado
             }
+            else if (rbtModificar.Checked)
+            {
+                txtCodigo.ReadOnly = false; // En modo Modificar, el campo debe estar habilitado
+                txtCodigo.Focus(); // Colocar el foco en el campo Código
+            }
+
+            // Restablecer el estado de actividad encontrada
+            _actividadEncontrada = false;
         }
 
         private void btnCrearActividad_Click(object sender, EventArgs e)
@@ -123,8 +135,9 @@ namespace ClubDeportivoApp
             txtActividad.Clear();
             txtPrecio.Clear();
             txtHorarios.Clear();
+            _actividadEncontrada = false; // Restablecer estado
             btnModificar.Enabled = false;
-            txtCodigo.ReadOnly = true;
+            txtCodigo.ReadOnly = false;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -173,8 +186,8 @@ namespace ClubDeportivoApp
                         {
                             MessageBox.Show("Actividad modificada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LimpiarCampos();
-                            txtCodigo.ReadOnly = false;
-                            txtCodigo.Focus();
+                            txtCodigo.ReadOnly = true;
+                            txtActividad.Focus();
                         }
                         else
                         {
@@ -237,6 +250,7 @@ namespace ClubDeportivoApp
                                     : reader.GetString(reader.GetOrdinal("Horario"));
                                 txtCodigo.ReadOnly = true;
                                 btnModificar.Enabled = true;
+                                _actividadEncontrada = true; // Marcar que se encontró una actividad
                             }
                             else
                             {
@@ -290,10 +304,15 @@ namespace ClubDeportivoApp
                 btnCrearActividad.Enabled = false;
                 btnModificar.Enabled = true;
                 btnBuscarActividad.Enabled = true;
-                txtCodigo.ReadOnly = false; // Habilitado para buscar
+                // Habilitar txtCodigo para nueva búsqueda
+                txtCodigo.ReadOnly = false;
+                txtCodigo.Focus(); // Colocar el foco en el campo Código
 
                 // Limpiar campos al cambiar de modo
                 btnLimpiar_Click(sender, e);
+
+                // Restablecer el estado de actividad encontrada
+                _actividadEncontrada = false;
             }
         }
     }
