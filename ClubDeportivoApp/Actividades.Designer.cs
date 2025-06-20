@@ -52,11 +52,11 @@
             lblTituloOpc.AutoSize = true;
             lblTituloOpc.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloOpc.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTituloOpc.Location = new Point(365, 75);
+            lblTituloOpc.Location = new Point(319, 56);
             lblTituloOpc.Name = "lblTituloOpc";
-            lblTituloOpc.Size = new Size(201, 31);
+            lblTituloOpc.Size = new Size(228, 25);
             lblTituloOpc.TabIndex = 58;
-            lblTituloOpc.Text = "PANEL DE PAGOS";
+            lblTituloOpc.Text = "PANEL DE ACTIVIDADES";
             // 
             // pbVolver
             // 
@@ -64,10 +64,11 @@
             pbVolver.BackColor = Color.FromArgb(120, 10, 90);
             pbVolver.BackgroundImageLayout = ImageLayout.Stretch;
             pbVolver.Image = (Image)resources.GetObject("pbVolver.Image");
-            pbVolver.Location = new Point(608, 591);
+            pbVolver.Location = new Point(532, 443);
+            pbVolver.Margin = new Padding(3, 2, 3, 2);
             pbVolver.Name = "pbVolver";
-            pbVolver.Padding = new Padding(5);
-            pbVolver.Size = new Size(88, 88);
+            pbVolver.Padding = new Padding(4, 4, 4, 4);
+            pbVolver.Size = new Size(77, 66);
             pbVolver.SizeMode = PictureBoxSizeMode.StretchImage;
             pbVolver.TabIndex = 57;
             pbVolver.TabStop = false;
@@ -78,10 +79,11 @@
             pbVerActividades.BackColor = Color.DarkGreen;
             pbVerActividades.BackgroundImageLayout = ImageLayout.Stretch;
             pbVerActividades.Image = (Image)resources.GetObject("pbVerActividades.Image");
-            pbVerActividades.Location = new Point(608, 455);
+            pbVerActividades.Location = new Point(532, 341);
+            pbVerActividades.Margin = new Padding(3, 2, 3, 2);
             pbVerActividades.Name = "pbVerActividades";
-            pbVerActividades.Padding = new Padding(5);
-            pbVerActividades.Size = new Size(88, 88);
+            pbVerActividades.Padding = new Padding(4, 4, 4, 4);
+            pbVerActividades.Size = new Size(77, 66);
             pbVerActividades.SizeMode = PictureBoxSizeMode.Zoom;
             pbVerActividades.TabIndex = 56;
             pbVerActividades.TabStop = false;
@@ -92,10 +94,11 @@
             pbCrearModificarActividad.BackColor = Color.DarkGreen;
             pbCrearModificarActividad.BackgroundImageLayout = ImageLayout.Stretch;
             pbCrearModificarActividad.Image = (Image)resources.GetObject("pbCrearModificarActividad.Image");
-            pbCrearModificarActividad.Location = new Point(608, 309);
+            pbCrearModificarActividad.Location = new Point(532, 232);
+            pbCrearModificarActividad.Margin = new Padding(3, 2, 3, 2);
             pbCrearModificarActividad.Name = "pbCrearModificarActividad";
-            pbCrearModificarActividad.Padding = new Padding(5);
-            pbCrearModificarActividad.Size = new Size(88, 88);
+            pbCrearModificarActividad.Padding = new Padding(4, 4, 4, 4);
+            pbCrearModificarActividad.Size = new Size(77, 66);
             pbCrearModificarActividad.SizeMode = PictureBoxSizeMode.Zoom;
             pbCrearModificarActividad.TabIndex = 55;
             pbCrearModificarActividad.TabStop = false;
@@ -106,10 +109,11 @@
             pbInscribirActividad.BackColor = Color.DarkGreen;
             pbInscribirActividad.BackgroundImageLayout = ImageLayout.Stretch;
             pbInscribirActividad.Image = (Image)resources.GetObject("pbInscribirActividad.Image");
-            pbInscribirActividad.Location = new Point(608, 163);
+            pbInscribirActividad.Location = new Point(532, 122);
+            pbInscribirActividad.Margin = new Padding(3, 2, 3, 2);
             pbInscribirActividad.Name = "pbInscribirActividad";
-            pbInscribirActividad.Padding = new Padding(5);
-            pbInscribirActividad.Size = new Size(88, 88);
+            pbInscribirActividad.Padding = new Padding(4, 4, 4, 4);
+            pbInscribirActividad.Size = new Size(77, 66);
             pbInscribirActividad.SizeMode = PictureBoxSizeMode.Zoom;
             pbInscribirActividad.TabIndex = 54;
             pbInscribirActividad.TabStop = false;
@@ -120,9 +124,10 @@
             VolverBtn.BackColor = Color.FromArgb(120, 10, 90);
             VolverBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             VolverBtn.ForeColor = Color.Linen;
-            VolverBtn.Location = new Point(715, 591);
+            VolverBtn.Location = new Point(626, 443);
+            VolverBtn.Margin = new Padding(3, 2, 3, 2);
             VolverBtn.Name = "VolverBtn";
-            VolverBtn.Size = new Size(186, 88);
+            VolverBtn.Size = new Size(163, 66);
             VolverBtn.TabIndex = 4;
             VolverBtn.Text = "Volver";
             VolverBtn.UseVisualStyleBackColor = false;
@@ -134,9 +139,10 @@
             ListarActividadesBtn.BackColor = Color.DarkGreen;
             ListarActividadesBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ListarActividadesBtn.ForeColor = Color.Linen;
-            ListarActividadesBtn.Location = new Point(715, 455);
+            ListarActividadesBtn.Location = new Point(626, 341);
+            ListarActividadesBtn.Margin = new Padding(3, 2, 3, 2);
             ListarActividadesBtn.Name = "ListarActividadesBtn";
-            ListarActividadesBtn.Size = new Size(186, 88);
+            ListarActividadesBtn.Size = new Size(163, 66);
             ListarActividadesBtn.TabIndex = 3;
             ListarActividadesBtn.Text = "Ver Actividades";
             ListarActividadesBtn.UseVisualStyleBackColor = false;
@@ -148,9 +154,10 @@
             InscribirActBtn.BackColor = Color.DarkGreen;
             InscribirActBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             InscribirActBtn.ForeColor = Color.Linen;
-            InscribirActBtn.Location = new Point(715, 163);
+            InscribirActBtn.Location = new Point(626, 122);
+            InscribirActBtn.Margin = new Padding(3, 2, 3, 2);
             InscribirActBtn.Name = "InscribirActBtn";
-            InscribirActBtn.Size = new Size(186, 88);
+            InscribirActBtn.Size = new Size(163, 66);
             InscribirActBtn.TabIndex = 1;
             InscribirActBtn.Text = "Inscribir | Cobrar Actividad";
             InscribirActBtn.UseVisualStyleBackColor = false;
@@ -162,9 +169,10 @@
             CrearModificarBtn.BackColor = Color.DarkGreen;
             CrearModificarBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CrearModificarBtn.ForeColor = Color.Linen;
-            CrearModificarBtn.Location = new Point(715, 309);
+            CrearModificarBtn.Location = new Point(626, 232);
+            CrearModificarBtn.Margin = new Padding(3, 2, 3, 2);
             CrearModificarBtn.Name = "CrearModificarBtn";
-            CrearModificarBtn.Size = new Size(186, 88);
+            CrearModificarBtn.Size = new Size(163, 66);
             CrearModificarBtn.TabIndex = 2;
             CrearModificarBtn.Text = "Crear | Modificar Actividad";
             CrearModificarBtn.UseVisualStyleBackColor = false;
@@ -175,20 +183,21 @@
             imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = Color.Transparent;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
-            imgBoxOpc.Location = new Point(82, 163);
+            imgBoxOpc.Location = new Point(72, 122);
+            imgBoxOpc.Margin = new Padding(3, 2, 3, 2);
             imgBoxOpc.Name = "imgBoxOpc";
-            imgBoxOpc.Padding = new Padding(10, 11, 10, 11);
-            imgBoxOpc.Size = new Size(475, 516);
+            imgBoxOpc.Padding = new Padding(9, 8, 9, 8);
+            imgBoxOpc.Size = new Size(416, 387);
             imgBoxOpc.SizeMode = PictureBoxSizeMode.StretchImage;
             imgBoxOpc.TabIndex = 49;
             imgBoxOpc.TabStop = false;
             // 
             // Actividades
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(984, 761);
+            ClientSize = new Size(861, 571);
             Controls.Add(lblTituloOpc);
             Controls.Add(pbVolver);
             Controls.Add(pbVerActividades);
@@ -200,7 +209,8 @@
             Controls.Add(CrearModificarBtn);
             Controls.Add(imgBoxOpc);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 798);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(877, 608);
             Name = "Actividades";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

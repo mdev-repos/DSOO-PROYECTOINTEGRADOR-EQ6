@@ -43,9 +43,9 @@
             lblTituloList.AutoSize = true;
             lblTituloList.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloList.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTituloList.Location = new Point(366, 63);
+            lblTituloList.Location = new Point(320, 47);
             lblTituloList.Name = "lblTituloList";
-            lblTituloList.Size = new Size(262, 31);
+            lblTituloList.Size = new Size(218, 25);
             lblTituloList.TabIndex = 29;
             lblTituloList.Text = "LISTADO DE MOROSOS";
             // 
@@ -55,10 +55,11 @@
             btnVolver.BackColor = Color.FromArgb(120, 10, 90);
             btnVolver.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = Color.Linen;
-            btnVolver.Location = new Point(734, 648);
+            btnVolver.Location = new Point(642, 486);
+            btnVolver.Margin = new Padding(3, 2, 3, 2);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(152, 53);
-            btnVolver.TabIndex = 30;
+            btnVolver.Size = new Size(133, 40);
+            btnVolver.TabIndex = 4;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
@@ -69,13 +70,14 @@
             dgvMorosos.BackgroundColor = Color.Linen;
             dgvMorosos.BorderStyle = BorderStyle.None;
             dgvMorosos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMorosos.Location = new Point(12, 147);
-            dgvMorosos.MinimumSize = new Size(788, 455);
+            dgvMorosos.Location = new Point(10, 110);
+            dgvMorosos.Margin = new Padding(3, 2, 3, 2);
+            dgvMorosos.MinimumSize = new Size(690, 341);
             dgvMorosos.Name = "dgvMorosos";
             dgvMorosos.RowHeadersWidth = 51;
             dgvMorosos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dgvMorosos.Size = new Size(948, 455);
-            dgvMorosos.TabIndex = 31;
+            dgvMorosos.Size = new Size(830, 341);
+            dgvMorosos.TabIndex = 1;
             // 
             // btnTodos
             // 
@@ -83,10 +85,11 @@
             btnTodos.BackColor = Color.Navy;
             btnTodos.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTodos.ForeColor = Color.Linen;
-            btnTodos.Location = new Point(83, 648);
+            btnTodos.Location = new Point(73, 486);
+            btnTodos.Margin = new Padding(3, 2, 3, 2);
             btnTodos.Name = "btnTodos";
-            btnTodos.Size = new Size(152, 53);
-            btnTodos.TabIndex = 32;
+            btnTodos.Size = new Size(133, 40);
+            btnTodos.TabIndex = 2;
             btnTodos.Text = "VER TODOS";
             btnTodos.UseVisualStyleBackColor = false;
             btnTodos.Click += btnTodos_Click_1;
@@ -97,27 +100,29 @@
             btnVencimientoHoy.BackColor = Color.DarkGreen;
             btnVencimientoHoy.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVencimientoHoy.ForeColor = Color.Linen;
-            btnVencimientoHoy.Location = new Point(411, 648);
+            btnVencimientoHoy.Location = new Point(360, 486);
+            btnVencimientoHoy.Margin = new Padding(3, 2, 3, 2);
             btnVencimientoHoy.Name = "btnVencimientoHoy";
-            btnVencimientoHoy.Size = new Size(152, 53);
-            btnVencimientoHoy.TabIndex = 33;
+            btnVencimientoHoy.Size = new Size(133, 40);
+            btnVencimientoHoy.TabIndex = 3;
             btnVencimientoHoy.Text = "VER HOY";
             btnVencimientoHoy.UseVisualStyleBackColor = false;
             btnVencimientoHoy.Click += btnVencimientoHoy_Click_1;
             // 
             // Listado
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(982, 753);
+            ClientSize = new Size(861, 571);
             Controls.Add(btnVencimientoHoy);
             Controls.Add(btnTodos);
             Controls.Add(dgvMorosos);
             Controls.Add(btnVolver);
             Controls.Add(lblTituloList);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 800);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(877, 610);
             Name = "Listado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

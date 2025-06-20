@@ -54,9 +54,9 @@
             lblTituloOpc.AutoSize = true;
             lblTituloOpc.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloOpc.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTituloOpc.Location = new Point(332, 62);
+            lblTituloOpc.Location = new Point(290, 46);
             lblTituloOpc.Name = "lblTituloOpc";
-            lblTituloOpc.Size = new Size(307, 31);
+            lblTituloOpc.Size = new Size(253, 25);
             lblTituloOpc.TabIndex = 39;
             lblTituloOpc.Text = "BAJA | REINCORPORACION";
             // 
@@ -69,10 +69,11 @@
             btnBuscarSocio.ForeColor = Color.White;
             btnBuscarSocio.Image = (Image)resources.GetObject("btnBuscarSocio.Image");
             btnBuscarSocio.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBuscarSocio.Location = new Point(426, 139);
+            btnBuscarSocio.Location = new Point(373, 104);
+            btnBuscarSocio.Margin = new Padding(3, 2, 3, 2);
             btnBuscarSocio.Name = "btnBuscarSocio";
-            btnBuscarSocio.Size = new Size(126, 48);
-            btnBuscarSocio.TabIndex = 41;
+            btnBuscarSocio.Size = new Size(110, 36);
+            btnBuscarSocio.TabIndex = 2;
             btnBuscarSocio.Text = "BUSCAR";
             btnBuscarSocio.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBuscarSocio.UseVisualStyleBackColor = false;
@@ -81,20 +82,21 @@
             // txtDniInput
             // 
             txtDniInput.Anchor = AnchorStyles.None;
-            txtDniInput.Location = new Point(198, 152);
-            txtDniInput.MaximumSize = new Size(238, 45);
+            txtDniInput.Location = new Point(173, 114);
+            txtDniInput.Margin = new Padding(3, 2, 3, 2);
+            txtDniInput.MaximumSize = new Size(209, 45);
             txtDniInput.Name = "txtDniInput";
-            txtDniInput.Size = new Size(195, 27);
-            txtDniInput.TabIndex = 40;
+            txtDniInput.Size = new Size(171, 23);
+            txtDniInput.TabIndex = 1;
             // 
             // lblDni
             // 
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(42, 154);
+            lblDni.Location = new Point(37, 116);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(134, 23);
+            lblDni.Size = new Size(109, 19);
             lblDni.TabIndex = 42;
             lblDni.Text = "DNI DEL SOCIO";
             // 
@@ -102,37 +104,39 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(608, 274);
+            label3.Location = new Point(532, 206);
             label3.Name = "label3";
-            label3.Size = new Size(0, 20);
+            label3.Size = new Size(0, 15);
             label3.TabIndex = 53;
             // 
             // txtCodCliente
             // 
             txtCodCliente.Anchor = AnchorStyles.None;
-            txtCodCliente.Location = new Point(142, 217);
+            txtCodCliente.Location = new Point(124, 163);
+            txtCodCliente.Margin = new Padding(3, 2, 3, 2);
             txtCodCliente.Name = "txtCodCliente";
             txtCodCliente.ReadOnly = true;
-            txtCodCliente.Size = new Size(281, 27);
-            txtCodCliente.TabIndex = 47;
+            txtCodCliente.Size = new Size(246, 23);
+            txtCodCliente.TabIndex = 3;
             // 
             // txtNombreCliente
             // 
             txtNombreCliente.Anchor = AnchorStyles.None;
-            txtNombreCliente.Location = new Point(142, 257);
+            txtNombreCliente.Location = new Point(124, 193);
+            txtNombreCliente.Margin = new Padding(3, 2, 3, 2);
             txtNombreCliente.Name = "txtNombreCliente";
             txtNombreCliente.ReadOnly = true;
-            txtNombreCliente.Size = new Size(281, 27);
-            txtNombreCliente.TabIndex = 48;
+            txtNombreCliente.Size = new Size(246, 23);
+            txtNombreCliente.TabIndex = 4;
             // 
             // lblCodCliente
             // 
             lblCodCliente.Anchor = AnchorStyles.None;
             lblCodCliente.AutoSize = true;
             lblCodCliente.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodCliente.Location = new Point(43, 217);
+            lblCodCliente.Location = new Point(38, 163);
             lblCodCliente.Name = "lblCodCliente";
-            lblCodCliente.Size = new Size(77, 23);
+            lblCodCliente.Size = new Size(64, 19);
             lblCodCliente.TabIndex = 52;
             lblCodCliente.Text = "CODIGO";
             // 
@@ -141,9 +145,9 @@
             lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblApellido.Location = new Point(461, 258);
+            lblApellido.Location = new Point(403, 194);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(90, 23);
+            lblApellido.Size = new Size(74, 19);
             lblApellido.TabIndex = 51;
             lblApellido.Text = "APELLIDO";
             // 
@@ -152,9 +156,9 @@
             lblCodigo.Anchor = AnchorStyles.None;
             lblCodigo.AutoSize = true;
             lblCodigo.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodigo.Location = new Point(43, 258);
+            lblCodigo.Location = new Point(38, 194);
             lblCodigo.Name = "lblCodigo";
-            lblCodigo.Size = new Size(83, 23);
+            lblCodigo.Size = new Size(69, 19);
             lblCodigo.TabIndex = 50;
             lblCodigo.Text = "NOMBRE";
             // 
@@ -163,29 +167,31 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(473, 217);
+            label1.Location = new Point(414, 163);
             label1.Name = "label1";
-            label1.Size = new Size(76, 23);
+            label1.Size = new Size(62, 19);
             label1.TabIndex = 55;
             label1.Text = "ESTADO";
             // 
             // txtApellidoCliente
             // 
             txtApellidoCliente.Anchor = AnchorStyles.None;
-            txtApellidoCliente.Location = new Point(571, 258);
+            txtApellidoCliente.Location = new Point(500, 194);
+            txtApellidoCliente.Margin = new Padding(3, 2, 3, 2);
             txtApellidoCliente.Name = "txtApellidoCliente";
             txtApellidoCliente.ReadOnly = true;
-            txtApellidoCliente.Size = new Size(281, 27);
-            txtApellidoCliente.TabIndex = 56;
+            txtApellidoCliente.Size = new Size(246, 23);
+            txtApellidoCliente.TabIndex = 6;
             // 
             // txtEstadoCliente
             // 
             txtEstadoCliente.Anchor = AnchorStyles.None;
-            txtEstadoCliente.Location = new Point(571, 217);
+            txtEstadoCliente.Location = new Point(500, 163);
+            txtEstadoCliente.Margin = new Padding(3, 2, 3, 2);
             txtEstadoCliente.Name = "txtEstadoCliente";
             txtEstadoCliente.ReadOnly = true;
-            txtEstadoCliente.Size = new Size(281, 27);
-            txtEstadoCliente.TabIndex = 57;
+            txtEstadoCliente.Size = new Size(246, 23);
+            txtEstadoCliente.TabIndex = 5;
             // 
             // btnVolver
             // 
@@ -193,10 +199,11 @@
             btnVolver.BackColor = Color.FromArgb(120, 10, 90);
             btnVolver.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = Color.Linen;
-            btnVolver.Location = new Point(759, 645);
+            btnVolver.Location = new Point(664, 484);
+            btnVolver.Margin = new Padding(3, 2, 3, 2);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(152, 53);
-            btnVolver.TabIndex = 58;
+            btnVolver.Size = new Size(133, 40);
+            btnVolver.TabIndex = 10;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
@@ -207,11 +214,10 @@
             btnLimpiar.BackColor = Color.Navy;
             btnLimpiar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.Linen;
-            btnLimpiar.Location = new Point(584, 645);
-            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
+            btnLimpiar.Location = new Point(511, 484);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(152, 53);
-            btnLimpiar.TabIndex = 60;
+            btnLimpiar.Size = new Size(133, 40);
+            btnLimpiar.TabIndex = 9;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -222,11 +228,10 @@
             btnReincorporar.BackColor = Color.DarkGreen;
             btnReincorporar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReincorporar.ForeColor = Color.Linen;
-            btnReincorporar.Location = new Point(238, 353);
-            btnReincorporar.Margin = new Padding(3, 4, 3, 4);
+            btnReincorporar.Location = new Point(208, 265);
             btnReincorporar.Name = "btnReincorporar";
-            btnReincorporar.Size = new Size(172, 53);
-            btnReincorporar.TabIndex = 59;
+            btnReincorporar.Size = new Size(150, 40);
+            btnReincorporar.TabIndex = 8;
             btnReincorporar.Text = "REINCORPORAR";
             btnReincorporar.UseVisualStyleBackColor = false;
             btnReincorporar.Click += btnReincorporar_Click;
@@ -237,21 +242,20 @@
             btnBaja.BackColor = Color.Black;
             btnBaja.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBaja.ForeColor = Color.Linen;
-            btnBaja.Location = new Point(43, 353);
-            btnBaja.Margin = new Padding(3, 4, 3, 4);
+            btnBaja.Location = new Point(38, 265);
             btnBaja.Name = "btnBaja";
-            btnBaja.Size = new Size(172, 53);
-            btnBaja.TabIndex = 61;
+            btnBaja.Size = new Size(150, 40);
+            btnBaja.TabIndex = 7;
             btnBaja.Text = "EFECTUAR BAJA";
             btnBaja.UseVisualStyleBackColor = false;
             btnBaja.Click += btnBaja_Click;
             // 
             // Baja_Socio
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(982, 753);
+            ClientSize = new Size(861, 571);
             Controls.Add(btnBaja);
             Controls.Add(btnLimpiar);
             Controls.Add(btnReincorporar);
@@ -269,7 +273,8 @@
             Controls.Add(txtDniInput);
             Controls.Add(lblDni);
             Controls.Add(lblTituloOpc);
-            MinimumSize = new Size(1000, 800);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(877, 610);
             Name = "Baja_Socio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

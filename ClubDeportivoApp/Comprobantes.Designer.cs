@@ -55,12 +55,13 @@
             dgvComprobantes.BorderStyle = BorderStyle.None;
             dgvComprobantes.ColumnHeadersHeight = 29;
             dgvComprobantes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvComprobantes.Location = new Point(12, 314);
-            dgvComprobantes.MinimumSize = new Size(950, 330);
+            dgvComprobantes.Location = new Point(10, 236);
+            dgvComprobantes.Margin = new Padding(3, 2, 3, 2);
+            dgvComprobantes.MinimumSize = new Size(831, 248);
             dgvComprobantes.Name = "dgvComprobantes";
             dgvComprobantes.RowHeadersWidth = 51;
             dgvComprobantes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dgvComprobantes.Size = new Size(950, 330);
+            dgvComprobantes.Size = new Size(831, 248);
             dgvComprobantes.TabIndex = 6;
             // 
             // lblTituloList
@@ -69,9 +70,9 @@
             lblTituloList.AutoSize = true;
             lblTituloList.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloList.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTituloList.Location = new Point(340, 60);
+            lblTituloList.Location = new Point(298, 45);
             lblTituloList.Name = "lblTituloList";
-            lblTituloList.Size = new Size(303, 31);
+            lblTituloList.Size = new Size(252, 25);
             lblTituloList.TabIndex = 32;
             lblTituloList.Text = "COMPROBANTES DE PAGO";
             // 
@@ -81,10 +82,11 @@
             btnVolver.BackColor = Color.FromArgb(120, 10, 90);
             btnVolver.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = Color.Linen;
-            btnVolver.Location = new Point(769, 666);
+            btnVolver.Location = new Point(673, 500);
+            btnVolver.Margin = new Padding(3, 2, 3, 2);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(152, 53);
-            btnVolver.TabIndex = 8;
+            btnVolver.Size = new Size(133, 40);
+            btnVolver.TabIndex = 7;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
@@ -98,9 +100,10 @@
             btnBuscarComprobantes.ForeColor = Color.White;
             btnBuscarComprobantes.Image = (Image)resources.GetObject("btnBuscarComprobantes.Image");
             btnBuscarComprobantes.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBuscarComprobantes.Location = new Point(408, 128);
+            btnBuscarComprobantes.Location = new Point(357, 96);
+            btnBuscarComprobantes.Margin = new Padding(3, 2, 3, 2);
             btnBuscarComprobantes.Name = "btnBuscarComprobantes";
-            btnBuscarComprobantes.Size = new Size(126, 48);
+            btnBuscarComprobantes.Size = new Size(110, 36);
             btnBuscarComprobantes.TabIndex = 2;
             btnBuscarComprobantes.Text = "BUSCAR";
             btnBuscarComprobantes.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -110,10 +113,11 @@
             // txtDniInput
             // 
             txtDniInput.Anchor = AnchorStyles.None;
-            txtDniInput.Location = new Point(180, 141);
-            txtDniInput.MaximumSize = new Size(238, 45);
+            txtDniInput.Location = new Point(158, 106);
+            txtDniInput.Margin = new Padding(3, 2, 3, 2);
+            txtDniInput.MaximumSize = new Size(209, 45);
             txtDniInput.Name = "txtDniInput";
-            txtDniInput.Size = new Size(195, 27);
+            txtDniInput.Size = new Size(171, 23);
             txtDniInput.TabIndex = 1;
             // 
             // lblDni
@@ -121,9 +125,9 @@
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(12, 141);
+            lblDni.Location = new Point(10, 106);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(148, 23);
+            lblDni.Size = new Size(119, 19);
             lblDni.TabIndex = 36;
             lblDni.Text = "DNI DEL CLIENTE";
             // 
@@ -131,36 +135,39 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(577, 267);
+            label3.Location = new Point(505, 200);
             label3.Name = "label3";
-            label3.Size = new Size(0, 20);
+            label3.Size = new Size(0, 15);
             label3.TabIndex = 46;
             // 
             // txtBoxResCod
             // 
             txtBoxResCod.Anchor = AnchorStyles.None;
-            txtBoxResCod.Location = new Point(111, 210);
+            txtBoxResCod.Location = new Point(97, 158);
+            txtBoxResCod.Margin = new Padding(3, 2, 3, 2);
             txtBoxResCod.Name = "txtBoxResCod";
             txtBoxResCod.ReadOnly = true;
-            txtBoxResCod.Size = new Size(281, 27);
+            txtBoxResCod.Size = new Size(246, 23);
             txtBoxResCod.TabIndex = 3;
             // 
             // txtBoxResNombre
             // 
             txtBoxResNombre.Anchor = AnchorStyles.None;
-            txtBoxResNombre.Location = new Point(111, 250);
+            txtBoxResNombre.Location = new Point(97, 188);
+            txtBoxResNombre.Margin = new Padding(3, 2, 3, 2);
             txtBoxResNombre.Name = "txtBoxResNombre";
             txtBoxResNombre.ReadOnly = true;
-            txtBoxResNombre.Size = new Size(281, 27);
+            txtBoxResNombre.Size = new Size(246, 23);
             txtBoxResNombre.TabIndex = 4;
             // 
             // txtBoxResApellido
             // 
             txtBoxResApellido.Anchor = AnchorStyles.None;
-            txtBoxResApellido.Location = new Point(540, 251);
+            txtBoxResApellido.Location = new Point(472, 188);
+            txtBoxResApellido.Margin = new Padding(3, 2, 3, 2);
             txtBoxResApellido.Name = "txtBoxResApellido";
             txtBoxResApellido.ReadOnly = true;
-            txtBoxResApellido.Size = new Size(349, 27);
+            txtBoxResApellido.Size = new Size(306, 23);
             txtBoxResApellido.TabIndex = 5;
             // 
             // lblCodCliente
@@ -168,9 +175,9 @@
             lblCodCliente.Anchor = AnchorStyles.None;
             lblCodCliente.AutoSize = true;
             lblCodCliente.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodCliente.Location = new Point(12, 210);
+            lblCodCliente.Location = new Point(10, 158);
             lblCodCliente.Name = "lblCodCliente";
-            lblCodCliente.Size = new Size(77, 23);
+            lblCodCliente.Size = new Size(64, 19);
             lblCodCliente.TabIndex = 42;
             lblCodCliente.Text = "CODIGO";
             // 
@@ -179,9 +186,9 @@
             lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblApellido.Location = new Point(430, 251);
+            lblApellido.Location = new Point(376, 188);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(90, 23);
+            lblApellido.Size = new Size(74, 19);
             lblApellido.TabIndex = 41;
             lblApellido.Text = "APELLIDO";
             // 
@@ -190,18 +197,18 @@
             lblCodigo.Anchor = AnchorStyles.None;
             lblCodigo.AutoSize = true;
             lblCodigo.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodigo.Location = new Point(12, 251);
+            lblCodigo.Location = new Point(10, 188);
             lblCodigo.Name = "lblCodigo";
-            lblCodigo.Size = new Size(83, 23);
+            lblCodigo.Size = new Size(69, 19);
             lblCodigo.TabIndex = 40;
             lblCodigo.Text = "NOMBRE";
             // 
             // Comprobantes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(982, 753);
+            ClientSize = new Size(861, 571);
             Controls.Add(label3);
             Controls.Add(txtBoxResCod);
             Controls.Add(txtBoxResNombre);
@@ -216,7 +223,8 @@
             Controls.Add(dgvComprobantes);
             Controls.Add(lblTituloList);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 800);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(877, 610);
             Name = "Comprobantes";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

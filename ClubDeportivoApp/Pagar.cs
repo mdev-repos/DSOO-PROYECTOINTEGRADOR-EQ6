@@ -37,6 +37,7 @@ namespace ClubDeportivoApp
         private void CargarDatosAutomaticos(E_Socio socio, E_CuotaMensual cuota)
         {
             // Llenar campos con datos del socio y cuota
+            txtDni.Text = socio.Dni.ToString();
             txtBoxResNombre.Text = socio.Nombre;
             txtBoxResApellido.Text = socio.Apellido;
             txtBoxResCodCuota.Text = cuota.CodCuota;
@@ -61,7 +62,7 @@ namespace ClubDeportivoApp
         private void BloquearBusqueda()
         {
             // Ocultar elementos de búsqueda
-            txtDni.Visible = false;
+            txtDni.ReadOnly = true;
             btnBuscarCliente.Visible = false;
             label1.Text = "PAGO DE CUOTA DE INSCRIPCIÓN";
             this.Text = "Pago de inscripción";

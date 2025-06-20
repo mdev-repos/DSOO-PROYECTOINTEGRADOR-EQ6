@@ -61,9 +61,10 @@
             pbVolver.BackColor = Color.Linen;
             pbVolver.Cursor = Cursors.Hand;
             pbVolver.Image = (Image)resources.GetObject("pbVolver.Image");
-            pbVolver.Location = new Point(874, 82);
+            pbVolver.Location = new Point(765, 62);
+            pbVolver.Margin = new Padding(3, 2, 3, 2);
             pbVolver.Name = "pbVolver";
-            pbVolver.Size = new Size(43, 27);
+            pbVolver.Size = new Size(38, 20);
             pbVolver.SizeMode = PictureBoxSizeMode.StretchImage;
             pbVolver.TabIndex = 29;
             pbVolver.TabStop = false;
@@ -74,9 +75,10 @@
             imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = Color.Linen;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
-            imgBoxOpc.Location = new Point(91, 55);
+            imgBoxOpc.Location = new Point(80, 41);
+            imgBoxOpc.Margin = new Padding(3, 2, 3, 2);
             imgBoxOpc.Name = "imgBoxOpc";
-            imgBoxOpc.Size = new Size(91, 93);
+            imgBoxOpc.Size = new Size(80, 70);
             imgBoxOpc.SizeMode = PictureBoxSizeMode.StretchImage;
             imgBoxOpc.TabIndex = 28;
             imgBoxOpc.TabStop = false;
@@ -87,9 +89,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 28.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(120, 10, 90);
-            label2.Location = new Point(274, 72);
+            label2.Location = new Point(240, 54);
             label2.Name = "label2";
-            label2.Size = new Size(522, 54);
+            label2.Size = new Size(416, 44);
             label2.TabIndex = 27;
             label2.Text = "INSCRIBIR ACTIVIDAD";
             // 
@@ -101,10 +103,11 @@
             btnLimpiar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.White;
             btnLimpiar.Image = (Image)resources.GetObject("btnLimpiar.Image");
-            btnLimpiar.Location = new Point(599, 290);
+            btnLimpiar.Location = new Point(524, 218);
+            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(235, 45);
-            btnLimpiar.TabIndex = 38;
+            btnLimpiar.Size = new Size(206, 34);
+            btnLimpiar.TabIndex = 4;
             btnLimpiar.Text = "LIMPIAR BUSQUEDA";
             btnLimpiar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLimpiar.UseVisualStyleBackColor = false;
@@ -118,10 +121,11 @@
             btnBuscarCliente.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnBuscarCliente.ForeColor = Color.White;
             btnBuscarCliente.Image = (Image)resources.GetObject("btnBuscarCliente.Image");
-            btnBuscarCliente.Location = new Point(604, 235);
+            btnBuscarCliente.Location = new Point(528, 176);
+            btnBuscarCliente.Margin = new Padding(3, 2, 3, 2);
             btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(230, 45);
-            btnBuscarCliente.TabIndex = 37;
+            btnBuscarCliente.Size = new Size(201, 34);
+            btnBuscarCliente.TabIndex = 2;
             btnBuscarCliente.Text = "BUSCAR CLIENTE";
             btnBuscarCliente.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBuscarCliente.UseVisualStyleBackColor = false;
@@ -130,10 +134,11 @@
             // txtDni
             // 
             txtDni.Anchor = AnchorStyles.None;
-            txtDni.Location = new Point(267, 246);
+            txtDni.Location = new Point(234, 184);
+            txtDni.Margin = new Padding(3, 2, 3, 2);
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(300, 27);
-            txtDni.TabIndex = 36;
+            txtDni.Size = new Size(263, 23);
+            txtDni.TabIndex = 1;
             txtDni.KeyPress += txtDni_KeyPress;
             // 
             // lblDni
@@ -141,9 +146,9 @@
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(219, 247);
+            lblDni.Location = new Point(192, 185);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(41, 23);
+            lblDni.Size = new Size(34, 19);
             lblDni.TabIndex = 35;
             lblDni.Text = "DNI";
             // 
@@ -152,9 +157,9 @@
             lblFechaInscr.Anchor = AnchorStyles.None;
             lblFechaInscr.AutoSize = true;
             lblFechaInscr.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblFechaInscr.Location = new Point(593, 489);
+            lblFechaInscr.Location = new Point(519, 367);
             lblFechaInscr.Name = "lblFechaInscr";
-            lblFechaInscr.Size = new Size(51, 23);
+            lblFechaInscr.Size = new Size(44, 19);
             lblFechaInscr.TabIndex = 73;
             lblFechaInscr.Text = "Valor";
             // 
@@ -162,10 +167,11 @@
             // 
             cBoxActividad.Anchor = AnchorStyles.None;
             cBoxActividad.FormattingEnabled = true;
-            cBoxActividad.Location = new Point(267, 488);
+            cBoxActividad.Location = new Point(234, 366);
+            cBoxActividad.Margin = new Padding(3, 2, 3, 2);
             cBoxActividad.Name = "cBoxActividad";
-            cBoxActividad.Size = new Size(300, 28);
-            cBoxActividad.TabIndex = 72;
+            cBoxActividad.Size = new Size(263, 23);
+            cBoxActividad.TabIndex = 6;
             cBoxActividad.SelectedIndexChanged += cBoxActividad_SelectedIndexChanged;
             // 
             // label8
@@ -173,36 +179,38 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label8.Location = new Point(174, 488);
+            label8.Location = new Point(152, 366);
             label8.Name = "label8";
-            label8.Size = new Size(87, 23);
+            label8.Size = new Size(73, 19);
             label8.TabIndex = 71;
             label8.Text = "Actividad";
             // 
             // txtBoxApellido
             // 
             txtBoxApellido.Anchor = AnchorStyles.None;
-            txtBoxApellido.Location = new Point(267, 363);
+            txtBoxApellido.Location = new Point(234, 272);
+            txtBoxApellido.Margin = new Padding(3, 2, 3, 2);
             txtBoxApellido.Name = "txtBoxApellido";
-            txtBoxApellido.Size = new Size(300, 27);
-            txtBoxApellido.TabIndex = 70;
+            txtBoxApellido.Size = new Size(263, 23);
+            txtBoxApellido.TabIndex = 5;
             // 
             // txtBoxNombre
             // 
             txtBoxNombre.Anchor = AnchorStyles.None;
-            txtBoxNombre.Location = new Point(267, 301);
+            txtBoxNombre.Location = new Point(234, 226);
+            txtBoxNombre.Margin = new Padding(3, 2, 3, 2);
             txtBoxNombre.Name = "txtBoxNombre";
-            txtBoxNombre.Size = new Size(300, 27);
-            txtBoxNombre.TabIndex = 69;
+            txtBoxNombre.Size = new Size(263, 23);
+            txtBoxNombre.TabIndex = 3;
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(182, 364);
+            label5.Location = new Point(159, 273);
             label5.Name = "label5";
-            label5.Size = new Size(78, 23);
+            label5.Size = new Size(66, 19);
             label5.TabIndex = 68;
             label5.Text = "Apellido";
             // 
@@ -211,19 +219,20 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(184, 301);
+            label6.Location = new Point(161, 226);
             label6.Name = "label6";
-            label6.Size = new Size(76, 23);
+            label6.Size = new Size(65, 19);
             label6.TabIndex = 67;
             label6.Text = "Nombre";
             // 
             // txtBoxValor
             // 
             txtBoxValor.Anchor = AnchorStyles.None;
-            txtBoxValor.Location = new Point(650, 488);
+            txtBoxValor.Location = new Point(569, 366);
+            txtBoxValor.Margin = new Padding(3, 2, 3, 2);
             txtBoxValor.Name = "txtBoxValor";
-            txtBoxValor.Size = new Size(184, 27);
-            txtBoxValor.TabIndex = 74;
+            txtBoxValor.Size = new Size(162, 23);
+            txtBoxValor.TabIndex = 7;
             // 
             // button1
             // 
@@ -232,10 +241,11 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(404, 676);
+            button1.Location = new Point(354, 507);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(195, 45);
-            button1.TabIndex = 75;
+            button1.Size = new Size(171, 34);
+            button1.TabIndex = 10;
             button1.Text = "INSCRIBIR";
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = false;
@@ -246,28 +256,29 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(183, 547);
+            label1.Location = new Point(160, 410);
             label1.Name = "label1";
-            label1.Size = new Size(78, 23);
+            label1.Size = new Size(68, 19);
             label1.TabIndex = 76;
             label1.Text = "Horarios";
             // 
             // txtBoxHorarios
             // 
             txtBoxHorarios.Anchor = AnchorStyles.None;
-            txtBoxHorarios.Location = new Point(267, 543);
+            txtBoxHorarios.Location = new Point(234, 407);
+            txtBoxHorarios.Margin = new Padding(3, 2, 3, 2);
             txtBoxHorarios.Name = "txtBoxHorarios";
-            txtBoxHorarios.Size = new Size(567, 27);
-            txtBoxHorarios.TabIndex = 77;
+            txtBoxHorarios.Size = new Size(497, 23);
+            txtBoxHorarios.TabIndex = 8;
             // 
             // lblDatosCliente
             // 
             lblDatosCliente.Anchor = AnchorStyles.None;
             lblDatosCliente.AutoSize = true;
             lblDatosCliente.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDatosCliente.Location = new Point(91, 183);
+            lblDatosCliente.Location = new Point(80, 137);
             lblDatosCliente.Name = "lblDatosCliente";
-            lblDatosCliente.Size = new Size(248, 32);
+            lblDatosCliente.Size = new Size(195, 26);
             lblDatosCliente.TabIndex = 78;
             lblDatosCliente.Text = "Datos del Cliente";
             // 
@@ -276,9 +287,9 @@
             lblDatosActividad.Anchor = AnchorStyles.None;
             lblDatosActividad.AutoSize = true;
             lblDatosActividad.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDatosActividad.Location = new Point(91, 423);
+            lblDatosActividad.Location = new Point(80, 317);
             lblDatosActividad.Name = "lblDatosActividad";
-            lblDatosActividad.Size = new Size(302, 32);
+            lblDatosActividad.Size = new Size(238, 26);
             lblDatosActividad.TabIndex = 79;
             lblDatosActividad.Text = "Datos de la Actividad";
             // 
@@ -287,27 +298,26 @@
             lblDiaUso.Anchor = AnchorStyles.None;
             lblDiaUso.AutoSize = true;
             lblDiaUso.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblDiaUso.Location = new Point(161, 601);
+            lblDiaUso.Location = new Point(141, 451);
             lblDiaUso.Name = "lblDiaUso";
-            lblDiaUso.Size = new Size(94, 23);
+            lblDiaUso.Size = new Size(79, 19);
             lblDiaUso.TabIndex = 80;
             lblDiaUso.Text = "Dia de uso";
             // 
             // dtpDiaUso
             // 
             dtpDiaUso.Anchor = AnchorStyles.None;
-            dtpDiaUso.Location = new Point(267, 598);
-            dtpDiaUso.Margin = new Padding(3, 4, 3, 4);
+            dtpDiaUso.Location = new Point(234, 448);
             dtpDiaUso.Name = "dtpDiaUso";
-            dtpDiaUso.Size = new Size(300, 27);
-            dtpDiaUso.TabIndex = 81;
+            dtpDiaUso.Size = new Size(263, 23);
+            dtpDiaUso.TabIndex = 9;
             // 
             // Inscribir_Actividad
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(1008, 753);
+            ClientSize = new Size(882, 571);
             Controls.Add(dtpDiaUso);
             Controls.Add(lblDiaUso);
             Controls.Add(lblDatosActividad);
@@ -331,7 +341,8 @@
             Controls.Add(imgBoxOpc);
             Controls.Add(label2);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 800);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(877, 610);
             Name = "Inscribir_Actividad";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

@@ -69,10 +69,11 @@
             btnPagarCuota.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPagarCuota.ForeColor = Color.White;
             btnPagarCuota.Image = (Image)resources.GetObject("btnPagarCuota.Image");
-            btnPagarCuota.Location = new Point(518, 649);
+            btnPagarCuota.Location = new Point(453, 487);
+            btnPagarCuota.Margin = new Padding(3, 2, 3, 2);
             btnPagarCuota.Name = "btnPagarCuota";
-            btnPagarCuota.Size = new Size(205, 45);
-            btnPagarCuota.TabIndex = 5;
+            btnPagarCuota.Size = new Size(179, 34);
+            btnPagarCuota.TabIndex = 13;
             btnPagarCuota.Text = "PAGAR CUOTA";
             btnPagarCuota.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPagarCuota.UseVisualStyleBackColor = false;
@@ -83,19 +84,20 @@
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(287, 172);
+            lblDni.Location = new Point(251, 129);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(129, 23);
+            lblDni.Size = new Size(106, 19);
             lblDni.TabIndex = 3;
             lblDni.Text = "Dni del Cliente";
             // 
             // txtDni
             // 
             txtDni.Anchor = AnchorStyles.None;
-            txtDni.Location = new Point(422, 172);
-            txtDni.MaximumSize = new Size(238, 45);
+            txtDni.Location = new Point(369, 129);
+            txtDni.Margin = new Padding(3, 2, 3, 2);
+            txtDni.MaximumSize = new Size(209, 45);
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(238, 27);
+            txtDni.Size = new Size(209, 23);
             txtDni.TabIndex = 1;
             txtDni.KeyPress += txtDni_KeyPress;
             // 
@@ -104,9 +106,9 @@
             lblDatosCliente.Anchor = AnchorStyles.None;
             lblDatosCliente.AutoSize = true;
             lblDatosCliente.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDatosCliente.Location = new Point(41, 226);
+            lblDatosCliente.Location = new Point(36, 170);
             lblDatosCliente.Name = "lblDatosCliente";
-            lblDatosCliente.Size = new Size(248, 32);
+            lblDatosCliente.Size = new Size(195, 26);
             lblDatosCliente.TabIndex = 5;
             lblDatosCliente.Text = "Datos del Cliente";
             // 
@@ -115,9 +117,9 @@
             lblCodigo.Anchor = AnchorStyles.None;
             lblCodigo.AutoSize = true;
             lblCodigo.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodigo.Location = new Point(138, 329);
+            lblCodigo.Location = new Point(121, 247);
             lblCodigo.Name = "lblCodigo";
-            lblCodigo.Size = new Size(76, 23);
+            lblCodigo.Size = new Size(65, 19);
             lblCodigo.TabIndex = 6;
             lblCodigo.Text = "Nombre";
             // 
@@ -126,9 +128,9 @@
             lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblApellido.Location = new Point(557, 329);
+            lblApellido.Location = new Point(487, 247);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(78, 23);
+            lblApellido.Size = new Size(66, 19);
             lblApellido.TabIndex = 7;
             lblApellido.Text = "Apellido";
             // 
@@ -137,9 +139,9 @@
             lblCodCliente.Anchor = AnchorStyles.None;
             lblCodCliente.AutoSize = true;
             lblCodCliente.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCodCliente.Location = new Point(88, 281);
+            lblCodCliente.Location = new Point(77, 211);
             lblCodCliente.Name = "lblCodCliente";
-            lblCodCliente.Size = new Size(126, 23);
+            lblCodCliente.Size = new Size(106, 19);
             lblCodCliente.TabIndex = 8;
             lblCodCliente.Text = "Codigo cliente";
             // 
@@ -148,9 +150,9 @@
             lblDatosCuota.Anchor = AnchorStyles.None;
             lblDatosCuota.AutoSize = true;
             lblDatosCuota.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDatosCuota.Location = new Point(44, 400);
+            lblDatosCuota.Location = new Point(38, 300);
             lblDatosCuota.Name = "lblDatosCuota";
-            lblDatosCuota.Size = new Size(251, 32);
+            lblDatosCuota.Size = new Size(198, 26);
             lblDatosCuota.TabIndex = 9;
             lblDatosCuota.Text = "Datos de la cuota";
             // 
@@ -159,9 +161,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(97, 457);
+            label1.Location = new Point(85, 343);
             label1.Name = "label1";
-            label1.Size = new Size(117, 23);
+            label1.Size = new Size(99, 19);
             label1.TabIndex = 10;
             label1.Text = "Codigo cuota";
             // 
@@ -170,9 +172,9 @@
             lblTipoPago.Anchor = AnchorStyles.None;
             lblTipoPago.AutoSize = true;
             lblTipoPago.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblTipoPago.Location = new Point(514, 503);
+            lblTipoPago.Location = new Point(450, 377);
             lblTipoPago.Name = "lblTipoPago";
-            lblTipoPago.Size = new Size(117, 23);
+            lblTipoPago.Size = new Size(99, 19);
             lblTipoPago.TabIndex = 11;
             lblTipoPago.Text = "Tipo de pago";
             // 
@@ -181,9 +183,9 @@
             lblValorFinal.Anchor = AnchorStyles.None;
             lblValorFinal.AutoSize = true;
             lblValorFinal.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblValorFinal.Location = new Point(95, 506);
+            lblValorFinal.Location = new Point(83, 380);
             lblValorFinal.Name = "lblValorFinal";
-            lblValorFinal.Size = new Size(119, 23);
+            lblValorFinal.Size = new Size(100, 19);
             lblValorFinal.TabIndex = 12;
             lblValorFinal.Text = "Importe Total";
             // 
@@ -192,9 +194,9 @@
             lblVencimientoCuota.Anchor = AnchorStyles.None;
             lblVencimientoCuota.AutoSize = true;
             lblVencimientoCuota.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblVencimientoCuota.Location = new Point(522, 458);
+            lblVencimientoCuota.Location = new Point(457, 344);
             lblVencimientoCuota.Name = "lblVencimientoCuota";
-            lblVencimientoCuota.Size = new Size(109, 23);
+            lblVencimientoCuota.Size = new Size(91, 19);
             lblVencimientoCuota.TabIndex = 13;
             lblVencimientoCuota.Text = "Vencimiento";
             // 
@@ -206,9 +208,10 @@
             btnBuscarCliente.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnBuscarCliente.ForeColor = Color.White;
             btnBuscarCliente.Image = (Image)resources.GetObject("btnBuscarCliente.Image");
-            btnBuscarCliente.Location = new Point(675, 164);
+            btnBuscarCliente.Location = new Point(591, 123);
+            btnBuscarCliente.Margin = new Padding(3, 2, 3, 2);
             btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(195, 45);
+            btnBuscarCliente.Size = new Size(171, 34);
             btnBuscarCliente.TabIndex = 2;
             btnBuscarCliente.Text = "BUSCAR CLIENTE";
             btnBuscarCliente.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -222,10 +225,11 @@
             btnComprobantePago.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnComprobantePago.ForeColor = Color.White;
             btnComprobantePago.Image = (Image)resources.GetObject("btnComprobantePago.Image");
-            btnComprobantePago.Location = new Point(223, 649);
+            btnComprobantePago.Location = new Point(195, 487);
+            btnComprobantePago.Margin = new Padding(3, 2, 3, 2);
             btnComprobantePago.Name = "btnComprobantePago";
-            btnComprobantePago.Size = new Size(205, 45);
-            btnComprobantePago.TabIndex = 7;
+            btnComprobantePago.Size = new Size(179, 34);
+            btnComprobantePago.TabIndex = 12;
             btnComprobantePago.Text = "LIMPIAR";
             btnComprobantePago.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnComprobantePago.UseVisualStyleBackColor = false;
@@ -234,66 +238,73 @@
             // txtBoxResApellido
             // 
             txtBoxResApellido.Anchor = AnchorStyles.None;
-            txtBoxResApellido.Location = new Point(641, 325);
+            txtBoxResApellido.Location = new Point(561, 244);
+            txtBoxResApellido.Margin = new Padding(3, 2, 3, 2);
             txtBoxResApellido.Name = "txtBoxResApellido";
             txtBoxResApellido.ReadOnly = true;
-            txtBoxResApellido.Size = new Size(233, 27);
-            txtBoxResApellido.TabIndex = 9;
+            txtBoxResApellido.Size = new Size(204, 23);
+            txtBoxResApellido.TabIndex = 5;
             // 
             // txtBoxResNombre
             // 
             txtBoxResNombre.Anchor = AnchorStyles.None;
-            txtBoxResNombre.Location = new Point(223, 325);
+            txtBoxResNombre.Location = new Point(195, 244);
+            txtBoxResNombre.Margin = new Padding(3, 2, 3, 2);
             txtBoxResNombre.Name = "txtBoxResNombre";
             txtBoxResNombre.ReadOnly = true;
-            txtBoxResNombre.Size = new Size(238, 27);
-            txtBoxResNombre.TabIndex = 9;
+            txtBoxResNombre.Size = new Size(209, 23);
+            txtBoxResNombre.TabIndex = 4;
             // 
             // txtBoxResCod
             // 
             txtBoxResCod.Anchor = AnchorStyles.None;
-            txtBoxResCod.Location = new Point(223, 280);
+            txtBoxResCod.Location = new Point(195, 210);
+            txtBoxResCod.Margin = new Padding(3, 2, 3, 2);
             txtBoxResCod.Name = "txtBoxResCod";
             txtBoxResCod.ReadOnly = true;
-            txtBoxResCod.Size = new Size(238, 27);
-            txtBoxResCod.TabIndex = 9;
+            txtBoxResCod.Size = new Size(209, 23);
+            txtBoxResCod.TabIndex = 3;
             // 
             // txtBoxResCodCuota
             // 
             txtBoxResCodCuota.Anchor = AnchorStyles.None;
-            txtBoxResCodCuota.Location = new Point(223, 457);
+            txtBoxResCodCuota.Location = new Point(195, 343);
+            txtBoxResCodCuota.Margin = new Padding(3, 2, 3, 2);
             txtBoxResCodCuota.Name = "txtBoxResCodCuota";
             txtBoxResCodCuota.ReadOnly = true;
-            txtBoxResCodCuota.Size = new Size(238, 27);
-            txtBoxResCodCuota.TabIndex = 9;
+            txtBoxResCodCuota.Size = new Size(209, 23);
+            txtBoxResCodCuota.TabIndex = 6;
             // 
             // txtBoxResValor
             // 
             txtBoxResValor.Anchor = AnchorStyles.None;
-            txtBoxResValor.Location = new Point(223, 505);
+            txtBoxResValor.Location = new Point(195, 379);
+            txtBoxResValor.Margin = new Padding(3, 2, 3, 2);
             txtBoxResValor.Name = "txtBoxResValor";
             txtBoxResValor.ReadOnly = true;
-            txtBoxResValor.Size = new Size(238, 27);
-            txtBoxResValor.TabIndex = 9;
+            txtBoxResValor.Size = new Size(209, 23);
+            txtBoxResValor.TabIndex = 8;
             // 
             // txtBoxResVencimiento
             // 
             txtBoxResVencimiento.Anchor = AnchorStyles.None;
-            txtBoxResVencimiento.Location = new Point(641, 458);
+            txtBoxResVencimiento.Location = new Point(561, 344);
+            txtBoxResVencimiento.Margin = new Padding(3, 2, 3, 2);
             txtBoxResVencimiento.Name = "txtBoxResVencimiento";
             txtBoxResVencimiento.ReadOnly = true;
-            txtBoxResVencimiento.Size = new Size(233, 27);
-            txtBoxResVencimiento.TabIndex = 9;
+            txtBoxResVencimiento.Size = new Size(204, 23);
+            txtBoxResVencimiento.TabIndex = 7;
             // 
             // cbResTipoPago
             // 
             cbResTipoPago.Anchor = AnchorStyles.None;
             cbResTipoPago.FormattingEnabled = true;
             cbResTipoPago.Items.AddRange(new object[] { "Efectivo", "Transferencia", "QR", "Adelanto", "Tarjeta de débito", "Tarjeta de crédito" });
-            cbResTipoPago.Location = new Point(641, 506);
+            cbResTipoPago.Location = new Point(561, 380);
+            cbResTipoPago.Margin = new Padding(3, 2, 3, 2);
             cbResTipoPago.Name = "cbResTipoPago";
-            cbResTipoPago.Size = new Size(233, 28);
-            cbResTipoPago.TabIndex = 3;
+            cbResTipoPago.Size = new Size(204, 23);
+            cbResTipoPago.TabIndex = 9;
             cbResTipoPago.SelectedIndexChanged += cbResTipoPago_SelectedIndexChanged;
             // 
             // label2
@@ -302,9 +313,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 28.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(120, 10, 90);
-            label2.Location = new Point(292, 65);
+            label2.Location = new Point(256, 49);
             label2.Name = "label2";
-            label2.Size = new Size(401, 54);
+            label2.Size = new Size(322, 44);
             label2.TabIndex = 23;
             label2.Text = "COBRAR CUOTA";
             // 
@@ -313,9 +324,10 @@
             imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = Color.Linen;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
-            imgBoxOpc.Location = new Point(45, 48);
+            imgBoxOpc.Location = new Point(39, 36);
+            imgBoxOpc.Margin = new Padding(3, 2, 3, 2);
             imgBoxOpc.Name = "imgBoxOpc";
-            imgBoxOpc.Size = new Size(91, 93);
+            imgBoxOpc.Size = new Size(80, 70);
             imgBoxOpc.SizeMode = PictureBoxSizeMode.StretchImage;
             imgBoxOpc.TabIndex = 24;
             imgBoxOpc.TabStop = false;
@@ -324,9 +336,9 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(645, 325);
+            label3.Location = new Point(564, 244);
             label3.Name = "label3";
-            label3.Size = new Size(0, 20);
+            label3.Size = new Size(0, 15);
             label3.TabIndex = 25;
             // 
             // pbVolver
@@ -334,9 +346,10 @@
             pbVolver.Anchor = AnchorStyles.None;
             pbVolver.BackColor = Color.Linen;
             pbVolver.Image = (Image)resources.GetObject("pbVolver.Image");
-            pbVolver.Location = new Point(877, 81);
+            pbVolver.Location = new Point(767, 61);
+            pbVolver.Margin = new Padding(3, 2, 3, 2);
             pbVolver.Name = "pbVolver";
-            pbVolver.Size = new Size(43, 27);
+            pbVolver.Size = new Size(38, 20);
             pbVolver.SizeMode = PictureBoxSizeMode.StretchImage;
             pbVolver.TabIndex = 26;
             pbVolver.TabStop = false;
@@ -347,10 +360,11 @@
             cbCuotas.Anchor = AnchorStyles.None;
             cbCuotas.FormattingEnabled = true;
             cbCuotas.Items.AddRange(new object[] { "1", "3", "6" });
-            cbCuotas.Location = new Point(371, 566);
+            cbCuotas.Location = new Point(325, 424);
+            cbCuotas.Margin = new Padding(3, 2, 3, 2);
             cbCuotas.Name = "cbCuotas";
-            cbCuotas.Size = new Size(86, 28);
-            cbCuotas.TabIndex = 4;
+            cbCuotas.Size = new Size(76, 23);
+            cbCuotas.TabIndex = 10;
             cbCuotas.DropDown += cbCuotas_DropDown;
             cbCuotas.SelectedIndexChanged += cbCuotas_SelectedIndexChanged;
             // 
@@ -359,38 +373,39 @@
             lblCuotas.Anchor = AnchorStyles.None;
             lblCuotas.AutoSize = true;
             lblCuotas.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblCuotas.Location = new Point(198, 566);
+            lblCuotas.Location = new Point(173, 424);
             lblCuotas.Name = "lblCuotas";
-            lblCuotas.Size = new Size(167, 23);
+            lblCuotas.Size = new Size(139, 19);
             lblCuotas.TabIndex = 28;
             lblCuotas.Text = "Cantidad de Cuotas";
             // 
             // txtValorCuota
             // 
             txtValorCuota.Anchor = AnchorStyles.None;
-            txtValorCuota.Location = new Point(641, 562);
+            txtValorCuota.Location = new Point(561, 422);
+            txtValorCuota.Margin = new Padding(3, 2, 3, 2);
             txtValorCuota.Name = "txtValorCuota";
             txtValorCuota.ReadOnly = true;
-            txtValorCuota.Size = new Size(229, 27);
-            txtValorCuota.TabIndex = 9;
+            txtValorCuota.Size = new Size(201, 23);
+            txtValorCuota.TabIndex = 11;
             // 
             // lblValorCuota
             // 
             lblValorCuota.Anchor = AnchorStyles.None;
             lblValorCuota.AutoSize = true;
             lblValorCuota.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblValorCuota.Location = new Point(507, 566);
+            lblValorCuota.Location = new Point(444, 424);
             lblValorCuota.Name = "lblValorCuota";
-            lblValorCuota.Size = new Size(124, 23);
+            lblValorCuota.Size = new Size(104, 19);
             lblValorCuota.TabIndex = 30;
             lblValorCuota.Text = "Importe cuota";
             // 
             // Pagar
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(982, 753);
+            ClientSize = new Size(861, 571);
             Controls.Add(lblValorCuota);
             Controls.Add(txtValorCuota);
             Controls.Add(lblCuotas);
@@ -421,7 +436,8 @@
             Controls.Add(lblDni);
             Controls.Add(btnPagarCuota);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 800);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(877, 610);
             Name = "Pagar";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
