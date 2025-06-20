@@ -3,7 +3,7 @@ PROCEDURES PARA CLUB DEPORTIVO
 
 Versión: 1.0
 Autor: EQUIPO 6 - DSOO 1er CUATRIMESTRE 2025
-Fecha: 18/06/2025
+Fecha: 20/06/2025
 
 */
 
@@ -143,15 +143,24 @@ BEGIN
 END//
 DELIMITER ;
 
--- BUSCAR NO SOCIOS POR DNI
 DROP PROCEDURE IF EXISTS BuscarNoSocioPorDni;
 DELIMITER //
-CREATE PROCEDURE BuscarNoSocioPorDni(IN dni VARCHAR(20))
+CREATE PROCEDURE BuscarNoSocioPorDni(IN p_dni VARCHAR(20))
 BEGIN
-    SELECT c.Nombre, c.Apellido
-    FROM Clientes c
-    INNER JOIN NoSocios ns ON c.Dni = dni
-    WHERE ns.Dni = dni;
+    SELECT 
+        ns.CodNoSocio,  
+        c.nombre,       
+        c.apellido,     
+        c.dni,          
+        c.fecha_nac,    
+        c.direccion,    
+        c.telefono,     
+        c.email,        
+        c.ficha_medica  
+    FROM clientes c
+    INNER JOIN NoSocios ns ON c.dni = ns.dni
+    WHERE c.dni = CAST(p_dni AS SIGNED) 
+    LIMIT 1;
 END //
 DELIMITER ;
 
@@ -427,5 +436,59 @@ BEGIN
     FROM 
         Actividades
     ORDER BY Nombre;
+END //
+DELIMITER ;
+
+-- =============================================
+-- PROCEDIMIENTOS PARA CUOTA DIARIA
+-- =============================================
+DELIMITER //
+DROP PROCEDURE IF EXISTS CrearCuotaDiariaParcial;
+CREATE PROCEDURE CrearCuotaDiariaParcial(
+    IN p_CodCuotaDiaria VARCHAR(50),
+    IN p_ValorFinal FLOAT,
+    IN p_FechaDeUso VARCHAR(10),
+    IN p_CodNoSocio VARCHAR(50),
+    IN p_CodActividad VARCHAR(50),
+    OUT rta INT
+)
+BEGIN
+    INSERT INTO CuotaDiaria (
+        CodCuotaDiaria,
+        ValorFinal,
+        FechaDeUso,
+        CodNoSocio,
+        CodActividad
+    ) VALUES (
+        p_CodCuotaDiaria,
+        p_ValorFinal,
+        p_FechaDeUso,
+        p_CodNoSocio,
+        p_CodActividad        
+    );    
+    SET rta = 0;
+END //
+DELIMITER ;
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS ActualizarCuotaDiariaCompleta;
+CREATE PROCEDURE ActualizarCuotaDiariaCompleta(
+    IN p_CodCuotaDiaria VARCHAR(50),
+    IN p_TipoDePago VARCHAR(50),
+    IN p_CantidadCuotas INT,
+    IN p_FechaDePago VARCHAR(10),
+    OUT rta INT
+)
+BEGIN
+    UPDATE CuotaDiaria 
+    SET 
+        Pagada = 1,
+        TipoDePago = p_TipoDePago,
+        CantidadCuotas = p_CantidadCuotas,
+        FechaDePago = p_FechaDePago
+    WHERE 
+        CodCuotaDiaria = p_CodCuotaDiaria;
+    
+    SET rta = 0; -- Éxito
 END //
 DELIMITER ;

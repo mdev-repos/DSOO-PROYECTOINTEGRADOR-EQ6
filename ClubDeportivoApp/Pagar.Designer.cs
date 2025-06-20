@@ -420,11 +420,12 @@
             Controls.Add(txtDni);
             Controls.Add(lblDni);
             Controls.Add(btnPagarCuota);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 800);
             Name = "Pagar";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Pagar";
+            Text = "Sistema Gestor | Sports Club";
             ((System.ComponentModel.ISupportInitialize)imgBoxOpc).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbVolver).EndInit();
             ResumeLayout(false);

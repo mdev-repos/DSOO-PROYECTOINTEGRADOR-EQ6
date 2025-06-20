@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClubDeportivoApp.Entidades
 {
-    internal class E_CuotaDiaria
+    public class E_CuotaDiaria
     {
         public string CodCuotaDiaria { get; set; }
         public Boolean Pagada { get; set; }

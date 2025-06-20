@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Globalization;
 using ClubDeportivoApp.Datos;
 using ClubDeportivoApp.Entidades;
 using MySql.Data.MySqlClient;
@@ -15,6 +16,11 @@ namespace ClubDeportivoApp
             txtBoxApellido.ReadOnly = true;
             txtBoxValor.ReadOnly = true;
             txtBoxHorarios.ReadOnly = true;
+
+            // Configurar el DateTimePicker para que no permita fechas anteriores a hoy
+            dtpDiaUso.MinDate = DateTime.Today;
+            dtpDiaUso.Format = DateTimePickerFormat.Custom;
+            dtpDiaUso.CustomFormat = "dd/MM/yyyy";
         }
 
         private void CargarDatosClientesYActividad()
@@ -46,7 +52,7 @@ namespace ClubDeportivoApp
         {
             MySqlCommand comando = new MySqlCommand("BuscarNoSocioPorDni", mySqlConnection);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@dni", txtDni.Text);
+            comando.Parameters.AddWithValue("@p_dni", txtDni.Text);
 
             using (MySqlDataReader mySqlDataReader = comando.ExecuteReader())
             {
@@ -54,8 +60,8 @@ namespace ClubDeportivoApp
                 {
                     while (mySqlDataReader.Read())
                     {
-                        txtBoxNombre.Text = mySqlDataReader["Nombre"].ToString();
-                        txtBoxApellido.Text = mySqlDataReader["Apellido"].ToString();
+                        txtBoxNombre.Text = mySqlDataReader["nombre"].ToString();
+                        txtBoxApellido.Text = mySqlDataReader["apellido"].ToString();
                     }
                 }
                 else
@@ -88,6 +94,7 @@ namespace ClubDeportivoApp
                 }
             }
         }
+
         private void cBoxActividad_SelectedIndexChanged(object sender, EventArgs e)
         {
             nombreActividad = cBoxActividad.SelectedItem.ToString();
@@ -117,7 +124,12 @@ namespace ClubDeportivoApp
                 {
                     while (mySqlDataReader.Read())
                     {
-                        txtBoxValor.Text = mySqlDataReader["Valor"].ToString();
+                        // Formatear el valor como moneda argentina (C2)
+                        float valor;
+                        if (float.TryParse(mySqlDataReader["Valor"].ToString(), out valor))
+                        {
+                            txtBoxValor.Text = valor.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
+                        }
                         txtBoxHorarios.Text = mySqlDataReader["Horario"].ToString();
                     }
                 }
@@ -158,19 +170,102 @@ namespace ClubDeportivoApp
             e.Handled = !char.IsControl(e.KeyChar) && (!char.IsDigit(e.KeyChar) || txtDni.Text.Length >= 12);
         }
 
+        private int ObtenerUltimoNumeroCuota(string codNoSocio)
+        {
+            using (MySqlConnection conexion = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    conexion.Open();
+                    string query = @"SELECT 
+                            IFNULL(MAX(CAST(
+                                SUBSTRING(
+                                    CodCuotaDiaria, 
+                                    8, 
+                                    LOCATE('-', CodCuotaDiaria, 8) - 8
+                                ) AS UNSIGNED
+                            )), 0) AS UltimoNumero
+                        FROM CuotaDiaria
+                        WHERE CodNoSocio = @codNoSocio";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@codNoSocio", codNoSocio);
+                        return Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                }
+                catch
+                {
+                    return 0; // Si hay error, empezamos desde 0
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            // Logica de Pago -- No Socio + Cuota Diaria
-            // Obtengo el CODIGO de NO SOCIO mediante el DNI suministrado
-            String codNoSocio = $"NOSOC-{txtDni.Text}";
+            // Validación básica
+            if (string.IsNullOrEmpty(txtDni.Text) || string.IsNullOrEmpty(cBoxActividad.Text))
+            {
+                MessageBox.Show("Debe completar DNI y seleccionar una actividad", "Error",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Obtengo el CODIGO de la ACTIVIDAD mediante la seleccion
-            String codActividad = cBoxActividad.Text;
+            try
+            {
+                // Obtener datos básicos
+                string codNoSocio = $"NOSOC-{txtDni.Text}";
+                string nombreActividad = cBoxActividad.SelectedItem.ToString();
 
-            // Genero la CUOTA DIARIA
-            E_CuotaDiaria cuotaDiaria = new E_CuotaDiaria();
+                // Generar código de actividad con prefijo
+                string codActividad = $"ACT-{nombreActividad}";
 
+                // Obtener el último número de cuota
+                int ultimoNumero = ObtenerUltimoNumeroCuota(codNoSocio);
+                int nuevoNumero = ultimoNumero + 1;
 
+                // Generar código de cuota
+                string codCuotaNueva = $"CUOTA-0{nuevoNumero}-{codNoSocio}";
+
+                // Crear objeto cuota
+                E_CuotaDiaria cuotaDiaria = new E_CuotaDiaria
+                {
+                    CodCuotaDiaria = codCuotaNueva,
+                    ValorFinal = float.Parse(txtBoxValor.Text.Replace("$", "").Replace(".", "").Replace(",", "."),
+                                               CultureInfo.InvariantCulture),
+                    FechaDeUso = dtpDiaUso.Value.ToString("dd/MM/yyyy"),
+                    CodNoSocio = codNoSocio,
+                    CodActividad = $"ACT-{cBoxActividad.Text}"
+                };
+
+                // Persistir en BD
+                Datos.CuotaDiaria datosCuota = new Datos.CuotaDiaria();
+                string resultado = datosCuota.CrearCuotaDiariaParcial(cuotaDiaria, out string codCuotaGenerada);
+
+                if (resultado == "0")
+                {
+                    // Abrir formulario de pago
+                    cuotaDiaria.CodCuotaDiaria = codCuotaGenerada;
+                    Form pagarActividadWdw = new Pagar_Actividad(cuotaDiaria);
+                    pagarActividadWdw.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show($"Error al generar la cuota: {resultado}", "Error",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("El valor de la actividad no es válido", "Error",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }                          
         }
     }
 }

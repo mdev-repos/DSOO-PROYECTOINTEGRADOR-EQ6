@@ -92,17 +92,17 @@ DROP TABLE IF EXISTS CuotaDiaria;
 CREATE TABLE CuotaDiaria (
     CodCuotaDiaria VARCHAR(50) PRIMARY KEY,
     Pagada BIT NOT NULL DEFAULT 0,
-	ValorFinal FLOAT NOT NULL,
-    TipoDePago VARCHAR(50) NOT NULL,
-    CantidadCuotas INT NOT NULL,
-	FechaDePago VARCHAR(10) NOT NULL,
+    ValorFinal FLOAT NOT NULL,
+    TipoDePago VARCHAR(50),
+    CantidadCuotas INT,
+    FechaDePago VARCHAR(10),
     FechaDeUso VARCHAR(10) NOT NULL,
     CodNoSocio VARCHAR(50) NOT NULL,
     CodActividad VARCHAR(50) NOT NULL,
-    CONSTRAINT fk_CodNoSocio FOREIGN KEY (CodNoSocio) 
+    CONSTRAINT fk_CuotaDiaria_CodNoSocio FOREIGN KEY (CodNoSocio) 
         REFERENCES NoSocios(CodNoSocio)
         ON DELETE CASCADE,
-    CONSTRAINT fk_CodActividad FOREIGN KEY (CodActividad) 
+    CONSTRAINT fk_CuotaDiaria_CodActividad FOREIGN KEY (CodActividad) 
         REFERENCES Actividades(CodActividad)
         ON DELETE CASCADE
 ) ENGINE=InnoDB;

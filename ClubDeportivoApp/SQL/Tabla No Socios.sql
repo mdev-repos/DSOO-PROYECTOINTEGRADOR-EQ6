@@ -7,6 +7,11 @@ CREATE TABLE NoSocios(
     constraint pk_NoSocio primary key (CodNoSocio),
     constraint fk_NoSocioClientes foreign key (Dni) references Clientes(Dni));
     
+-- =============================================
+-- PROCEDIMIENTOS PARA NO SOCIOS
+-- =============================================
+
+-- NUEVO NO SOCIO (CREATE)
 DROP PROCEDURE IF EXISTS NuevoNoSocio;
 DELIMITER //
 CREATE PROCEDURE NuevoNoSocio(
@@ -38,7 +43,27 @@ BEGIN
         SET rta = 0;
     ELSE
         SET rta = 1;
-    END IF;
-
-    
+    END IF;    
 END//
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS BuscarNoSocioPorDni;
+DELIMITER //
+CREATE PROCEDURE BuscarNoSocioPorDni(IN p_dni VARCHAR(20))
+BEGIN
+    SELECT 
+        ns.CodNoSocio,  
+        c.nombre,       
+        c.apellido,     
+        c.dni,          
+        c.fecha_nac,    
+        c.direccion,    
+        c.telefono,     
+        c.email,        
+        c.ficha_medica  
+    FROM clientes c
+    INNER JOIN NoSocios ns ON c.dni = ns.dni
+    WHERE c.dni = CAST(p_dni AS SIGNED) 
+    LIMIT 1;
+END //
+DELIMITER ;

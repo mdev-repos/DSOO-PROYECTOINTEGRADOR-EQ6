@@ -49,7 +49,8 @@
             txtBoxHorarios = new TextBox();
             lblDatosCliente = new Label();
             lblDatosActividad = new Label();
-            label3 = new Label();
+            lblDiaUso = new Label();
+            dtpDiaUso = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)pbVolver).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgBoxOpc).BeginInit();
             SuspendLayout();
@@ -60,7 +61,7 @@
             pbVolver.BackColor = Color.Linen;
             pbVolver.Cursor = Cursors.Hand;
             pbVolver.Image = (Image)resources.GetObject("pbVolver.Image");
-            pbVolver.Location = new Point(861, 82);
+            pbVolver.Location = new Point(874, 82);
             pbVolver.Name = "pbVolver";
             pbVolver.Size = new Size(43, 27);
             pbVolver.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -73,7 +74,7 @@
             imgBoxOpc.Anchor = AnchorStyles.None;
             imgBoxOpc.BackColor = Color.Linen;
             imgBoxOpc.Image = (Image)resources.GetObject("imgBoxOpc.Image");
-            imgBoxOpc.Location = new Point(78, 55);
+            imgBoxOpc.Location = new Point(91, 55);
             imgBoxOpc.Name = "imgBoxOpc";
             imgBoxOpc.Size = new Size(91, 93);
             imgBoxOpc.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -86,7 +87,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 28.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(120, 10, 90);
-            label2.Location = new Point(261, 72);
+            label2.Location = new Point(274, 72);
             label2.Name = "label2";
             label2.Size = new Size(522, 54);
             label2.TabIndex = 27;
@@ -100,7 +101,7 @@
             btnLimpiar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.White;
             btnLimpiar.Image = (Image)resources.GetObject("btnLimpiar.Image");
-            btnLimpiar.Location = new Point(670, 258);
+            btnLimpiar.Location = new Point(599, 290);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(235, 45);
             btnLimpiar.TabIndex = 38;
@@ -117,9 +118,9 @@
             btnBuscarCliente.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnBuscarCliente.ForeColor = Color.White;
             btnBuscarCliente.Image = (Image)resources.GetObject("btnBuscarCliente.Image");
-            btnBuscarCliente.Location = new Point(469, 258);
+            btnBuscarCliente.Location = new Point(604, 235);
             btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(195, 45);
+            btnBuscarCliente.Size = new Size(230, 45);
             btnBuscarCliente.TabIndex = 37;
             btnBuscarCliente.Text = "BUSCAR CLIENTE";
             btnBuscarCliente.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -129,10 +130,9 @@
             // txtDni
             // 
             txtDni.Anchor = AnchorStyles.None;
-            txtDni.Location = new Point(216, 267);
-            txtDni.MaximumSize = new Size(238, 45);
+            txtDni.Location = new Point(267, 246);
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(238, 27);
+            txtDni.Size = new Size(300, 27);
             txtDni.TabIndex = 36;
             txtDni.KeyPress += txtDni_KeyPress;
             // 
@@ -141,18 +141,18 @@
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(81, 267);
+            lblDni.Location = new Point(219, 247);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(126, 23);
+            lblDni.Size = new Size(41, 23);
             lblDni.TabIndex = 35;
-            lblDni.Text = "Dni del cliente";
+            lblDni.Text = "DNI";
             // 
             // lblFechaInscr
             // 
             lblFechaInscr.Anchor = AnchorStyles.None;
             lblFechaInscr.AutoSize = true;
             lblFechaInscr.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblFechaInscr.Location = new Point(515, 467);
+            lblFechaInscr.Location = new Point(593, 489);
             lblFechaInscr.Name = "lblFechaInscr";
             lblFechaInscr.Size = new Size(51, 23);
             lblFechaInscr.TabIndex = 73;
@@ -162,7 +162,7 @@
             // 
             cBoxActividad.Anchor = AnchorStyles.None;
             cBoxActividad.FormattingEnabled = true;
-            cBoxActividad.Location = new Point(179, 467);
+            cBoxActividad.Location = new Point(267, 488);
             cBoxActividad.Name = "cBoxActividad";
             cBoxActividad.Size = new Size(300, 28);
             cBoxActividad.TabIndex = 72;
@@ -173,7 +173,7 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label8.Location = new Point(81, 467);
+            label8.Location = new Point(174, 488);
             label8.Name = "label8";
             label8.Size = new Size(87, 23);
             label8.TabIndex = 71;
@@ -182,7 +182,7 @@
             // txtBoxApellido
             // 
             txtBoxApellido.Anchor = AnchorStyles.None;
-            txtBoxApellido.Location = new Point(605, 323);
+            txtBoxApellido.Location = new Point(267, 363);
             txtBoxApellido.Name = "txtBoxApellido";
             txtBoxApellido.Size = new Size(300, 27);
             txtBoxApellido.TabIndex = 70;
@@ -190,7 +190,7 @@
             // txtBoxNombre
             // 
             txtBoxNombre.Anchor = AnchorStyles.None;
-            txtBoxNombre.Location = new Point(180, 323);
+            txtBoxNombre.Location = new Point(267, 301);
             txtBoxNombre.Name = "txtBoxNombre";
             txtBoxNombre.Size = new Size(300, 27);
             txtBoxNombre.TabIndex = 69;
@@ -200,7 +200,7 @@
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(516, 325);
+            label5.Location = new Point(182, 364);
             label5.Name = "label5";
             label5.Size = new Size(78, 23);
             label5.TabIndex = 68;
@@ -211,7 +211,7 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(82, 326);
+            label6.Location = new Point(184, 301);
             label6.Name = "label6";
             label6.Size = new Size(76, 23);
             label6.TabIndex = 67;
@@ -220,9 +220,9 @@
             // txtBoxValor
             // 
             txtBoxValor.Anchor = AnchorStyles.None;
-            txtBoxValor.Location = new Point(604, 468);
+            txtBoxValor.Location = new Point(650, 488);
             txtBoxValor.Name = "txtBoxValor";
-            txtBoxValor.Size = new Size(300, 27);
+            txtBoxValor.Size = new Size(184, 27);
             txtBoxValor.TabIndex = 74;
             // 
             // button1
@@ -232,7 +232,7 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(670, 649);
+            button1.Location = new Point(404, 676);
             button1.Name = "button1";
             button1.Size = new Size(195, 45);
             button1.TabIndex = 75;
@@ -246,7 +246,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(81, 534);
+            label1.Location = new Point(183, 547);
             label1.Name = "label1";
             label1.Size = new Size(78, 23);
             label1.TabIndex = 76;
@@ -255,9 +255,9 @@
             // txtBoxHorarios
             // 
             txtBoxHorarios.Anchor = AnchorStyles.None;
-            txtBoxHorarios.Location = new Point(179, 533);
+            txtBoxHorarios.Location = new Point(267, 543);
             txtBoxHorarios.Name = "txtBoxHorarios";
-            txtBoxHorarios.Size = new Size(723, 27);
+            txtBoxHorarios.Size = new Size(567, 27);
             txtBoxHorarios.TabIndex = 77;
             // 
             // lblDatosCliente
@@ -265,7 +265,7 @@
             lblDatosCliente.Anchor = AnchorStyles.None;
             lblDatosCliente.AutoSize = true;
             lblDatosCliente.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDatosCliente.Location = new Point(62, 211);
+            lblDatosCliente.Location = new Point(91, 183);
             lblDatosCliente.Name = "lblDatosCliente";
             lblDatosCliente.Size = new Size(248, 32);
             lblDatosCliente.TabIndex = 78;
@@ -276,30 +276,40 @@
             lblDatosActividad.Anchor = AnchorStyles.None;
             lblDatosActividad.AutoSize = true;
             lblDatosActividad.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDatosActividad.Location = new Point(62, 400);
+            lblDatosActividad.Location = new Point(91, 423);
             lblDatosActividad.Name = "lblDatosActividad";
             lblDatosActividad.Size = new Size(302, 32);
             lblDatosActividad.TabIndex = 79;
             lblDatosActividad.Text = "Datos de la Actividad";
             // 
-            // label3
+            // lblDiaUso
             // 
-            label3.Anchor = AnchorStyles.None;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label3.Location = new Point(74, 592);
-            label3.Name = "label3";
-            label3.Size = new Size(94, 23);
-            label3.TabIndex = 80;
-            label3.Text = "Dia de uso";
+            lblDiaUso.Anchor = AnchorStyles.None;
+            lblDiaUso.AutoSize = true;
+            lblDiaUso.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            lblDiaUso.Location = new Point(161, 601);
+            lblDiaUso.Name = "lblDiaUso";
+            lblDiaUso.Size = new Size(94, 23);
+            lblDiaUso.TabIndex = 80;
+            lblDiaUso.Text = "Dia de uso";
+            // 
+            // dtpDiaUso
+            // 
+            dtpDiaUso.Anchor = AnchorStyles.None;
+            dtpDiaUso.Location = new Point(267, 598);
+            dtpDiaUso.Margin = new Padding(3, 4, 3, 4);
+            dtpDiaUso.Name = "dtpDiaUso";
+            dtpDiaUso.Size = new Size(300, 27);
+            dtpDiaUso.TabIndex = 81;
             // 
             // Inscribir_Actividad
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(982, 753);
-            Controls.Add(label3);
+            ClientSize = new Size(1008, 753);
+            Controls.Add(dtpDiaUso);
+            Controls.Add(lblDiaUso);
             Controls.Add(lblDatosActividad);
             Controls.Add(lblDatosCliente);
             Controls.Add(txtBoxHorarios);
@@ -320,10 +330,11 @@
             Controls.Add(pbVolver);
             Controls.Add(imgBoxOpc);
             Controls.Add(label2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 800);
             Name = "Inscribir_Actividad";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Inscribir_Actividad";
+            Text = "Sistema Gestor | Sports Club";
             ((System.ComponentModel.ISupportInitialize)pbVolver).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgBoxOpc).EndInit();
             ResumeLayout(false);
@@ -352,6 +363,7 @@
         private TextBox txtBoxHorarios;
         private Label lblDatosCliente;
         private Label lblDatosActividad;
-        private Label label3;
+        private Label lblDiaUso;
+        private DateTimePicker dtpDiaUso;
     }
 }

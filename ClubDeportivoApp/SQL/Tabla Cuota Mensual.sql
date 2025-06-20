@@ -16,52 +16,12 @@ CREATE TABLE CuotaMensual (
     constraint fk_CodSocio foreign key (CodSocio) references Socio(CodSocio)
 );
 
-DROP PROCEDURE IF EXISTS ObtenerCuotaPorSocio;
-DELIMITER //
-CREATE PROCEDURE ObtenerCuotaPorSocio(IN p_codSocio VARCHAR(50), IN p_pagada bit)
-BEGIN
-    SELECT 
-        CodCuotaMensual, 
-        NroCuota, 
-        Vencimiento, 
-        ValorMensual, 
-        Pagada, 
-        IFNULL(TipoDePago, '') AS TipoDePago,
-        IFNULL(CantidadCuotas, 0) AS CantidadCuotas,
-        IFNULL(FechaDePago, '') AS FechaDePago,
-        CodSocio
-    FROM 
-        CuotaMensual
-    WHERE 
-        CodSocio = p_codSocio AND Pagada = p_pagada
-    ORDER BY Vencimiento DESC
-    LIMIT 1;
-END //
-DELIMITER ;
+-- =============================================
+-- PROCEDIMIENTOS PARA CUOTA MENSUAL
+-- =============================================
 
-
-DROP PROCEDURE IF EXISTS ObtenerCuotaCompleta;
-DELIMITER //
-CREATE PROCEDURE ObtenerCuotaCompleta(IN p_codCuota VARCHAR(50))
-BEGIN
-    SELECT 
-        CodCuotaMensual, 
-        NroCuota, 
-        Vencimiento, 
-        ValorMensual, 
-        Pagada, 
-        TipoDePago,
-        CantidadCuotas,
-        FechaDePago,
-        CodSocio
-    FROM 
-        CuotaMensual
-    WHERE 
-        CodCuotaMensual = p_codCuota;
-END //
-DELIMITER ;
-
-
+-- GENERAR PRIMER CUOTA (CREATE)
+DROP PROCEDURE IF EXISTS GenerarPrimerCuota;
 DELIMITER //
 CREATE PROCEDURE GenerarPrimerCuota(
     IN p_CodCuota VARCHAR(50),
@@ -92,6 +52,8 @@ BEGIN
 END //
 DELIMITER ;
 
+-- GENERAR NUEVA CUOTA (CREATE)
+DROP PROCEDURE IF EXISTS GenerarNuevaCuota;
 DELIMITER //
 CREATE PROCEDURE GenerarNuevaCuota(
     IN p_CodCuotaActual VARCHAR(50),
@@ -101,9 +63,7 @@ CREATE PROCEDURE GenerarNuevaCuota(
 BEGIN
     DECLARE v_CodSocio VARCHAR(50);
     DECLARE v_NroCuota INT;
-    DECLARE v_ValorMensual FLOAT;
-    
-    -- 1. Obtener datos de la cuota actual
+    DECLARE v_ValorMensual FLOAT;    
     SELECT 
         CodSocio, 
         NroCuota + 1, 
@@ -116,11 +76,7 @@ BEGIN
         @nuevoVencimiento
     FROM CuotaMensual 
     WHERE CodCuotaMensual = p_CodCuotaActual;
-    
-    -- 2. Generar nuevo código de cuota
     SET p_NuevaCodCuota = CONCAT('CUOTA-', LPAD(v_NroCuota, 2, '0'), '-', v_CodSocio);
-    
-    -- 3. Insertar nueva cuota
     INSERT INTO CuotaMensual (
         CodCuotaMensual,
         NroCuota,
@@ -136,7 +92,52 @@ BEGIN
         0,
         v_CodSocio
     );
-    
     SET rta = 0;
+END //
+DELIMITER ;
+
+-- OBTENER CUOTA COMPLETA (READ)
+DROP PROCEDURE IF EXISTS ObtenerCuotaCompleta;
+DELIMITER //
+CREATE PROCEDURE ObtenerCuotaCompleta(IN p_codCuota VARCHAR(50))
+BEGIN
+    SELECT 
+        CodCuotaMensual, 
+        NroCuota, 
+        Vencimiento, 
+        ValorMensual, 
+        Pagada, 
+        TipoDePago,
+        CantidadCuotas,
+        FechaDePago,
+        CodSocio
+    FROM 
+        CuotaMensual
+    WHERE 
+        CodCuotaMensual = p_codCuota;
+END //
+DELIMITER ;
+
+-- OBTENER CUOTA POR CODIGO DE SOCIO (READ)
+DROP PROCEDURE IF EXISTS ObtenerCuotaPorSocio;
+DELIMITER //
+CREATE PROCEDURE ObtenerCuotaPorSocio(IN p_codSocio VARCHAR(50), IN p_pagada bit)
+BEGIN
+    SELECT 
+        CodCuotaMensual, 
+        NroCuota, 
+        Vencimiento, 
+        ValorMensual, 
+        Pagada, 
+        IFNULL(TipoDePago, '') AS TipoDePago,
+        IFNULL(CantidadCuotas, 0) AS CantidadCuotas,
+        IFNULL(FechaDePago, '') AS FechaDePago,
+        CodSocio
+    FROM 
+        CuotaMensual
+    WHERE 
+        CodSocio = p_codSocio AND Pagada = p_pagada
+    ORDER BY Vencimiento DESC
+    LIMIT 1;
 END //
 DELIMITER ;
