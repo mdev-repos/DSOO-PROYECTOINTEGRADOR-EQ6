@@ -91,7 +91,9 @@ namespace ClubDeportivoApp
                                 txtPrecio.Text = reader.IsDBNull(1) ? "0.00" : reader.GetDouble(1).ToString("F2");
                                 txtHorarios.Text = reader.IsDBNull(2) ? string.Empty : reader.GetString(2);
 
-                                txtActividad.Enabled = true;
+                                txtActividad.Enabled = false;
+                                txtActividad.ReadOnly = true;
+
                                 txtPrecio.Enabled = true;
                                 txtHorarios.Enabled = true;
                                 btnModificar.Enabled = true;
@@ -154,22 +156,16 @@ namespace ClubDeportivoApp
 
             try
             {
-                string nuevoCodigo = "ACT-" + txtActividad.Text.Trim().Replace(" ", "").ToUpper();
-
                 using (MySqlConnection mySqlConnection = Conexion.getInstancia().CrearConexion())
                 {
                     mySqlConnection.Open();
                     string query = @"UPDATE Actividades 
-                                   SET CodActividad = @nuevoCodigo, 
-                                       Nombre = @nombre, 
-                                       Valor = @valor, 
+                                   SET Valor = @valor, 
                                        Horario = @horario 
                                    WHERE CodActividad = @codigoOriginal";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
                     {
-                        cmd.Parameters.AddWithValue("@nuevoCodigo", nuevoCodigo);
-                        cmd.Parameters.AddWithValue("@nombre", txtActividad.Text.Trim());
                         cmd.Parameters.AddWithValue("@valor", float.Parse(txtPrecio.Text));
                         cmd.Parameters.AddWithValue("@horario", txtHorarios.Text.Trim());
                         cmd.Parameters.AddWithValue("@codigoOriginal", _codigoOriginal);
