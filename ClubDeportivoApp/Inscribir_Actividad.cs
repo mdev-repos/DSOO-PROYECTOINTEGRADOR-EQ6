@@ -286,7 +286,16 @@ namespace ClubDeportivoApp
             {
                 MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }                          
+            }
+            finally
+            {
+                MessageBox.Show($"Inscripción del No Socio en Actividad completada correctamente!\n",
+                              "INSCRIPCIÓN EXITOSA",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Information);
+
+                this.Close();
+            }
         }
     }
 }
