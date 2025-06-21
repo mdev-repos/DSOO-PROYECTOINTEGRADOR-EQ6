@@ -42,10 +42,11 @@
             // 
             txtUsuario.Anchor = AnchorStyles.None;
             txtUsuario.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold);
-            txtUsuario.Location = new Point(428, 164);
+            txtUsuario.Location = new Point(489, 219);
+            txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Usuario";
-            txtUsuario.Size = new Size(314, 32);
+            txtUsuario.Size = new Size(358, 38);
             txtUsuario.TabIndex = 0;
             txtUsuario.TextChanged += txtUsuario_TextChanged;
             txtUsuario.Enter += txtUsuario_Enter;
@@ -55,11 +56,12 @@
             // 
             txtContrasenia.Anchor = AnchorStyles.None;
             txtContrasenia.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold);
-            txtContrasenia.Location = new Point(428, 219);
+            txtContrasenia.Location = new Point(489, 292);
+            txtContrasenia.Margin = new Padding(3, 4, 3, 4);
             txtContrasenia.Name = "txtContrasenia";
             txtContrasenia.PasswordChar = '*';
             txtContrasenia.PlaceholderText = "Contraseña";
-            txtContrasenia.Size = new Size(314, 32);
+            txtContrasenia.Size = new Size(358, 38);
             txtContrasenia.TabIndex = 1;
             txtContrasenia.UseSystemPasswordChar = true;
             txtContrasenia.Enter += txtContraseña_Enter;
@@ -69,9 +71,10 @@
             // 
             imgBoxLog.Anchor = AnchorStyles.None;
             imgBoxLog.Image = (Image)resources.GetObject("imgBoxLog.Image");
-            imgBoxLog.Location = new Point(102, 117);
+            imgBoxLog.Location = new Point(117, 156);
+            imgBoxLog.Margin = new Padding(3, 4, 3, 4);
             imgBoxLog.Name = "imgBoxLog";
-            imgBoxLog.Size = new Size(256, 236);
+            imgBoxLog.Size = new Size(293, 315);
             imgBoxLog.SizeMode = PictureBoxSizeMode.StretchImage;
             imgBoxLog.TabIndex = 2;
             imgBoxLog.TabStop = false;
@@ -82,10 +85,11 @@
             btnIngresar.BackColor = Color.DarkGreen;
             btnIngresar.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnIngresar.ForeColor = Color.Linen;
-            btnIngresar.Location = new Point(615, 278);
+            btnIngresar.Location = new Point(703, 371);
+            btnIngresar.Margin = new Padding(3, 4, 3, 4);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(112, 40);
-            btnIngresar.TabIndex = 3;
+            btnIngresar.Size = new Size(128, 53);
+            btnIngresar.TabIndex = 2;
             btnIngresar.Text = "INGRESAR";
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
@@ -96,9 +100,9 @@
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTitulo.Location = new Point(308, 43);
+            lblTitulo.Location = new Point(352, 57);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(207, 25);
+            lblTitulo.Size = new Size(248, 31);
             lblTitulo.TabIndex = 4;
             lblTitulo.Text = "INGRESO AL SISTEMA";
             lblTitulo.Click += label1_Click;
@@ -109,20 +113,21 @@
             btnSalir.BackColor = Color.FromArgb(120, 10, 90);
             btnSalir.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             btnSalir.ForeColor = Color.Linen;
-            btnSalir.Location = new Point(444, 278);
+            btnSalir.Location = new Point(507, 371);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(112, 40);
-            btnSalir.TabIndex = 2;
+            btnSalir.Size = new Size(128, 53);
+            btnSalir.TabIndex = 3;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(861, 421);
+            ClientSize = new Size(984, 561);
             Controls.Add(btnSalir);
             Controls.Add(lblTitulo);
             Controls.Add(btnIngresar);
@@ -131,7 +136,8 @@
             Controls.Add(txtUsuario);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(877, 460);
+            Margin = new Padding(3, 4, 3, 4);
+            MinimumSize = new Size(1000, 598);
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

@@ -7,8 +7,8 @@ namespace ClubDeportivoApp
 {
     public partial class Crear_Actividad : Form
     {
-        // Variable de control para saber si se encontró una actividad
-        private bool _actividadEncontrada = false;
+        private string _codigoOriginal; // Para guardar el código original en MODO modificación
+        private bool _actividadEncontrada = false; 
 
         public Crear_Actividad()
         {
@@ -18,201 +18,46 @@ namespace ClubDeportivoApp
 
         private void ConfigurarControlesIniciales()
         {
-            // Configuración inicial basada en el RadioButton seleccionado
-            if (rbtCrear.Checked)
-            {
-                btnModificar.Enabled = false;
-                btnBuscarActividad.Enabled = false;
-                txtCodigo.ReadOnly = true;
-                btnCrearActividad.Enabled = true;
-            }
-            else
-            {
-                btnCrearActividad.Enabled = false;
-                btnBuscarActividad.Enabled = true;
-                txtCodigo.ReadOnly = true;
-                btnModificar.Enabled = false; // se activará después de una búsqueda
-            }
-        }
-
-        private void btnVolverActividad_Click(object sender, EventArgs e)
-        {
-            DialogResult resultado = MessageBox.Show("¿Estás seguro que deseas volver?",
-                                             "Confirmación",
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-
-        private void txtActividad_TextChanged(object sender, EventArgs e)
-        {
-            if (rbtModificar.Checked && !string.IsNullOrWhiteSpace(txtActividad.Text))
-            {
-                string codigoGenerado = "ACT-" + txtActividad.Text.Trim().Replace(" ", "").ToUpper();
-                txtCodigo.Text = codigoGenerado;
-            }
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            txtCodigo.Text = string.Empty;
-            txtActividad.Text = string.Empty;
-            txtPrecio.Text = string.Empty;
-            txtHorarios.Text = string.Empty;
-
-            // Restablecer el estado de txtCodigo según el modo seleccionado
-            if (rbtCrear.Checked)
-            {
-                txtCodigo.ReadOnly = true; // En modo Crear, el campo debe estar bloqueado
-            }
-            else if (rbtModificar.Checked)
-            {
-                txtCodigo.ReadOnly = false; // En modo Modificar, el campo debe estar habilitado
-                txtCodigo.Focus(); // Colocar el foco en el campo Código
-            }
-
-            // Restablecer el estado de actividad encontrada
-            _actividadEncontrada = false;
-        }
-
-        private void btnCrearActividad_Click(object sender, EventArgs e)
-        {
-            // Validar campos vacíos
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
-                string.IsNullOrWhiteSpace(txtActividad.Text) ||
-                string.IsNullOrWhiteSpace(txtPrecio.Text) ||
-                string.IsNullOrWhiteSpace(txtHorarios.Text))
-            {
-                MessageBox.Show("Todos los campos son obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Validar formato del precio
-            if (!float.TryParse(txtPrecio.Text, out float precio) || precio <= 0)
-            {
-                MessageBox.Show("El precio debe ser un número válido mayor a cero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                string respuesta;
-                E_Actividad actividad = new E_Actividad();
-                actividad.CodActividad = txtCodigo.Text;
-                actividad.Nombre = txtActividad.Text;
-                actividad.Valor = float.Parse(txtPrecio.Text);
-                actividad.Horario = txtHorarios.Text;
-
-                Datos.Actividades actividadDatos = new Datos.Actividades();
-                respuesta = actividadDatos.Nueva_Actividad(actividad);
-                bool esNumero = int.TryParse(respuesta, out int codigo);
-                if (esNumero)
-                {
-                    if (codigo == 1)
-                    {
-                        MessageBox.Show("La actividad ya existe", "AVISO DEL SISTEMA",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"La actividad {actividad.Nombre} se registró con éxito con el código número: {actividad.CodActividad} " + respuesta,
-                                "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al crear actividad: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void LimpiarCampos()
-        {
-            txtCodigo.Clear();
-            txtActividad.Clear();
-            txtPrecio.Clear();
-            txtHorarios.Clear();
-            _actividadEncontrada = false; // Restablecer estado
+            // Estado inicial
+            txtCodigo.Enabled = false;
+            txtActividad.Enabled = false;
+            txtPrecio.Enabled = false;
+            txtHorarios.Enabled = false;
+            btnBuscarActividad.Enabled = false;
+            btnCrearActividad.Enabled = false;
             btnModificar.Enabled = false;
-            txtCodigo.ReadOnly = false;
+            btnLimpiar.Enabled = true;
+
+            LimpiarCampos();
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void rbtCrear_CheckedChanged_1(object sender, EventArgs e)
         {
-            MySqlConnection mySqlConnection = new MySqlConnection();
-
-            // Validar campos vacíos
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
-                string.IsNullOrWhiteSpace(txtActividad.Text) ||
-                string.IsNullOrWhiteSpace(txtPrecio.Text) ||
-                string.IsNullOrWhiteSpace(txtHorarios.Text))
+            if (rbtCrear.Checked)
             {
-                MessageBox.Show("Todos los campos son obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ConfigurarControlesIniciales();
+                txtActividad.Enabled = true;
+                txtPrecio.Enabled = true;
+                txtHorarios.Enabled = true;
+                btnCrearActividad.Enabled = true;
+                txtActividad.Focus();
             }
+        }
 
-            // Validar formato del precio
-            if (!float.TryParse(txtPrecio.Text, out float precio) || precio <= 0)
+        private void rbtModificar_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (rbtModificar.Checked)
             {
-                MessageBox.Show("El precio debe ser un número válido mayor a cero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Lógica para modificar la actividad
-            try
-            {
-                mySqlConnection = Conexion.getInstancia().CrearConexion();
-                mySqlConnection.Open();
-
-                string query = @"UPDATE Actividades 
-                 SET Nombre = @nombre, Valor = @valor, Horario = @horario 
-                 WHERE CodActividad = @codigo";
-
-                using (mySqlConnection)
-                {
-                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
-                    {
-                        cmd.Parameters.AddWithValue("@nombre", txtActividad.Text.Trim());
-                        cmd.Parameters.AddWithValue("@valor", precio); // ya validado como float
-                        cmd.Parameters.AddWithValue("@horario", txtHorarios.Text.Trim());
-                        cmd.Parameters.AddWithValue("@codigo", txtCodigo.Text.Trim());
-
-                        int filasAfectadas = cmd.ExecuteNonQuery();
-
-                        if (filasAfectadas > 0)
-                        {
-                            MessageBox.Show("Actividad modificada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LimpiarCampos();
-                            txtCodigo.ReadOnly = true;
-                            txtActividad.Focus();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró ninguna actividad con ese código.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al modificar actividad: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (mySqlConnection.State == ConnectionState.Open)
-                {
-                    mySqlConnection.Close();
-                }
+                ConfigurarControlesIniciales();
+                txtCodigo.Enabled = true;
+                txtCodigo.ReadOnly = false;
+                btnBuscarActividad.Enabled = true;
+                txtCodigo.Focus();
             }
         }
 
         private void btnBuscarActividad_Click(object sender, EventArgs e)
         {
-            MySqlConnection mySqlConnection = new MySqlConnection();
-
             string codActividad = txtCodigo.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(codActividad) || !codActividad.StartsWith("ACT-"))
@@ -220,15 +65,14 @@ namespace ClubDeportivoApp
                 MessageBox.Show("Por favor ingrese un código válido, debe comenzar con 'ACT-'.");
                 return;
             }
+
             try
             {
-                mySqlConnection = Conexion.getInstancia().CrearConexion();
-                mySqlConnection.Open();
-                string query = "SELECT Nombre, Valor, Horario FROM Actividades WHERE CodActividad = @codigo";
-
-                using(mySqlConnection)
+                using (MySqlConnection mySqlConnection = Conexion.getInstancia().CrearConexion())
                 {
-                    //conn.Open();
+                    mySqlConnection.Open();
+                    string query = "SELECT Nombre, Valor, Horario FROM Actividades WHERE CodActividad = @codigo";
+
                     using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
                     {
                         cmd.Parameters.AddWithValue("@codigo", codActividad);
@@ -237,82 +81,196 @@ namespace ClubDeportivoApp
                         {
                             if (reader.Read())
                             {
-                                txtActividad.Text = reader.IsDBNull(reader.GetOrdinal("Nombre"))
-                                    ? string.Empty
-                                    : reader.GetString(reader.GetOrdinal("Nombre"));
+                                _codigoOriginal = codActividad;
+                                _actividadEncontrada = true;
 
-                                txtPrecio.Text = reader.IsDBNull(reader.GetOrdinal("Valor"))
-                                    ? "0.00"
-                                    : reader.GetDouble(reader.GetOrdinal("Valor")).ToString("F2");
-
-                                txtHorarios.Text = reader.IsDBNull(reader.GetOrdinal("Horario"))
-                                    ? string.Empty
-                                    : reader.GetString(reader.GetOrdinal("Horario"));
+                                txtCodigo.Enabled = false;
                                 txtCodigo.ReadOnly = true;
+
+                                txtActividad.Text = reader.IsDBNull(0) ? string.Empty : reader.GetString(0);
+                                txtPrecio.Text = reader.IsDBNull(1) ? "0.00" : reader.GetDouble(1).ToString("F2");
+                                txtHorarios.Text = reader.IsDBNull(2) ? string.Empty : reader.GetString(2);
+
+                                txtActividad.Enabled = true;
+                                txtPrecio.Enabled = true;
+                                txtHorarios.Enabled = true;
                                 btnModificar.Enabled = true;
-                                _actividadEncontrada = true; // Marcar que se encontró una actividad
                             }
                             else
                             {
-                                MessageBox.Show("No se encontró ninguna actividad con ese código.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("No se encontró ninguna actividad con ese código.",
+                                    "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al buscar actividad: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al buscar actividad: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
+        }
+
+        private void btnCrearActividad_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCampos()) return;
+
+            try
             {
-                if (mySqlConnection.State == ConnectionState.Open)
+                E_Actividad actividad = new E_Actividad
                 {
-                    mySqlConnection.Close();
+                    CodActividad = txtCodigo.Text,
+                    Nombre = txtActividad.Text,
+                    Valor = float.Parse(txtPrecio.Text),
+                    Horario = txtHorarios.Text
+                };
+
+                Datos.Actividades actividadDatos = new Datos.Actividades();
+                string respuesta = actividadDatos.Nueva_Actividad(actividad);
+
+                if (respuesta == "1")
+                {
+                    MessageBox.Show("La actividad ya existe", "AVISO DEL SISTEMA",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else
+                {
+                    MessageBox.Show($"Actividad '{actividad.Nombre}' creada correctamente con código: {actividad.CodActividad}",
+                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnLimpiar_Click(sender, e); // Usamos el método original
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al crear actividad: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCampos() || !_actividadEncontrada) return;
+
+            try
+            {
+                string nuevoCodigo = "ACT-" + txtActividad.Text.Trim().Replace(" ", "").ToUpper();
+
+                using (MySqlConnection mySqlConnection = Conexion.getInstancia().CrearConexion())
+                {
+                    mySqlConnection.Open();
+                    string query = @"UPDATE Actividades 
+                                   SET CodActividad = @nuevoCodigo, 
+                                       Nombre = @nombre, 
+                                       Valor = @valor, 
+                                       Horario = @horario 
+                                   WHERE CodActividad = @codigoOriginal";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, mySqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@nuevoCodigo", nuevoCodigo);
+                        cmd.Parameters.AddWithValue("@nombre", txtActividad.Text.Trim());
+                        cmd.Parameters.AddWithValue("@valor", float.Parse(txtPrecio.Text));
+                        cmd.Parameters.AddWithValue("@horario", txtHorarios.Text.Trim());
+                        cmd.Parameters.AddWithValue("@codigoOriginal", _codigoOriginal);
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+
+                        if (filasAfectadas > 0)
+                        {
+                            MessageBox.Show($"Actividad '{txtActividad.Text}' modificada correctamente.",
+                                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnLimpiar_Click(sender, e); 
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo modificar la actividad.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al modificar actividad: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txtActividad.Text) ||
+                string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                string.IsNullOrWhiteSpace(txtHorarios.Text))
+            {
+                MessageBox.Show("Todos los campos son obligatorios",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!float.TryParse(txtPrecio.Text, out float precio) || precio <= 0)
+            {
+                MessageBox.Show("El precio debe ser un número válido mayor a cero",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void LimpiarCampos()
+        {
+            txtCodigo.Clear();
+            txtActividad.Clear();
+            txtPrecio.Clear();
+            txtHorarios.Clear();
+            _codigoOriginal = string.Empty;
+            _actividadEncontrada = false;
+        }
+
+        private void txtActividad_TextChanged(object sender, EventArgs e)
+        {
+            if (rbtCrear.Checked || rbtModificar.Checked && !string.IsNullOrWhiteSpace(txtActividad.Text))
+            {
+                string codigoGenerado = "ACT-" + txtActividad.Text.Trim().Replace(" ", "").ToUpper();
+                txtCodigo.Text = codigoGenerado;
             }
         }
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permitir solo números, backspace y decimal
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
         }
 
-        private void rbtCrear_CheckedChanged_1(object sender, EventArgs e)
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
+            ConfigurarControlesIniciales();
+
             if (rbtCrear.Checked)
             {
-                btnModificar.Enabled = false;
-                btnBuscarActividad.Enabled = false;
-                txtCodigo.ReadOnly = true;
-                btnCrearActividad.Enabled = true;
-
-                // Limpiar campos al cambiar de modo
-                btnLimpiar_Click(sender, e);
+                rbtCrear_CheckedChanged_1(sender, e);
+            }
+            else if (rbtModificar.Checked)
+            {
+                rbtModificar_CheckedChanged_1(sender, e);
             }
         }
 
-        private void rbtModificar_CheckedChanged_1(object sender, EventArgs e)
+        private void btnVolverActividad_Click(object sender, EventArgs e)
         {
-            if (rbtModificar.Checked)
+            if (MessageBox.Show("¿Estás seguro que deseas volver?", "Confirmación",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                btnCrearActividad.Enabled = false;
-                btnModificar.Enabled = true;
-                btnBuscarActividad.Enabled = true;
-                // Habilitar txtCodigo para nueva búsqueda
-                txtCodigo.ReadOnly = false;
-                txtCodigo.Focus(); // Colocar el foco en el campo Código
-
-                // Limpiar campos al cambiar de modo
-                btnLimpiar_Click(sender, e);
-
-                // Restablecer el estado de actividad encontrada
-                _actividadEncontrada = false;
+                this.Close();
             }
         }
     }

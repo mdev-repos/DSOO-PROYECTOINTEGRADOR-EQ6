@@ -238,7 +238,10 @@ namespace ClubDeportivoApp
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                {
+                {         
+                    Form inscribir_ActividadWdw = new Inscribir_Actividad(nosocio.Dni.ToString());
+                    inscribir_ActividadWdw.ShowDialog();
+
                     MessageBox.Show($"El no socio {nosocio.Nombre} {nosocio.Apellido} se registró con éxito con el código número: {nosocio.CodNoSocio} " + respuesta,
                          "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }

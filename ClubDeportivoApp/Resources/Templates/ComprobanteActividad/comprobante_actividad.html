@@ -1,11 +1,9 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<html>
 <head>
-    <link href="./Resources/Templates/Comprobante/styles.css" rel="stylesheet">
+    <link href="./Resources/Templates/ComprobanteActividad/styles.css" rel="stylesheet">
 </head>
 <body>
     <div class="comprobante">
-
         <div class="marca-agua">
             <img src="./Resources/Templates/Assets/Icon-Pagado.png" alt="Pagado">
         </div>
@@ -20,17 +18,17 @@
                 </div>
             </div>
             <div class="titulo-comprobante">
-                <div>COMPROBANTE DE PAGO</div>
+                <div>COMPROBANTE DE ACTIVIDAD</div>
                 <div class="codigo-comprobante">#{{codCuota}}</div>
-            </div>        
+            </div>
         </header>
 
         <section class="seccion datos-cliente">
             <h3>DATOS DEL CLIENTE</h3>
             <div class="grid-datos">
                 <div class="dato">
-                    <span class="etiqueta">SOCIO</span>
-                    <span class="valor">{{codSocio}}</span>
+                    <span class="etiqueta">NO SOCIO</span>
+                    <span class="valor">{{codNoSocio}}</span>
                 </div>
                 <div class="dato">
                     <span class="etiqueta">DNI</span>
@@ -48,19 +46,19 @@
         </section>
 
         <section class="seccion detalle-pago">
-            <h3>DETALLE DEL PAGO</h3>
+            <h3>DETALLE DE LA ACTIVIDAD</h3>
             <div class="grid-detalle">
                 <div class="dato-detalle">
-                    <span class="etiqueta">CUOTA</span>
+                    <span class="etiqueta">ACTIVIDAD</span>
+                    <span class="valor">{{actividad}}</span>
+                </div>
+                <div class="dato-detalle">
+                    <span class="etiqueta">FECHA DE USO</span>
+                    <span class="valor">{{fechaUso}}</span>
+                </div>
+                <div class="dato-detalle">
+                    <span class="etiqueta">CÓDIGO</span>
                     <span class="valor">{{codCuota}}</span>
-                </div>
-                <div class="dato-detalle">
-                    <span class="etiqueta">NUMERO</span>
-                    <span class="valor">{{nroCuota}}</span>
-                </div>
-                <div class="dato-detalle">
-                    <span class="etiqueta">VENCIMIENTO</span>
-                    <span class="valor">{{vencimiento}}</span>
                 </div>
                 <div class="dato-detalle">
                     <span class="etiqueta">IMPORTE</span>
@@ -84,6 +82,13 @@
                 </div>
             </div>
         </section>
+
+        <div class="contenedor-troquelado">
+            <div class="linea-troquelado">- - - - - - - - - - - - - - - - - - - -</div>
+            <div class="mensaje-troquelado">
+                PASE PARA LA ACTIVIDAD "{{actividad}}" VÁLIDO PARA EL DÍA {{fechaUso}}
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -41,9 +41,9 @@
             lblTituloOpc.AutoSize = true;
             lblTituloOpc.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloOpc.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTituloOpc.Location = new Point(222, 50);
+            lblTituloOpc.Location = new Point(253, 63);
             lblTituloOpc.Name = "lblTituloOpc";
-            lblTituloOpc.Size = new Size(373, 25);
+            lblTituloOpc.Size = new Size(446, 31);
             lblTituloOpc.TabIndex = 59;
             lblTituloOpc.Text = "LISTADO DE ACTIVIDADES DISPONIBLES";
             // 
@@ -53,10 +53,9 @@
             btnVolver.BackColor = Color.FromArgb(120, 10, 90);
             btnVolver.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = Color.Linen;
-            btnVolver.Location = new Point(640, 487);
-            btnVolver.Margin = new Padding(3, 2, 3, 2);
+            btnVolver.Location = new Point(730, 645);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(133, 40);
+            btnVolver.Size = new Size(152, 53);
             btnVolver.TabIndex = 1;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
@@ -68,25 +67,23 @@
             dgvActividades.BackgroundColor = Color.Linen;
             dgvActividades.BorderStyle = BorderStyle.None;
             dgvActividades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvActividades.Location = new Point(24, 103);
-            dgvActividades.Margin = new Padding(3, 2, 3, 2);
+            dgvActividades.Location = new Point(26, 133);
             dgvActividades.Name = "dgvActividades";
             dgvActividades.RowHeadersWidth = 51;
-            dgvActividades.Size = new Size(808, 361);
+            dgvActividades.Size = new Size(923, 481);
             dgvActividades.TabIndex = 0;
             // 
             // Ver_Actividades
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(861, 571);
+            ClientSize = new Size(982, 753);
             Controls.Add(dgvActividades);
             Controls.Add(btnVolver);
             Controls.Add(lblTituloOpc);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 2, 3, 2);
-            MinimumSize = new Size(877, 610);
+            MinimumSize = new Size(1000, 798);
             Name = "Ver_Actividades";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

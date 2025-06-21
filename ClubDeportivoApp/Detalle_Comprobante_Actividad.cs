@@ -9,11 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClubDeportivoApp.Entidades;
+using ClubDeportivoApp.Helpers;
+using PuppeteerSharp.Media;
+using PuppeteerSharp;
 
 namespace ClubDeportivoApp
 {
     public partial class Detalle_Comprobante_Actividad : Form
     {
+        private readonly E_NoSocio _noSocio;
+        private readonly E_CuotaDiaria _cuotaDiaria;
+
         public Detalle_Comprobante_Actividad()
         {
             InitializeComponent();
@@ -22,6 +28,8 @@ namespace ClubDeportivoApp
         public Detalle_Comprobante_Actividad(E_NoSocio noSocio, E_CuotaDiaria cuotaDiaria)
         {
             InitializeComponent();
+            _noSocio = noSocio;
+            _cuotaDiaria = cuotaDiaria;
             CargarDatosComprobante(noSocio, cuotaDiaria);
             ConfigurarControles();
         }
@@ -76,7 +84,7 @@ namespace ClubDeportivoApp
             txtActividad.ReadOnly = true;
             txtFechaDeUso.ReadOnly = true;
 
-            
+
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -85,6 +93,52 @@ namespace ClubDeportivoApp
                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Close();
+            }
+        }
+
+        private async void btnDescargarResumen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog saveDialog = new SaveFileDialog())
+                {
+                    saveDialog.FileName = $"comprobante_actividad_{_cuotaDiaria.CodCuotaDiaria}.pdf";
+                    saveDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                    saveDialog.DefaultExt = "pdf";
+                    saveDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                    if (saveDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string htmlContent = TemplateEngine.RenderComprobanteActividad(_noSocio, _cuotaDiaria);
+
+                        await new BrowserFetcher().DownloadAsync();
+                        using (var browser = await Puppeteer.LaunchAsync(new LaunchOptions { Headless = true }))
+                        using (var page = await browser.NewPageAsync())
+                        {
+                            await page.SetContentAsync(htmlContent);
+                            await page.PdfAsync(saveDialog.FileName, new PdfOptions
+                            {
+                                Format = PaperFormat.A4,
+                                MarginOptions = new MarginOptions
+                                {
+                                    Top = "20mm",
+                                    Right = "20mm",
+                                    Bottom = "20mm",
+                                    Left = "20mm"
+                                },
+                                PrintBackground = true
+                            });
+                        }
+
+                        MessageBox.Show($"PDF generado en:\n{saveDialog.FileName}", "Éxito",
+                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al generar PDF:\n{ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

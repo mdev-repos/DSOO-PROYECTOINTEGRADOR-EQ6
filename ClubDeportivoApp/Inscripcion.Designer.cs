@@ -61,9 +61,9 @@
             lblNombre.Anchor = AnchorStyles.None;
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNombre.Location = new Point(153, 219);
+            lblNombre.Location = new Point(175, 292);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(71, 20);
+            lblNombre.Size = new Size(87, 25);
             lblNombre.TabIndex = 0;
             lblNombre.Text = "Nombre";
             // 
@@ -72,9 +72,9 @@
             lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblApellido.Location = new Point(438, 219);
+            lblApellido.Location = new Point(501, 292);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(73, 20);
+            lblApellido.Size = new Size(90, 25);
             lblApellido.TabIndex = 1;
             lblApellido.Text = "Apellido";
             // 
@@ -83,9 +83,9 @@
             lblEmail.Anchor = AnchorStyles.None;
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmail.Location = new Point(438, 369);
+            lblEmail.Location = new Point(501, 492);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(53, 20);
+            lblEmail.Size = new Size(65, 25);
             lblEmail.TabIndex = 2;
             lblEmail.Text = "Email";
             // 
@@ -94,9 +94,9 @@
             lblDireccion.Anchor = AnchorStyles.None;
             lblDireccion.AutoSize = true;
             lblDireccion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDireccion.Location = new Point(153, 329);
+            lblDireccion.Location = new Point(175, 439);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(84, 20);
+            lblDireccion.Size = new Size(102, 25);
             lblDireccion.TabIndex = 3;
             lblDireccion.Text = "Dirección";
             // 
@@ -105,9 +105,9 @@
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDni.Location = new Point(153, 257);
+            lblDni.Location = new Point(175, 343);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(36, 20);
+            lblDni.Size = new Size(44, 25);
             lblDni.TabIndex = 4;
             lblDni.Text = "Dni";
             // 
@@ -116,9 +116,9 @@
             lblFichaMedica.Anchor = AnchorStyles.None;
             lblFichaMedica.AutoSize = true;
             lblFichaMedica.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFichaMedica.Location = new Point(153, 407);
+            lblFichaMedica.Location = new Point(175, 543);
             lblFichaMedica.Name = "lblFichaMedica";
-            lblFichaMedica.Size = new Size(115, 20);
+            lblFichaMedica.Size = new Size(141, 25);
             lblFichaMedica.TabIndex = 5;
             lblFichaMedica.Text = "Ficha Médica";
             // 
@@ -127,58 +127,64 @@
             lblTelefono.Anchor = AnchorStyles.None;
             lblTelefono.AutoSize = true;
             lblTelefono.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTelefono.Location = new Point(153, 368);
+            lblTelefono.Location = new Point(175, 491);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(79, 20);
+            lblTelefono.Size = new Size(97, 25);
             lblTelefono.TabIndex = 6;
             lblTelefono.Text = "Teléfono";
             // 
             // txtNombre
             // 
             txtNombre.Anchor = AnchorStyles.None;
-            txtNombre.Location = new Point(248, 219);
+            txtNombre.Location = new Point(283, 292);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(168, 23);
+            txtNombre.Size = new Size(191, 27);
             txtNombre.TabIndex = 2;
             // 
             // txtEmail
             // 
             txtEmail.Anchor = AnchorStyles.None;
-            txtEmail.Location = new Point(516, 368);
+            txtEmail.Location = new Point(590, 491);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(168, 23);
+            txtEmail.Size = new Size(191, 27);
             txtEmail.TabIndex = 8;
             // 
             // txtTelefono
             // 
             txtTelefono.Anchor = AnchorStyles.None;
-            txtTelefono.Location = new Point(248, 368);
+            txtTelefono.Location = new Point(283, 491);
+            txtTelefono.Margin = new Padding(3, 4, 3, 4);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(168, 23);
+            txtTelefono.Size = new Size(191, 27);
             txtTelefono.TabIndex = 7;
             // 
             // txtDireccion
             // 
             txtDireccion.Anchor = AnchorStyles.None;
-            txtDireccion.Location = new Point(248, 330);
+            txtDireccion.Location = new Point(283, 440);
+            txtDireccion.Margin = new Padding(3, 4, 3, 4);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(168, 23);
+            txtDireccion.Size = new Size(191, 27);
             txtDireccion.TabIndex = 6;
             // 
             // txtDni
             // 
             txtDni.Anchor = AnchorStyles.None;
-            txtDni.Location = new Point(248, 257);
+            txtDni.Location = new Point(283, 343);
+            txtDni.Margin = new Padding(3, 4, 3, 4);
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(168, 23);
+            txtDni.Size = new Size(191, 27);
             txtDni.TabIndex = 4;
             // 
             // txtApellido
             // 
             txtApellido.Anchor = AnchorStyles.None;
-            txtApellido.Location = new Point(516, 219);
+            txtApellido.Location = new Point(590, 292);
+            txtApellido.Margin = new Padding(3, 4, 3, 4);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(168, 23);
+            txtApellido.Size = new Size(191, 27);
             txtApellido.TabIndex = 3;
             // 
             // btnInscribir
@@ -187,10 +193,11 @@
             btnInscribir.BackColor = Color.DarkGreen;
             btnInscribir.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnInscribir.ForeColor = Color.Linen;
-            btnInscribir.Location = new Point(359, 464);
+            btnInscribir.Location = new Point(410, 619);
+            btnInscribir.Margin = new Padding(3, 4, 3, 4);
             btnInscribir.Name = "btnInscribir";
-            btnInscribir.Size = new Size(121, 35);
-            btnInscribir.TabIndex = 11;
+            btnInscribir.Size = new Size(138, 47);
+            btnInscribir.TabIndex = 10;
             btnInscribir.Text = "INSCRIBIR";
             btnInscribir.UseVisualStyleBackColor = false;
             btnInscribir.Click += btnInscribir_Click;
@@ -201,10 +208,11 @@
             btnLimpiar.BackColor = Color.Navy;
             btnLimpiar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiar.ForeColor = Color.Linen;
-            btnLimpiar.Location = new Point(153, 464);
+            btnLimpiar.Location = new Point(175, 619);
+            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(121, 35);
-            btnLimpiar.TabIndex = 10;
+            btnLimpiar.Size = new Size(138, 47);
+            btnLimpiar.TabIndex = 11;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -215,9 +223,10 @@
             btnVolver.BackColor = Color.FromArgb(120, 10, 90);
             btnVolver.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = Color.Linen;
-            btnVolver.Location = new Point(563, 464);
+            btnVolver.Location = new Point(643, 619);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(121, 35);
+            btnVolver.Size = new Size(138, 47);
             btnVolver.TabIndex = 12;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
@@ -228,9 +237,9 @@
             lblFechaNac.Anchor = AnchorStyles.None;
             lblFechaNac.AutoSize = true;
             lblFechaNac.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFechaNac.Location = new Point(153, 292);
+            lblFechaNac.Location = new Point(175, 389);
             lblFechaNac.Name = "lblFechaNac";
-            lblFechaNac.Size = new Size(178, 20);
+            lblFechaNac.Size = new Size(215, 25);
             lblFechaNac.TabIndex = 17;
             lblFechaNac.Text = "Fecha de Nacimiento";
             // 
@@ -239,9 +248,10 @@
             rbtnFichaMedica.Anchor = AnchorStyles.None;
             rbtnFichaMedica.AutoSize = true;
             rbtnFichaMedica.ForeColor = Color.DarkGreen;
-            rbtnFichaMedica.Location = new Point(282, 412);
+            rbtnFichaMedica.Location = new Point(322, 549);
+            rbtnFichaMedica.Margin = new Padding(3, 4, 3, 4);
             rbtnFichaMedica.Name = "rbtnFichaMedica";
-            rbtnFichaMedica.Size = new Size(14, 13);
+            rbtnFichaMedica.Size = new Size(17, 16);
             rbtnFichaMedica.TabIndex = 9;
             rbtnFichaMedica.TabStop = true;
             rbtnFichaMedica.UseVisualStyleBackColor = true;
@@ -250,9 +260,10 @@
             // dtpFechaNac
             // 
             dtpFechaNac.Anchor = AnchorStyles.None;
-            dtpFechaNac.Location = new Point(363, 292);
+            dtpFechaNac.Location = new Point(415, 389);
+            dtpFechaNac.Margin = new Padding(3, 4, 3, 4);
             dtpFechaNac.Name = "dtpFechaNac";
-            dtpFechaNac.Size = new Size(321, 23);
+            dtpFechaNac.Size = new Size(366, 27);
             dtpFechaNac.TabIndex = 5;
             dtpFechaNac.ValueChanged += dtpFechaNac_ValueChanged;
             // 
@@ -261,9 +272,9 @@
             lblDatosPersonales.Anchor = AnchorStyles.None;
             lblDatosPersonales.AutoSize = true;
             lblDatosPersonales.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDatosPersonales.Location = new Point(153, 182);
+            lblDatosPersonales.Location = new Point(175, 243);
             lblDatosPersonales.Name = "lblDatosPersonales";
-            lblDatosPersonales.Size = new Size(114, 17);
+            lblDatosPersonales.Size = new Size(143, 23);
             lblDatosPersonales.TabIndex = 23;
             lblDatosPersonales.Text = "Datos Personales";
             // 
@@ -273,9 +284,11 @@
             gboxTipoCliente.Controls.Add(rbtNoSocio);
             gboxTipoCliente.Controls.Add(rbtSocio);
             gboxTipoCliente.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            gboxTipoCliente.Location = new Point(153, 84);
+            gboxTipoCliente.Location = new Point(175, 112);
+            gboxTipoCliente.Margin = new Padding(3, 4, 3, 4);
             gboxTipoCliente.Name = "gboxTipoCliente";
-            gboxTipoCliente.Size = new Size(530, 77);
+            gboxTipoCliente.Padding = new Padding(3, 4, 3, 4);
+            gboxTipoCliente.Size = new Size(606, 103);
             gboxTipoCliente.TabIndex = 1;
             gboxTipoCliente.TabStop = false;
             gboxTipoCliente.Text = "Tipo de Cliente";
@@ -283,9 +296,10 @@
             // rbtNoSocio
             // 
             rbtNoSocio.AutoSize = true;
-            rbtNoSocio.Location = new Point(320, 34);
+            rbtNoSocio.Location = new Point(366, 45);
+            rbtNoSocio.Margin = new Padding(3, 4, 3, 4);
             rbtNoSocio.Name = "rbtNoSocio";
-            rbtNoSocio.Size = new Size(81, 21);
+            rbtNoSocio.Size = new Size(102, 27);
             rbtNoSocio.TabIndex = 1;
             rbtNoSocio.TabStop = true;
             rbtNoSocio.Text = "No Socio";
@@ -295,9 +309,10 @@
             // rbtSocio
             // 
             rbtSocio.AutoSize = true;
-            rbtSocio.Location = new Point(123, 34);
+            rbtSocio.Location = new Point(141, 45);
+            rbtSocio.Margin = new Padding(3, 4, 3, 4);
             rbtSocio.Name = "rbtSocio";
-            rbtSocio.Size = new Size(59, 21);
+            rbtSocio.Size = new Size(74, 27);
             rbtSocio.TabIndex = 0;
             rbtSocio.TabStop = true;
             rbtSocio.Text = "Socio";
@@ -310,18 +325,18 @@
             lblTituloList.AutoSize = true;
             lblTituloList.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloList.ForeColor = Color.FromArgb(120, 10, 90);
-            lblTituloList.Location = new Point(341, 47);
+            lblTituloList.Location = new Point(390, 63);
             lblTituloList.Name = "lblTituloList";
-            lblTituloList.Size = new Size(133, 25);
+            lblTituloList.Size = new Size(158, 31);
             lblTituloList.TabIndex = 30;
             lblTituloList.Text = "INSCRIPCIÓN";
             // 
             // Inscripcion
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
-            ClientSize = new Size(861, 571);
+            ClientSize = new Size(984, 761);
             Controls.Add(lblTituloList);
             Controls.Add(gboxTipoCliente);
             Controls.Add(lblDatosPersonales);
@@ -345,7 +360,8 @@
             Controls.Add(lblApellido);
             Controls.Add(lblNombre);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(877, 610);
+            Margin = new Padding(3, 4, 3, 4);
+            MinimumSize = new Size(1000, 798);
             Name = "Inscripcion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Gestor | Sports Club";

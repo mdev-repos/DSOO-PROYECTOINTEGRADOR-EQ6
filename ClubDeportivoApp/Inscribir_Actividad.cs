@@ -9,6 +9,27 @@ namespace ClubDeportivoApp
     public partial class Inscribir_Actividad : Form
     {
         private string nombreActividad = "";
+
+        public Inscribir_Actividad(string codNoSocio) 
+        {
+            InitializeComponent();
+            txtDni.Text = codNoSocio;
+            txtDni.ReadOnly = true;
+            btnLimpiar.Enabled = false;
+            btnBuscarCliente.Enabled = false;
+
+            CargarDatosClientesYActividad();
+
+            txtBoxNombre.ReadOnly = true;
+            txtBoxApellido.ReadOnly = true;
+            txtBoxValor.ReadOnly = true;
+            txtBoxHorarios.ReadOnly = true;
+
+            // Configurar el DateTimePicker para que no permita fechas anteriores a hoy
+            dtpDiaUso.MinDate = DateTime.Today;
+            dtpDiaUso.Format = DateTimePickerFormat.Custom;
+            dtpDiaUso.CustomFormat = "dd/MM/yyyy";
+        }
         public Inscribir_Actividad()
         {
             InitializeComponent();
