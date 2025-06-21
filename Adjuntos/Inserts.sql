@@ -1,19 +1,27 @@
+-- =============================================
+-- DOCUMENTACIÓN DE LOS DATOS INSERTADOS
+-- =============================================
 /*
 SCRIPT DE INSERCIÓN DE DATOS PARA CLUB DEPORTIVO
 
 Versión: 1.0
 Autor: EQUIPO 6 - DSOO 1er CUATRIMESTRE 2025
-Fecha: 18/06/2025
+Fecha: 21/06/2025
 
 Descripción: 
   Este script carga datos de prueba para el sistema del club deportivo, incluyendo:
-  - 8 socios (4 morosos)
-  - 3 no socios
-  - 2 actividades
-  - Cuotas mensuales con fechas variadas
-  - Cuotas diarias para no socios
-  - Tipos de pago realistas
-
+  - 10 socios registrados (5 morosos, 2 con cuotas que vencen hoy)
+  - 8 no socios con cuotas diarias
+  - 8 actividades disponibles 
+  - 32 cuotas mensuales (24 pagadas, 8 pendientes)
+  - 14 cuotas diarias
+  - Todos los tipos de pago utilizados con diversas combinaciones
+  - Datos variados para probar todas las funcionalidades:
+      * Morosidad
+      * Pagos adelantados
+      * Diferentes métodos de pago
+      * Actividades diversas
+      * Fechas realistas para pruebas
 */
 
 USE clubdeportivo;
@@ -25,7 +33,13 @@ USE clubdeportivo;
 INSERT INTO Actividades (CodActividad, Nombre, Valor, Horario)
 VALUES 
 ('ACT-Musculacion', 'Musculacion', 3500.00, 'Lun a Vie - 07:00 a 22:00 | Sab - 10:00 a 17:00'),
-('ACT-Boxeo', 'Boxeo', 2500.00, 'Lun | Mie | Vie - 18:00 a 20:00');
+('ACT-Boxeo', 'Boxeo', 2500.00, 'Lun | Mie | Vie - 18:00 a 20:00'),
+('ACT-Zumba', 'Zumba', 2800.00, 'Lun y Jue - 18:30 a 19:30'),
+('ACT-TaeKwonDo', 'TaeKwonDo', 3200.00, 'Mar y Jue - 17:00 a 18:30 '),
+('ACT-Futbol', 'Fútbol', 4000.00, 'Mie - 16:00 a 18:00 | Sab - 15:00 a 17:00'),
+('ACT-Basquet', 'Básquet', 3800.00, 'Lun y Vie - 20:00 a 22:00 | Dom - 11:00 a 13:00'),
+('ACT-Atletismo', 'Atletismo', 2200.00, 'Lun a Vie - 07:00 a 09:00'),
+('ACT-Crossfit', 'Crossfit', 4500.00, 'Lun a Vie - 07:00 a 21:00 | Sab - 09:00 a 13:00');
 
 -- =============================================
 -- INSERCIÓN DE CLIENTES Y SOCIOS
@@ -140,6 +154,33 @@ VALUES
 ('CUOTA-02-SOC-33435132', 2, DATE_SUB(CURDATE(), INTERVAL 1 MONTH), 25000.00, 1, 'Adelanto', 1, DATE_SUB(CURDATE(), INTERVAL 1 MONTH), 'SOC-33435132'),
 ('CUOTA-03-SOC-33435132', 3, CURDATE(), 25000.00, 0, NULL, NULL, NULL, 'SOC-33435132');
 
+-- Socio 9: Moroso hoy mismo (para probar funcionalidad)
+INSERT INTO Clientes (nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
+VALUES ('Valentina', 'Morales', 45123456, '1990-02-14', 'Av. Corrientes 1234', '1145678901', 'valentina.morales@mail.com', 1);
+
+INSERT INTO Socio (CodSocio, Dni, Carnet, FechaInscripcion, Moroso, Activo)
+VALUES ('SOC-45123456', 45123456, 1, DATE_SUB(CURDATE(), INTERVAL 3 MONTH), 1, 1);
+
+INSERT INTO CuotaMensual (CodCuotaMensual, NroCuota, Vencimiento, ValorMensual, Pagada, TipoDePago, CantidadCuotas, FechaDePago, CodSocio)
+VALUES 
+('CUOTA-01-SOC-45123456', 1, DATE_SUB(CURDATE(), INTERVAL 3 MONTH), 25000.00, 1, 'Efectivo', 1, DATE_SUB(CURDATE(), INTERVAL 3 MONTH), 'SOC-45123456'),
+('CUOTA-02-SOC-45123456', 2, DATE_SUB(CURDATE(), INTERVAL 2 MONTH), 25000.00, 1, 'Transferencia', 1, DATE_SUB(CURDATE(), INTERVAL 2 MONTH), 'SOC-45123456'),
+('CUOTA-03-SOC-45123456', 3, DATE_SUB(CURDATE(), INTERVAL 1 MONTH), 25000.00, 1, 'QR', 1, DATE_SUB(CURDATE(), INTERVAL 1 MONTH), 'SOC-45123456'),
+('CUOTA-04-SOC-45123456', 4, CURDATE(), 25000.00, 0, NULL, NULL, NULL, 'SOC-45123456');
+
+-- Socio 10: Moroso hoy mismo (segundo caso)
+INSERT INTO Clientes (nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
+VALUES ('Roberto', 'García', 46123456, '1983-09-28', 'Calle Lavalle 567', '1156789012', 'roberto.garcia@mail.com', 1);
+
+INSERT INTO Socio (CodSocio, Dni, Carnet, FechaInscripcion, Moroso, Activo)
+VALUES ('SOC-46123456', 46123456, 1, DATE_SUB(CURDATE(), INTERVAL 4 MONTH), 1, 1);
+
+INSERT INTO CuotaMensual (CodCuotaMensual, NroCuota, Vencimiento, ValorMensual, Pagada, TipoDePago, CantidadCuotas, FechaDePago, CodSocio)
+VALUES 
+('CUOTA-01-SOC-46123456', 1, DATE_SUB(CURDATE(), INTERVAL 4 MONTH), 25000.00, 1, 'Tarjeta de crédito', 3, DATE_SUB(CURDATE(), INTERVAL 4 MONTH), 'SOC-46123456'),
+('CUOTA-02-SOC-46123456', 2, DATE_SUB(CURDATE(), INTERVAL 1 MONTH), 25000.00, 1, 'Tarjeta de crédito', 3, DATE_SUB(CURDATE(), INTERVAL 1 MONTH), 'SOC-46123456'),
+('CUOTA-03-SOC-46123456', 3, CURDATE(), 25000.00, 0, NULL, NULL, NULL, 'SOC-46123456');
+
 -- =============================================
 -- INSERCIÓN DE NO SOCIOS
 -- =============================================
@@ -180,23 +221,62 @@ VALUES
 ('CUOTA-01-NOSOC-44123456', 1, 2500.00, 'Transferencia', 1, DATE_SUB(CURDATE(), INTERVAL 1 DAY), DATE_SUB(CURDATE(), INTERVAL 1 DAY), 'NOSOC-44123456', 'ACT-Boxeo'),
 ('CUOTA-02-NOSOC-44123456', 1, 3500.00, 'Efectivo', 1, CURDATE(), CURDATE(), 'NOSOC-44123456', 'ACT-Musculacion');
 
+-- No Socio 4
+INSERT INTO Clientes (nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
+VALUES ('Fernando', 'López', 47123456, '1988-06-17', 'Av. Callao 890', '1167890123', 'fernando.lopez@mail.com', 0);
 
--- =============================================
--- DOCUMENTACIÓN DE LOS DATOS INSERTADOS
--- =============================================
+INSERT INTO NoSocios (CodNoSocio, Dni)
+VALUES ('NOSOC-47123456', 47123456);
 
-/*
-RESUMEN DE DATOS INSERTADOS:
-- 7 socios registrados (3 morosos con cuotas vencidas entre 3 y 8 días)
-- 3 no socios con cuotas diarias
-- 2 actividades disponibles (Musculación y Boxeo)
-- 24 cuotas mensuales (18 pagadas, 6 pendientes)
-- 6 cuotas diarias
-- Todos los tipos de pago utilizados:
-  * Efectivo
-  * Transferencia
-  * Adelanto
-  * QR
-  * Tarjeta de débito
-  * Tarjeta de crédito (con 1, 3 y 6 cuotas)
-*/
+INSERT INTO CuotaDiaria (CodCuotaDiaria, Pagada, ValorFinal, TipoDePago, CantidadCuotas, FechaDePago, FechaDeUso, CodNoSocio, CodActividad)
+VALUES 
+('CUOTA-01-NOSOC-47123456', 1, 2800.00, 'Tarjeta de crédito', 3, DATE_SUB(CURDATE(), INTERVAL 4 DAY), DATE_SUB(CURDATE(), INTERVAL 4 DAY), 'NOSOC-47123456', 'ACT-Zumba'),
+('CUOTA-02-NOSOC-47123456', 1, 3200.00, 'Tarjeta de crédito', 3, DATE_SUB(CURDATE(), INTERVAL 2 DAY), DATE_SUB(CURDATE(), INTERVAL 2 DAY), 'NOSOC-47123456', 'ACT-TaeKwonDo');
+
+-- No Socio 5
+INSERT INTO Clientes (nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
+VALUES ('Patricia', 'Martínez', 48123456, '1979-11-05', 'Calle Paraguay 345', '1178901234', 'patricia.martinez@mail.com', 1);
+
+INSERT INTO NoSocios (CodNoSocio, Dni)
+VALUES ('NOSOC-48123456', 48123456);
+
+INSERT INTO CuotaDiaria (CodCuotaDiaria, Pagada, ValorFinal, TipoDePago, CantidadCuotas, FechaDePago, FechaDeUso, CodNoSocio, CodActividad)
+VALUES 
+('CUOTA-01-NOSOC-48123456', 1, 4000.00, 'Efectivo', 1, DATE_SUB(CURDATE(), INTERVAL 3 DAY), DATE_SUB(CURDATE(), INTERVAL 3 DAY), 'NOSOC-48123456', 'ACT-Futbol'),
+('CUOTA-02-NOSOC-48123456', 1, 3800.00, 'Efectivo', 1, DATE_SUB(CURDATE(), INTERVAL 3 DAY), CURDATE(), 'NOSOC-48123456', 'ACT-Basquet');
+
+-- No Socio 6
+INSERT INTO Clientes (nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
+VALUES ('Sergio', 'Díaz', 49123456, '1994-03-22', 'Av. Pueyrredón 678', '1189012345', 'sergio.diaz@mail.com', 0);
+
+INSERT INTO NoSocios (CodNoSocio, Dni)
+VALUES ('NOSOC-49123456', 49123456);
+
+INSERT INTO CuotaDiaria (CodCuotaDiaria, Pagada, ValorFinal, TipoDePago, CantidadCuotas, FechaDePago, FechaDeUso, CodNoSocio, CodActividad)
+VALUES 
+('CUOTA-01-NOSOC-49123456', 1, 2200.00, 'Transferencia', 1, DATE_SUB(CURDATE(), INTERVAL 1 DAY), DATE_SUB(CURDATE(), INTERVAL 1 DAY), 'NOSOC-49123456', 'ACT-Atletismo'),
+('CUOTA-02-NOSOC-49123456', 1, 4500.00, 'QR', 1, CURDATE(), CURDATE(), 'NOSOC-49123456', 'ACT-Crossfit');
+
+-- No Socio 7
+INSERT INTO Clientes (nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
+VALUES ('Lucila', 'Fernández', 50123456, '1991-07-30', 'Calle Suipacha 321', '1190123456', 'lucila.fernandez@mail.com', 1);
+
+INSERT INTO NoSocios (CodNoSocio, Dni)
+VALUES ('NOSOC-50123456', 50123456);
+
+INSERT INTO CuotaDiaria (CodCuotaDiaria, Pagada, ValorFinal, TipoDePago, CantidadCuotas, FechaDePago, FechaDeUso, CodNoSocio, CodActividad)
+VALUES 
+('CUOTA-01-NOSOC-50123456', 1, 3500.00, 'Tarjeta de débito', 1, DATE_SUB(CURDATE(), INTERVAL 5 DAY), DATE_SUB(CURDATE(), INTERVAL 5 DAY), 'NOSOC-50123456', 'ACT-Musculacion'),
+('CUOTA-02-NOSOC-50123456', 1, 2500.00, 'Adelanto', 1, DATE_SUB(CURDATE(), INTERVAL 3 DAY), DATE_SUB(CURDATE(), INTERVAL 3 DAY), 'NOSOC-50123456', 'ACT-Boxeo');
+
+-- No Socio 8
+INSERT INTO Clientes (nombre, apellido, dni, fecha_nac, direccion, telefono, email, ficha_medica)
+VALUES ('Gabriel', 'Sánchez', 51123456, '1985-12-12', 'Av. Santa Fe 654', '1101234567', 'gabriel.sanchez@mail.com', 0);
+
+INSERT INTO NoSocios (CodNoSocio, Dni)
+VALUES ('NOSOC-51123456', 51123456);
+
+INSERT INTO CuotaDiaria (CodCuotaDiaria, Pagada, ValorFinal, TipoDePago, CantidadCuotas, FechaDePago, FechaDeUso, CodNoSocio, CodActividad)
+VALUES 
+('CUOTA-01-NOSOC-51123456', 1, 2800.00, 'Efectivo', 1, DATE_SUB(CURDATE(), INTERVAL 2 DAY), DATE_SUB(CURDATE(), INTERVAL 2 DAY), 'NOSOC-51123456', 'ACT-Zumba'),
+('CUOTA-02-NOSOC-51123456', 1, 3200.00, 'Efectivo', 1, DATE_ADD(CURDATE(), INTERVAL 1 DAY), DATE_ADD(CURDATE(), INTERVAL 1 DAY), 'NOSOC-51123456', 'ACT-TaeKwonDo');
