@@ -80,41 +80,12 @@ namespace ClubDeportivoApp
                 string query;
                 mySqlConnection = Conexion.getInstancia().CrearConexion();
                 mySqlConnection.Open();
-                string tipoQuery = @"SELECT 'socio' AS tipo FROM Socio WHERE Dni = @dni 
-                     UNION 
-                     SELECT 'nosocio' AS tipo FROM NoSocios WHERE Dni = @dni";
-
-                MySqlCommand tipoCmd = new MySqlCommand(tipoQuery, mySqlConnection);
-                tipoCmd.Parameters.AddWithValue("@dni", txtDni.Text);
-
-                object? result = tipoCmd.ExecuteScalar();
-                string? tipo = result != null ? result.ToString() : null;
-
-                if (tipo == null)
-                {
-                    MessageBox.Show("El cliente no está registrado como socio ni como no socio.");
-                    return;
-                }
-
-                if (tipo == "socio")
-                {
-
-                    query = @"SELECT c.Nombre, c.Apellido, soc.CodSocio, cuotMens.ValorMensual, cuotMens.TipoDePago, cuotMens.Vencimiento, cuotMens.CodCuotaMensual
+                
+                query = @"SELECT c.Nombre, c.Apellido, soc.CodSocio, cuotMens.ValorMensual, cuotMens.TipoDePago, cuotMens.Vencimiento, cuotMens.CodCuotaMensual
                         FROM Clientes c INNER JOIN Socio soc ON c.Dni = soc.Dni INNER JOIN CuotaMensual cuotMens 
                         ON soc.CodSocio = cuotMens.CodSocio where c.Dni = @dni";
-                }
-                else if (tipo == "nosocio")
-                {
-                    query = @"SELECT c.Nombre, c.Apellido,noSoc.CodNoSocio, cuotDia.ValorFinal, cuotDia.TipoDePago, cuotDia.CodCuotaDiaria
-                    FROM Clientes c inner join NoSocios noSoc ON c.Dni = noSoc.Dni inner join Actividades act 
-                    ON noSoc.CodNoSocio = act.CodNoSocio inner join CuotaDiaria cuotDia ON cuotDia.CodNoSocio 
-                    = noSoc.CodNoSocio where c.Dni = @dni";
-                }
-                else
-                {
-                    MessageBox.Show("Cliente no encontrado como socio ni no socio.");
-                    return;
-                }
+            
+           
 
                 MySqlCommand comando = new MySqlCommand(query, mySqlConnection);
                 comando.Parameters.AddWithValue("@Dni", txtDni.Text);
@@ -130,39 +101,24 @@ namespace ClubDeportivoApp
                         txtBoxResNombre.Text = mySqlDataReader["Nombre"].ToString();
                         txtBoxResApellido.Text = mySqlDataReader["Apellido"].ToString();
 
-                        if (tipo == "socio")
-                        {
-                            txtBoxResCodCuota.Text = mySqlDataReader["CodCuotaMensual"].ToString();
-                            txtBoxResCod.Text = mySqlDataReader["CodSocio"].ToString();
+                        txtBoxResCodCuota.Text = mySqlDataReader["CodCuotaMensual"].ToString();
+                        txtBoxResCod.Text = mySqlDataReader["CodSocio"].ToString();
                             
-                            // Moneda Argentina
-                            decimal valor = Convert.ToDecimal(mySqlDataReader["ValorMensual"]);
-                            txtBoxResValor.Text = valor.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
+                        // Moneda Argentina
+                        decimal valor = Convert.ToDecimal(mySqlDataReader["ValorMensual"]);
+                        txtBoxResValor.Text = valor.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
 
-                            cbResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
+                        cbResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
                             
-                            // Fecha dd/MM/yyyy
-                            if (DateTime.TryParse(mySqlDataReader["Vencimiento"].ToString(), out DateTime fecha))
-                            {
-                                txtBoxResVencimiento.Text = fecha.ToString("dd/MM/yyyy");
-                            }
-                            else
-                            {
-                                txtBoxResVencimiento.Text = "Fecha inválida";
-                            }
-                        }
-                        else if (tipo == "nosocio")
+                        // Fecha dd/MM/yyyy
+                        if (DateTime.TryParse(mySqlDataReader["Vencimiento"].ToString(), out DateTime fecha))
                         {
-                            txtBoxResCodCuota.Text = mySqlDataReader["CodCuotaDiaria"].ToString();
-                            txtBoxResCod.Text = mySqlDataReader["CodNoSocio"].ToString();
-
-                            // Moneda Argentina
-                            decimal valor = Convert.ToDecimal(mySqlDataReader["ValorFinal"]);
-                            txtBoxResValor.Text = valor.ToString("C2", CultureInfo.CreateSpecificCulture("es-AR"));
-
-                            cbResTipoPago.Text = mySqlDataReader["TipoDePago"].ToString();
-                            txtBoxResVencimiento.Text = "No posee.";
+                            txtBoxResVencimiento.Text = fecha.ToString("dd/MM/yyyy");
                         }
+                        else
+                        {
+                            txtBoxResVencimiento.Text = "Fecha inválida";
+                        }      
                     }
                 }
                 else
